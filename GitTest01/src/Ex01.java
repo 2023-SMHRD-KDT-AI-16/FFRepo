@@ -16,6 +16,8 @@ public class Ex01 {
 		
 		
 		System.out.println("hello");
+		System.out.println("hello");
+		System.out.println("hello");
 
 		
 	}
