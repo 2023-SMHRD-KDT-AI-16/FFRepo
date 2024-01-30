@@ -14,7 +14,7 @@ public class Ex01 {
 		System.out.println();
 	}
 		
-		
+		System.out.println("소레와난데쓰까");
 		System.out.println("충돌바람");
 		
 	}
