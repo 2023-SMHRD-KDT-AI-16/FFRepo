@@ -16,11 +16,8 @@ public class Ex01 {
 		
 		
 		System.out.println("hello");
-		System.out.println("hello Java");
 		System.out.println("hello");
-		
-		
-		System.out.println("작업중");
+		System.out.println("hello");
 
 		
 	}
