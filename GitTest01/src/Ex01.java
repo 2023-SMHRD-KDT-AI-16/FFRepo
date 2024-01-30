@@ -10,11 +10,16 @@ public class Ex01 {
 		for(int i = 0; i<j;i++) {
 			
 			System.out.print("*");
-		}
-		
-		
+		}// 소까.
 		System.out.println();
 	}
+		
+		
+		System.out.println("충돌바람");
+		
 	}
+	
+	
+
 
 }
