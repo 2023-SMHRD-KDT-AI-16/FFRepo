@@ -112,7 +112,6 @@ public class MainView {
 					System.out.println("====게임 화면 ====");
 					System.out.println("[1]메인화면 [2]전체 주식종목 [3]종목검색 [4]보유 주식 [5]아이템 상점 [6]하루 마감하기");
 					sel = sc.nextInt();
-					while (true) {
 
 						if (sel == 1) {// 메인화면
 							break;
@@ -240,7 +239,7 @@ public class MainView {
 							System.out.println("잘못된 입력입니다.2");
 							break;
 						}
-					}
+					
 
 					break;
 
