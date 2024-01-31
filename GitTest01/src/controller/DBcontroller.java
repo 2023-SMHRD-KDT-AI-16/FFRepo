@@ -105,6 +105,8 @@ public class DBcontroller {
 
 	}
 
+	// 회원가입 기능
+	
 	public int insertMember(UserVO user) {
 
 		getConn();
