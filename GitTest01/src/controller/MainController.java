@@ -55,12 +55,14 @@ public class MainController extends DBcontroller {
 		
 		
 		getConn();
-		for (int i = 0; i < 20; i++) {
-			String name_1 = Db_stock_name[i]; /// 0 대신 주식 이름 넣어야 함.
+
+			String name_1 = Db_stock_name[2]; /// 0 대신 주식 이름 넣어야 함.
+			float rate_1 = stock_rate[2];
+			
 			
 			try {
 				String sql = "UPDATE ALL_stock SET STOCK_RATE = ? WHERE STOCK_NAME = ?";
-				float rate = stock_rate[i]; // 등락률 집어 넣기
+				float rate = rate_1; // 등락률 집어 넣기
 				String name = name_1;
 				psmt = conn.prepareStatement(sql);
 				
@@ -92,7 +94,7 @@ public class MainController extends DBcontroller {
 					e.printStackTrace();
 				}
 			}
-		}
+		
 
 	}
 
