@@ -192,7 +192,12 @@ public class DBcontroller {
 			allClose();
 		}
 
+<<<<<<< HEAD
 	}
+=======
+	}
+
+>>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-16/FFRepo.git
 
 	// 5. 주식 매도 기능 메소드
 	public int stockSale(String sale_stock_name, int count) {
@@ -307,6 +312,7 @@ public class DBcontroller {
 		return 0;
 	}
 
+<<<<<<< HEAD
 //	// select 기능 메소드
 //	public ArrayList<MemberDTO> selectMember() {
 //		ArrayList<MemberDTO> dtoList = new ArrayList<MemberDTO>();
@@ -392,7 +398,9 @@ public class DBcontroller {
 //			allClose();
 //		}return null;
 //		
+=======
 
-//	}
+>>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-16/FFRepo.git
+
 
 }
