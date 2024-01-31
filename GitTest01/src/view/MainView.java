@@ -30,9 +30,13 @@ public class MainView {
 			case 1:
 				//회원가입
 				System.out.println("====회원가입 창입니다====");
-				System.out.println("[1]회원가입 진행 [2] 뒤로가기");
+				System.out.println("[1]뒤로가기 [2]회원가입 진행");
 				sel = sc.nextInt();
-				if(sel==1) {//회원가입 진행
+				
+				 if(sel ==1) {//뒤로가기
+						break;
+					}
+				else if(sel==2) {//회원가입 진행
 				
 				System.out.print("id를 입력하세요 : ");
 				String user_id = sc.next();
@@ -63,7 +67,7 @@ public class MainView {
 				
 				
 				
-				}else if(sel ==2) {//뒤로가기
+				}else if(sel ==1) {//뒤로가기
 					break;
 				}else {//잘못입력
 					System.out.println("잘못 입력된 값 입니다.");
@@ -75,9 +79,12 @@ public class MainView {
 			case 2:
 				//로그인
 				System.out.println("====로그인 창입니다====");
-				System.out.println("[1]로그인 진행 [2]뒤로가기");
+				System.out.println("[1]뒤로가기 [2]로그인 진행");
 				sel = sc.nextInt();
-				if(sel == 1) {//로그인 진행
+				if(sel == 1) {//뒤로가기
+					break;
+				}
+				else if(sel == 2) {//로그인 진행
 				
 				
 				System.out.print("id를 입력하세요 : ");
@@ -94,8 +101,7 @@ public class MainView {
 				break;
 				
 				
-				}else if(sel == 2) {//뒤로가기
-					break;
+				
 				}else {//잘못입력
 					System.out.println("잘못 입력된 값입니다.");
 					break;
@@ -103,6 +109,15 @@ public class MainView {
 				
 			case 3:
 				//게임시작
+				System.out.println("====게임 화면 ====");
+				System.out.println("[1]뒤로가기 [2]");
+				
+				
+				
+				
+				
+				
+				
 				
 				
 				
