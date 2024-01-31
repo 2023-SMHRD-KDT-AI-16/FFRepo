@@ -79,33 +79,6 @@ public class DBcontroller {
 		}
 	}
 
-	// 기능 메소드
-//	public int updateMember(String update_id, String update_pw) {
-//
-//		getConn();
-//
-//		try {
-//			// sql통과 통로
-//			String sql = "update member set pw = ? where id = ?";
-//			psmt = conn.prepareStatement(sql);
-//
-//			// ?채우기 - ?가 없으면 생략
-//			psmt.setString(1, update_pw);
-//			psmt.setString(2, update_id);
-//
-//			// sql통과 하세요!
-//			int row = psmt.executeUpdate();
-//			return row;
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return 0;
-//		} finally {
-//			allClose();
-//		}
-//
-//	}
-
 	// 1. 회원가입 기능
 	
 	public int insertMember(UserVO user) {
@@ -181,6 +154,8 @@ public class DBcontroller {
 		
 
 	}
+	
+	// 4. 전체 주식 보기 메소드
 	
 	
 	
