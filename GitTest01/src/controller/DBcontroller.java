@@ -179,7 +179,7 @@ public class DBcontroller {
 				int yesterdayPrice = rs.getInt("stock_yesterday_Price");
 				int stockrate = rs.getInt("stock_rate");
 				
-				StockVO svo= new StockVO(stockName, nowPrice, yesterdayPrice, stockrate);
+				StockVO svo= new StockVO(stockName,yesterdayPrice, nowPrice, stockrate);
 				svoList.add(svo);
 				
 			}

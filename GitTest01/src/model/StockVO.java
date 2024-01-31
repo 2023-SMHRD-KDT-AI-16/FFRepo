@@ -7,7 +7,7 @@ public class StockVO {
 	private int nowPrice;
 	private int rate;
 
-	public StockVO(String stockName, int stockCount, int nowPrice, int anything) {
+	public StockVO(String stockName, int yesterdayPrice , int nowPrice, int rate) {
 //		super();
 		this.stockName = stockName;
 		this.yesterdayPrice = yesterdayPrice;

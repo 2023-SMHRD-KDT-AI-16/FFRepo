@@ -142,7 +142,9 @@ public class MainView {
 						Stock_cnt++;
 						System.out.println("==="+(Stock_cnt)+"===");
 						System.out.println(e.getStockName());
-						System.out.println(e.getNowPrice());
+						System.out.println("시가 :" + e.getNowPrice());
+						System.out.println("전일가 : " + e.getYesterdayPrice());
+						System.out.println("등락률 : "+e.getRate());
 					}
 					
 					sel = sc.nextInt();
