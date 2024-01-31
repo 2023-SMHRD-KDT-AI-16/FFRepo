@@ -1,6 +1,25 @@
 package controller;
 
+import java.util.Random;
+
 public class MainController {
+		
+		public void stock_rate() {
+		float[] stock_rate = new float[20];
+		Random random = new Random();
+		
+		float randomFloat = random.nextFloat();
+		int now_price = 100000;
+		
+		for (int i = 0; i < stock_rate.length; i++) {
+			float randomFloatInRange = random.nextFloat() * 30.0f;
+			stock_rate[i] = now_price+now_price*randomFloatInRange/100;
+			System.out.print(stock_rate[i]+"\t");
+			System.out.println(randomFloatInRange);
+		} 
+		
+		
+	}
 	
 	
 	
