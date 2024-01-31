@@ -9,6 +9,7 @@ public class MainController {
 		Random random = new Random();
 		
 		float randomFloat = random.nextFloat();
+		
 		int now_price = 100000;
 		
 		for (int i = 0; i < stock_rate.length; i++) {
