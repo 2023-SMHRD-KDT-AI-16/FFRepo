@@ -152,7 +152,7 @@ public class MainView {
 					int Stock_index = sc.nextInt()-1;
 					
 					
-					
+					break;
 					
 					
 					
