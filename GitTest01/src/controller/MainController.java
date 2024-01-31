@@ -1,16 +1,23 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Random;
+
+import model.StockVO;
 
 public class MainController {
 		
-		public void stock_rate() {
+		public void stock_Rate_Update() {
+			
+			
+			ArrayList<StockVO> results = new ArrayList<>();
+
+			int now_price = 100000;
 		float[] stock_rate = new float[20];
+		
 		Random random = new Random();
 		
 		float randomFloat = random.nextFloat();
-		
-		int now_price = 100000;
 		
 		for (int i = 0; i < stock_rate.length; i++) {
 			float randomFloatInRange = random.nextFloat() * 30.0f;
@@ -18,6 +25,8 @@ public class MainController {
 			System.out.print(stock_rate[i]+"\t");
 			System.out.println(randomFloatInRange);
 		} 
+		
+		
 		
 		
 	}
