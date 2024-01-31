@@ -131,7 +131,7 @@ public class DBcontroller {
 	}
 
 	// 4. 전체 주식 보기 메소드
-	public ArrayList<StockVO> selectMember() {
+	public ArrayList<StockVO> everyStock() {
 		ArrayList<StockVO> svoList = new ArrayList<StockVO>();
 
 		getConn();
@@ -168,7 +168,7 @@ public class DBcontroller {
 
 	}
 
-	// 5. 주식 판매 기능 메소드
+	// 5. 주식 매도 기능 메소드
 	public int stockSale(String sale_stock_name, int count) {
 
 		getConn();
@@ -213,19 +213,6 @@ public class DBcontroller {
 				return row;
 			}
 
-			// sql통과
-
-
-			// sql통과 통로
-//			String sql = "delete from my_stock where stock_name = ?";
-//			psmt = conn.prepareStatement(sql);
-//			
-//			// ? 채우기
-//			psmt.setString(1, sale_stock_name);
-//			
-//			// sql통과
-//			int row = psmt.executeUpdate();
-//			return row;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -235,36 +222,59 @@ public class DBcontroller {
 		return 0;
 	}
 
-	// 6. 주식 구매 기능 메소드
-//	public void byStock(int count) {
-//		StockVO buyList =  new StockVO(null, count, count, count)
-//
-//		getConn();
-//
-//		try {
-//			// sql통과 통로
-//			String sql = "insert into my_user values(?,?,?,?,?)";
-//			
-//			psmt = conn.prepareStatement(sql);
-//
-//			// ?채우기
-//			psmt.setString(1, buyList));
-//			psmt.setString(2, buyList.get());
-//			psmt.setString(3, buyList.get());
-//			psmt.setInt(4, buyList.getAge());
-//
-//			// sql통과 하세요!
-//			int row = psmt.executeUpdate();
-//			return row;
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return 0;
-//		} finally {
-//			allClose();
-//		}
-//
-//	}
+	// 6. 주식 매수 기능 메소드
+	public int stockBuy(String sale_stock_name, int count) {
+
+		getConn();
+
+		try {
+			String sql = "select stock_count from my_stock where stock_name = ?";
+			psmt = conn.prepareStatement(sql);
+
+			// ? 채우기
+			psmt.setString(1, sale_stock_name);
+
+			rs = psmt.executeQuery();
+
+			int stockCount = 0; // 보유하고 있는 주식 수량 담을 변수
+			while(rs.next()) { 
+				stockCount = rs.getInt(1);
+			}
+			
+			if(stockCount == count) {
+				// sql 통과 통로
+				String sql_2 = "delete from my_stock where stock_name = ?";
+				psmt = conn.prepareStatement(sql_2);
+				
+				// ? 채우기
+				psmt.setString(1, sale_stock_name);
+				
+				// sql통과
+				int row = psmt.executeUpdate();
+				
+				return row;
+			}else {
+				String sql_2 = "update my_stock set stock_count = ? where stock_name = ?";
+				psmt = conn.prepareStatement(sql_2);
+				
+				// ? 채우기
+				psmt.setInt(1, (stockCount - count));
+				psmt.setString(2, sale_stock_name);
+				
+				
+				// sql통과
+				int row = psmt.executeUpdate();
+				return row;
+			}
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			allClose();
+		}
+		return 0;
+	}
 
 //	// select 기능 메소드
 //	public ArrayList<MemberDTO> selectMember() {
