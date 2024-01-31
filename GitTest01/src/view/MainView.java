@@ -1,8 +1,10 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import controller.DBcontroller;
+import model.StockVO;
 import model.UserVO;
 
 public class MainView {
@@ -11,6 +13,8 @@ public class MainView {
 		int my_money=50000000; 
 		int my_yield  = 0;
 		String my_item = null;
+		
+		DBcontroller mdao = new DBcontroller();
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -47,7 +51,7 @@ public class MainView {
 				System.out.print("pw를 입력하세요 : ");
 				String user_pw = sc.next();
 				
-				DBcontroller mdao = new DBcontroller();
+				mdao = new DBcontroller();
 				
 				UserVO uv = new UserVO(user_id, user_pw, my_money, my_yield) ;
 				int row = mdao.insertMember(uv);
@@ -95,7 +99,7 @@ public class MainView {
 				System.out.print("pw를 입력하세요 : ");
 				String user_pw = sc.next();
 				
-				DBcontroller mdao = new DBcontroller();
+				mdao = new DBcontroller();
 				int row = mdao.userLogin(user_id, user_pw);
 				if(row>0) {
 					System.out.println("로그인 성공");
@@ -120,10 +124,28 @@ public class MainView {
 				System.out.println("====게임 화면 ====");
 				System.out.println("[1]메인화면 [2]전체 주식종목 [3]종목검색 [4]보유 주식 [5]아이템 상점 [6]하루 마감하기");
 				sel = sc.nextInt();
+				
+				
 				if(sel==1) {//메인화면 
 					break;
 				}else if(sel ==2) {//전체 주식 종목
 					System.out.println("전체 주식 종목");
+					mdao = new DBcontroller();
+					
+					
+					ArrayList<StockVO> svoList = mdao.selectMember();
+					
+					for(StockVO e : svoList ) {
+						System.out.println(e.getStockName());
+						System.out.println(e.getNowPrice());
+						System.out.println("==========");
+					}
+					
+					
+					
+					
+					
+					
 					
 				}else if(sel ==3) {//종목 검색
 					System.out.println("종목검색");
