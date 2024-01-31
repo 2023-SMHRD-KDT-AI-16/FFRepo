@@ -118,10 +118,44 @@ public class MainView {
 			case 3:
 				//게임시작
 				System.out.println("====게임 화면 ====");
-				System.out.println("[1]메인화면 [2]전체 주식종목 [3]종목검색 [4]보유 주식 [5]아이템 상점으로가기 [6]");
+				System.out.println("[1]메인화면 [2]전체 주식종목 [3]종목검색 [4]보유 주식 [5]아이템 상점 [6]하루 마감하기");
 				sel = sc.nextInt();
-				if(sel==1) {
+				if(sel==1) {//메인화면 
 					break;
+				}else if(sel ==2) {//전체 주식 종목
+					System.out.println("전체 주식 종목");
+					
+				}else if(sel ==3) {//종목 검색
+					System.out.println("종목검색");
+					
+					System.out.println("[1]뒤로가기 [2]종목 검색하기");
+					sel = sc.nextInt();
+					if(sel == 1) {//뒤로 가기
+						break;
+					}else if(sel == 2) {//종목 검색하기
+						System.out.print("검색할 종목 이름 : ");
+						String stockName = sc.next();
+						
+						//검색한 종목이 DB와 일치하면 해당 종목으로 이동
+						
+						//해당 종목 정보 보여주기(출력) -- 현재 시가, 등락율 표시
+						System.out.println("~~회사");
+						System.out.println("[1]뒤로가기 [2]매수하기 [3]매도하기");
+						sel =sc.nextInt();
+						if(sel == 1) {
+							break;
+						}else if(sel == 2) {
+							System.out.println("==매수하기 화면==");
+							
+						}else if(sel == 3) {
+							System.out.println("==매도하기 화면==");
+							
+						}
+						
+						
+						
+						
+					}
 					
 					
 				}
