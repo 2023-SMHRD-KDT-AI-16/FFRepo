@@ -6,10 +6,10 @@ public class UserVO {
 	private int my_money;
 	
 	
-	public UserVO(String user_id, String user_pw, int my_money) {
+	public UserVO(String user_id, String user_pw) {
 		this.user_id = user_id;
 		this.user_pw = user_pw;
-		this.my_money = my_money;
+		this.my_money = 50000000;
 	}
 
 
