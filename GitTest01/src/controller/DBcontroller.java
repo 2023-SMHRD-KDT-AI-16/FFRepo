@@ -189,13 +189,8 @@ public class DBcontroller {
 		} finally {
 			allClose();
 		}
-<<<<<<< HEAD
 
 	}
-=======
-
-	}
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-16/FFRepo.git
 
 	// 5. 주식 매도 기능 메소드
 	public int stockSale(String sale_stock_name, int count) {
@@ -305,10 +300,4 @@ public class DBcontroller {
 		}
 		return 0;
 	}
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-16/FFRepo.git
 }
