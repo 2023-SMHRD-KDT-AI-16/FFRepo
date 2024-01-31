@@ -175,10 +175,11 @@ public class DBcontroller {
 			
 			while (rs.next()) {
 				String stockName = rs.getString("stock_name");
-				int nowPrice = rs.getInt("stock_price");
-				int stockCount = 1;
+				int nowPrice = rs.getInt("stock_now_price");
+				int yesterdayPrice = rs.getInt("stock_yesterday_Price");
+				int stockrate = rs.getInt("stock_rate");
 				
-				StockVO svo= new StockVO(stockName, stockCount, nowPrice);
+				StockVO svo= new StockVO(stockName, nowPrice, yesterdayPrice, stockrate);
 				svoList.add(svo);
 				
 			}
