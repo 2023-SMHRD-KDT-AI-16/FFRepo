@@ -146,6 +146,8 @@ public class MainView {
 							break;
 						}else if(sel == 2) {
 							System.out.println("==매수하기 화면==");
+							System.out.println("[1]뒤로가기 [2]주문 수량");
+							
 							
 						}else if(sel == 3) {
 							System.out.println("==매도하기 화면==");
