@@ -17,6 +17,7 @@ public class MainView {
 		int sel; // 사용자의 선택
 		
 		while(true) {
+			System.out.println("*개미는 뚠뚠*");
 			System.out.println("[1]회원가입 [2]로그인 [3]게임시작 [4]전체순위조회 [5]종료");
 			sel = sc.nextInt();
 			
@@ -94,10 +95,17 @@ public class MainView {
 				System.out.print("pw를 입력하세요 : ");
 				String user_pw = sc.next();
 				
-			
+				DBcontroller mdao = new DBcontroller();
+				int row = mdao.userLogin(user_id, user_pw);
+				if(row>0) {
+					System.out.println("로그인 성공");
+				}else {
+					System.out.println("로그인 실패");
+				}
+				
 				
 				//join_id와 join_pw가 db에 저장된 값과 일치하면 로그인성공 출력
-				System.out.println("로그인 성공!");
+				
 				break;
 				
 				
@@ -110,9 +118,13 @@ public class MainView {
 			case 3:
 				//게임시작
 				System.out.println("====게임 화면 ====");
-				System.out.println("[1]뒤로가기 [2]");
-				
-				
+				System.out.println("[1]메인화면 [2]전체 주식종목 [3]종목검색 [4]보유 주식 [5]아이템 상점으로가기 [6]");
+				sel = sc.nextInt();
+				if(sel==1) {
+					break;
+					
+					
+				}
 				
 				
 				
