@@ -6,14 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.UserVO;
 
 public class DBcontroller {
 
-
-	private Connection conn; 
+	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
-	
+
 	// DB 연결 메소드
 	private void getConn() {
 		try {
@@ -78,7 +78,7 @@ public class DBcontroller {
 		}
 	}
 
-	//  기능 메소드
+	// 기능 메소드
 	public int updateMember(String update_id, String update_pw) {
 
 		getConn();
@@ -103,6 +103,32 @@ public class DBcontroller {
 			allClose();
 		}
 
+	}
+
+	public int insertMember(UserVO user) {
+
+		getConn();
+
+		try {
+			// sql통과 통로
+			String sql = "insert into my_user values(?,?,?)";
+			psmt = conn.prepareStatement(sql);
+
+			// ?채우기 - ?가 없으면 생략
+			psmt.setString(1, user.getUser_id());
+			psmt.setString(2, user.getUser_pw());
+			psmt.setInt(3, user.getMy_money());
+
+			// sql통과 하세요!
+			int row = psmt.executeUpdate();
+			return row;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			allClose();
+		}
 	}
 
 	// 주식 구매 기능 메소드
@@ -219,8 +245,7 @@ public class DBcontroller {
 //			allClose();
 //		}return null;
 //		
-	
-//	}
 
+//	}
 
 }
