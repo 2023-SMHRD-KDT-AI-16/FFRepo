@@ -2,6 +2,9 @@ package view;
 
 import java.util.Scanner;
 
+import controller.DBcontroller;
+import model.UserVO;
+
 public class MainView {
 
 	public static void main(String[] args) {
@@ -28,19 +31,27 @@ public class MainView {
 				sel = sc.nextInt();
 				if(sel==1) {//회원가입 진행
 				
-				
-//				ArrayList<UserVO> dtoList =  //회원정보 배열 만들기
-					
 				System.out.print("id를 입력하세요 : ");
 				String user_id = sc.next();
 				
 				//	ID 중복시 실행	 if(join_id ==  )
 				
-				
 				System.out.print("pw를 입력하세요 : ");
 				String user_pw = sc.next();
 				
-				System.out.println("회원가입 성공!");
+				DBcontroller mdao = new DBcontroller();
+				UserVO uv = new UserVO(user_id, user_pw) ;
+				int row = mdao.insertMember(uv);
+				
+				if(row>0) {
+					System.out.println("회원가입 성공!");
+				}else {
+					System.out.println("회원가입 실패!");
+				}
+				
+				
+				
+				
 				break;
 				// DB에 회원가입정보 저장
 				// DAO ?? = new DAO();
