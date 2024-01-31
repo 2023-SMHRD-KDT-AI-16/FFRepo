@@ -190,17 +190,23 @@ public class MainView {
 							break;
 						}else if(sel == 2) {//매수하기
 							System.out.println("==매수하기 화면==");
-							System.out.println("[1]뒤로가기 [2]매수 정보 입력");
+							System.out.println("[1]뒤로가기 [2]매수 수량 입력");
 							int choice = sc.nextInt();
 							if(choice == 1) {//뒤로가기
 								break;
-							}else if(choice == 2) {//매수 정보 입력
-								System.out.println("주문");
+							}else if(choice == 2) {//매수 수량 입력
+								System.out.print("매수 갯수 : ");
+								int stockCount = sc.nextInt();
+								
+								//매수 메소드 적용 칸
+								System.out.println("주식이름 "+stockCount+"주 매수완료");
+								break;
 							}
 							
 						}else if(sel == 3) {//매도하기
 							System.out.println("==매도하기 화면==");
 							System.out.println("[1]뒤로가기 [2]주문 수량");
+							
 							
 						}
 						
