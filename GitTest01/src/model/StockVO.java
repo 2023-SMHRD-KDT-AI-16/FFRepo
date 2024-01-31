@@ -5,13 +5,15 @@ public class StockVO {
 	private String stockName;
 	private int stockCount;
 	private int nowPrice;
+	private int anything;
 	
 	
-	public StockVO(String stockName, int stockCount, int nowPrice) {
+	public StockVO(String stockName, int stockCount, int nowPrice, int anything) {
 		super();
 		this.stockName = stockName;
 		this.stockCount = stockCount;
 		this.nowPrice = nowPrice;
+		this.anything = anything;
 	}
 	
 	
@@ -34,6 +36,17 @@ public class StockVO {
 	public void setNowPrice(int nowPrice) {
 		this.nowPrice = nowPrice;
 	}
+
+
+	public int getAnything() {
+		return anything;
+	}
+
+
+	public void setAnything(int anything) {
+		this.anything = anything;
+	}
+	
 	
 	
 	

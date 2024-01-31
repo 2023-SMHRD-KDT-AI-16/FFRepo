@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import controller.DBcontroller;
+import controller.DbStockSearch_controller;
 import model.StockVO;
 import model.UserVO;
 
@@ -134,12 +135,19 @@ public class MainView {
 					
 					
 					ArrayList<StockVO> svoList = mdao.selectMember();
+					int Stock_cnt = 0; // 주식종목 인덱스
+					
 					
 					for(StockVO e : svoList ) {
+						Stock_cnt++;
+						System.out.println("==="+Stock_cnt+"===");
 						System.out.println(e.getStockName());
 						System.out.println(e.getNowPrice());
-						System.out.println("==========");
 					}
+					
+					sel = sc.nextInt();
+					System.out.println("[1]뒤로가기 [2]번호 입력");
+					int Stock_index = sc.nextInt();
 					
 					
 					
@@ -159,9 +167,21 @@ public class MainView {
 						String stockName = sc.next();
 						
 						//검색한 종목이 DB와 일치하면 해당 종목으로 이동
+						DbStockSearch_controller dao2 = new DbStockSearch_controller();
+						ArrayList<StockVO> SearchList = dao2.searchStock(stockName);
+						
+						
+						
 						
 						//해당 종목 정보 보여주기(출력) -- 현재 시가, 등락율 표시
-						System.out.println("~~회사");
+						for(StockVO e : SearchList) {
+							System.out.println(e.getStockName());
+							System.out.println(e.getNowPrice());
+						}
+						
+						
+						
+						
 						System.out.println("[1]뒤로가기 [2]매수하기 [3]매도하기");
 						sel =sc.nextInt();
 						if(sel == 1) {
