@@ -193,6 +193,7 @@ public class DBcontroller {
 		}
 
 	}
+<<<<<<< HEAD
 	
 	
 	
@@ -228,6 +229,122 @@ public class DBcontroller {
 //
 //	}
 //
+=======
+
+	// 5. 주식 매도 기능 메소드
+	public int stockSale(String sale_stock_name, int count) {
+
+		getConn();
+
+		try {
+			String sql = "select stock_count from my_stock where stock_name = ?";
+			psmt = conn.prepareStatement(sql);
+
+			// ? 채우기
+			psmt.setString(1, sale_stock_name);
+
+			rs = psmt.executeQuery();
+
+			int stockCount = 0; // 보유하고 있는 주식 수량 담을 변수
+			while(rs.next()) { 
+				stockCount = rs.getInt(1);
+			}
+			
+			if(stockCount == count) {
+				// sql 통과 통로
+				String sql_2 = "delete from my_stock where stock_name = ?";
+				psmt = conn.prepareStatement(sql_2);
+				
+				// ? 채우기
+				psmt.setString(1, sale_stock_name);
+				
+				// sql통과
+				int row = psmt.executeUpdate();
+				
+				return row;
+			}else {
+				String sql_2 = "update my_stock set stock_count = ? where stock_name = ?";
+				psmt = conn.prepareStatement(sql_2);
+				
+				// ? 채우기
+				psmt.setInt(1, (stockCount - count));
+				psmt.setString(2, sale_stock_name);
+				
+				
+				// sql통과
+				int row = psmt.executeUpdate();
+				return row;
+			}
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			allClose();
+		}
+		return 0;
+	}
+
+	// 6. 주식 매수 기능 메소드
+	public int stockBuy(String buy_stock_name, int count) {
+
+		getConn();
+
+		try {
+			String sql = "select stock_count from my_stock where stock_name = ?";
+			psmt = conn.prepareStatement(sql);
+
+			// ? 채우기
+			psmt.setString(1, buy_stock_name);
+
+			rs = psmt.executeQuery();
+
+			int stockCount = 0; // 보유하고 있는 주식 수량 담을 변수
+			while(rs.next()) { 
+				stockCount = rs.getInt(1);
+			}
+			
+			if(stockCount == 0) {// 매수 원하는 주식 가지고 있지 않을 때
+				// sql 통과 통로
+				String sql_2 = "insert into my_stock values(?,?,?,?,?)";
+				psmt = conn.prepareStatement(sql_2);
+				
+				// ? 채우기
+//				psmt.setString(1, );
+//				psmt.setString(2, );
+//				psmt.setString(3, buy_stock_name);
+//				psmt.setInt(4, count);
+//				psmt.setString(5, );
+				
+				// sql통과
+				int row = psmt.executeUpdate();
+				
+				return row;
+			}else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
+				String sql_2 = "update my_stock set stock_count = ? where stock_name = ?";
+				psmt = conn.prepareStatement(sql_2);
+				
+				// ? 채우기
+				psmt.setInt(1, (stockCount + count));
+				
+				psmt.setString(2, buy_stock_name);
+				
+				
+				// sql통과
+				int row = psmt.executeUpdate();
+				return row;
+			}
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			allClose();
+		}
+		return 0;
+	}
+
+>>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-16/FFRepo.git
 //	// select 기능 메소드
 //	public ArrayList<MemberDTO> selectMember() {
 //		ArrayList<MemberDTO> dtoList = new ArrayList<MemberDTO>();
