@@ -28,20 +28,23 @@ public class MainView {
 				sel = sc.nextInt();
 				if(sel==1) {//회원가입 진행
 				
+				
+//				ArrayList<UserVO> dtoList =  //회원정보 배열 만들기
+					
 				System.out.print("id를 입력하세요 : ");
-				String join_id = sc.next();
+				String user_id = sc.next();
 				
 				//	ID 중복시 실행	 if(join_id ==  )
 				
 				
 				System.out.print("pw를 입력하세요 : ");
-				String join_pw = sc.next();
+				String user_pw = sc.next();
 				
 				System.out.println("회원가입 성공!");
 				break;
 				// DB에 회원가입정보 저장
 				// DAO ?? = new DAO();
-				// DTO ?? = new DTO(join_id, join_pw);
+				// DTO ?? = new DTO(user_id,user_pw);
 				
 				
 				
@@ -63,11 +66,11 @@ public class MainView {
 				
 				
 				System.out.print("id를 입력하세요 : ");
-				String join_id = sc.next();
+				String user_id = sc.next();
 				
 				
 				System.out.print("pw를 입력하세요 : ");
-				String join_pw = sc.next();
+				String user_pw = sc.next();
 				
 			
 				
@@ -85,6 +88,8 @@ public class MainView {
 				
 			case 3:
 				//게임시작
+				
+				
 				
 			case 4:
 				//전체순위조회
