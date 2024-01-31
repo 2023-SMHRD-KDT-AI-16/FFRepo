@@ -140,14 +140,18 @@ public class MainView {
 					
 					for(StockVO e : svoList ) {
 						Stock_cnt++;
-						System.out.println("==="+Stock_cnt+"===");
+						System.out.println("==="+(Stock_cnt)+"===");
 						System.out.println(e.getStockName());
-						System.out.println(e.getNowPrice());
+						System.out.println("시가 :" + e.getNowPrice());
+						System.out.println("전일가 : " + e.getYesterdayPrice());
+						System.out.println("등락률 : "+e.getRate());
 					}
 					
 					sel = sc.nextInt();
 					System.out.println("[1]뒤로가기 [2]번호 입력");
-					int Stock_index = sc.nextInt();
+					int Stock_index = sc.nextInt()-1;
+					
+					
 					
 					
 					
@@ -184,15 +188,27 @@ public class MainView {
 						
 						System.out.println("[1]뒤로가기 [2]매수하기 [3]매도하기");
 						sel =sc.nextInt();
-						if(sel == 1) {
+						if(sel == 1) {//뒤로가기
 							break;
-						}else if(sel == 2) {
+						}else if(sel == 2) {//매수하기
 							System.out.println("==매수하기 화면==");
+							System.out.println("[1]뒤로가기 [2]매수 수량 입력");
+							int choice = sc.nextInt();
+							if(choice == 1) {//뒤로가기
+								break;
+							}else if(choice == 2) {//매수 수량 입력
+								System.out.print("매수 갯수 : ");
+								int stockCount = sc.nextInt();
+								
+								//매수 메소드 적용 칸
+								System.out.println("주식이름 "+stockCount+"주 매수완료");
+								break;
+							}
+							
+						}else if(sel == 3) {//매도하기
+							System.out.println("==매도하기 화면==");
 							System.out.println("[1]뒤로가기 [2]주문 수량");
 							
-							
-						}else if(sel == 3) {
-							System.out.println("==매도하기 화면==");
 							
 						}
 						
@@ -201,6 +217,12 @@ public class MainView {
 						
 					}
 					
+					
+				}else if(sel == 4) {//보유 주식
+					
+				}else if(sel == 5) {//아이템 상점
+					
+				}else if(sel == 6) {
 					
 				}
 				
