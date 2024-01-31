@@ -1,10 +1,107 @@
 package view;
 
+import java.util.Scanner;
+
 public class MainView {
 
 	public static void main(String[] args) {
-
-
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int sel; // 사용자의 선택
+		
+		while(true) {
+			System.out.println("[1]회원가입 [2]로그인 [3]게임시작 [4]전체순위조회 [5]종료");
+			sel = sc.nextInt();
+			
+			switch(sel) {
+			case 5:
+				System.out.println("종료되었습니다.");
+				break;
+				//종료
+			
+			
+			case 1:
+				//회원가입
+				System.out.println("====회원가입 창입니다====");
+				System.out.println("[1]회원가입 진행 [2] 뒤로가기");
+				sel = sc.nextInt();
+				if(sel==1) {//회원가입 진행
+				
+				System.out.print("id를 입력하세요 : ");
+				String join_id = sc.next();
+				
+				//	ID 중복시 실행	 if(join_id ==  )
+				
+				
+				System.out.print("pw를 입력하세요 : ");
+				String join_pw = sc.next();
+				
+				System.out.println("회원가입 성공!");
+				break;
+				// DB에 회원가입정보 저장
+				// DAO ?? = new DAO();
+				// DTO ?? = new DTO(join_id, join_pw);
+				
+				
+				
+				}else if(sel ==2) {//뒤로가기
+					break;
+				}else {//잘못입력
+					System.out.println("잘못 입력된 값 입니다.");
+					break;
+				}
+				
+				
+				
+			case 2:
+				//로그인
+				System.out.println("====로그인 창입니다====");
+				System.out.println("[1]로그인 진행 [2]뒤로가기");
+				sel = sc.nextInt();
+				if(sel == 1) {//로그인 진행
+				
+				
+				System.out.print("id를 입력하세요 : ");
+				String join_id = sc.next();
+				
+				
+				System.out.print("pw를 입력하세요 : ");
+				String join_pw = sc.next();
+				
+			
+				
+				//join_id와 join_pw가 db에 저장된 값과 일치하면 로그인성공 출력
+				System.out.println("로그인 성공!");
+				break;
+				
+				
+				}else if(sel == 2) {//뒤로가기
+					break;
+				}else {//잘못입력
+					System.out.println("잘못 입력된 값입니다.");
+					break;
+				}
+				
+			case 3:
+				//게임시작
+				
+			case 4:
+				//전체순위조회
+			
+				
+			
+			
+			}//switch sel
+			
+			
+			
+			
+			
+		}
+		
+		
+		
 	        
 		
 		
