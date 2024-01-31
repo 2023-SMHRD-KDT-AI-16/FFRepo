@@ -11,12 +11,12 @@ import model.UserVO;
 
 public class DBcontroller {
 
-	private Connection conn;
-	private PreparedStatement psmt;
-	private ResultSet rs;
+	protected Connection conn;
+	protected PreparedStatement psmt;
+	protected ResultSet rs;
 
 	// DB 연결 메소드
-	private void getConn() {
+	protected void getConn() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String user = "mp_21K_bigdata22_p1_2";
@@ -37,7 +37,7 @@ public class DBcontroller {
 	}
 
 	// 통로 close 하는 메소드
-	private void allClose() {
+	protected void allClose() {
 
 		try {
 
