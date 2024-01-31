@@ -31,6 +31,7 @@ public class DbStockSearch_controller extends DBcontroller {
 				int nowPrice = rs.getInt("STOCK_NOW_PRICE");
 				int anything = rs.getInt("STOCK_RATE");
 
+
 				StockVO sdvo = new StockVO(stockName, stockCount, nowPrice, anything);
 				usertoList.add(sdvo);
 			}
