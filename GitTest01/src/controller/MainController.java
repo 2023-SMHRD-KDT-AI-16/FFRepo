@@ -2,14 +2,13 @@ package controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 
 public class MainController extends DBcontroller {
 
 	public void stock_Rate_Update() {
 		float[] stock_rate = new float[20];
-//		String[] stock_name = new String[20];
+		String[] Db_stock_name = new String[20];
 		Random random = new Random();
 		int row;
 		
@@ -40,14 +39,13 @@ public class MainController extends DBcontroller {
 				int rate = rs.getInt(4);
 				stock_name.add(name);
 			}
-			System.out.println(stock_name.get(2));
-			stock_name.get(1);
-			stock_name.get(2);
-			stock_name.get(3);
 			
-//					System.out.println(stock_name[2]);
-				
-
+			for (int i = 0; i < stock_name.size(); i++) {   //DB에 있는 1~20위 종목 이름
+				Db_stock_name[i] = stock_name.get(i);
+			}
+			
+			System.out.println(Db_stock_name[2]);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -55,52 +53,47 @@ public class MainController extends DBcontroller {
 		}
 		
 		
-		
-		
-		
-		
-		
-		//=================
-//		getConn();
-//		for (int i = 0; i < 20; i++) {
-//			try {
-//				String sql = "UPDATE ALL_stock SET STOCK_RATE = ? WHERE STOCK_NAME = ?";
-//				float rate = stock_rate[i]; // 등락률 집어 넣기
-//				String name = 0; /// 0 대신 주식 이름 넣어야 함.
-//				
-//				psmt = conn.prepareStatement(sql);
-//				
-//				psmt.setFloat(1, rate);
-//				psmt.setString(2, name);
-//
-//				row = psmt.executeUpdate();
-//
-//				if (row > 0) {
-//					System.out.println("UPDATE SUCCESS");
-//				} else {
-//					System.out.println("UPDATE FAIL");
-//				}
-//
-//			} catch (ClassNotFoundException e) {
-//				e.printStackTrace();
-//			}
-//			// 통로 닫기
-//			finally {
-//				allClose();
-//				try {
-//					if (psmt != null) {
-//						psmt.close();
-//					}
-//					if (conn != null) {
-//						conn.close();
-//					}
-//
-//				} catch (SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//		}
+		getConn();
+		for (int i = 0; i < 20; i++) {
+			
+			try {
+				String sql = "UPDATE ALL_stock SET STOCK_RATE = ? WHERE STOCK_NAME = ?";
+				float rate = stock_rate[i]; // 등락률 집어 넣기
+				String name = Db_stock_name[i]; /// 0 대신 주식 이름 넣어야 함.
+				
+				psmt = conn.prepareStatement(sql);
+				
+				psmt.setFloat(1, rate);
+				psmt.setString(2, name);
+
+				row = psmt.executeUpdate();
+
+				if (row > 0) {
+					System.out.println("UPDATE SUCCESS");
+				} else {
+					System.out.println("UPDATE FAIL");
+				}
+
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			// 통로 닫기
+			finally {
+				allClose();
+				try {
+					if (psmt != null) {
+						psmt.close();
+					}
+					if (conn != null) {
+						conn.close();
+					}
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 
 	}
 

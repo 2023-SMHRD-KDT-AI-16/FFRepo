@@ -193,43 +193,6 @@ public class DBcontroller {
 		}
 
 	}
-<<<<<<< HEAD
-	
-	
-	
-	
-	
-	
-	// 주식 구매 기능 메소드
-//	public void byStock(StockVO stockVO) {
-//
-//		getConn();
-//
-//		try {
-//			// sql통과 통로
-//			String sql = "insert into member values(?,?,?,?)";
-//			psmt = conn.prepareStatement(sql);
-//
-//			// ?채우기 - ?가 없으면 생략
-//			psmt.setString(1, mdto.getId());
-//			psmt.setString(2, mdto.getPw());
-//			psmt.setString(3, mdto.getName());
-//			psmt.setInt(4, mdto.getAge());
-//
-//			// sql통과 하세요!
-//			int row = psmt.executeUpdate();
-//			return row;
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return 0;
-//		} finally {
-//			allClose();
-//		}
-//
-//	}
-//
-=======
 
 	// 5. 주식 매도 기능 메소드
 	public int stockSale(String sale_stock_name, int count) {
@@ -344,7 +307,6 @@ public class DBcontroller {
 		return 0;
 	}
 
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-16/FFRepo.git
 //	// select 기능 메소드
 //	public ArrayList<MemberDTO> selectMember() {
 //		ArrayList<MemberDTO> dtoList = new ArrayList<MemberDTO>();
