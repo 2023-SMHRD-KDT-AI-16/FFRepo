@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.StockVO;
 import model.UserVO;
 
 public class DBcontroller {
@@ -156,6 +157,41 @@ public class DBcontroller {
 	}
 	
 	// 4. 전체 주식 보기 메소드
+	public ArrayList<StockVO> selectMember() {
+		ArrayList<StockVO> svoList = new ArrayList<StockVO>();
+
+		getConn();
+
+		// 동적로딩
+		try {
+			// sql통과 통로
+			String sql = "select * from all_stock";
+			psmt = conn.prepareStatement(sql);
+
+			// sql통과
+			rs = psmt.executeQuery();
+
+			// select 한줄의 데이터 확인 rs.next()
+			
+			while (rs.next()) {
+				String stockName = rs.getString("stock_name");
+				int nowPrice = rs.getInt("stock_price");
+				int stockCount = 1;
+				
+				StockVO svo= new StockVO(stockName, stockCount, nowPrice);
+				svoList.add(svo);
+				
+			}
+			return svoList;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			allClose();
+		}
+
+	}
 	
 	
 	
