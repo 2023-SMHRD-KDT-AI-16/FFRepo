@@ -114,13 +114,15 @@ public class DBcontroller {
 
 		try {
 			// sql통과 통로
-			String sql = "insert into my_user values(?,?,?)";
+			String sql = "insert into my_user values(?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 
 			// ?채우기 - ?가 없으면 생략
 			psmt.setString(1, user.getUser_id());
 			psmt.setString(2, user.getUser_pw());
 			psmt.setInt(3, user.getMy_money());
+			psmt.setInt(4, user.getMy_yield());
+			psmt.setString(5, user.getMy_item());
 
 			// sql통과 하세요!
 			int row = psmt.executeUpdate();

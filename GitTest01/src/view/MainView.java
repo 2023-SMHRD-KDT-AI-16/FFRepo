@@ -8,6 +8,9 @@ import model.UserVO;
 public class MainView {
 
 	public static void main(String[] args) {
+		int my_money=50000000; 
+		int my_yield  = 0;
+		String my_item = null;
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -40,7 +43,8 @@ public class MainView {
 				String user_pw = sc.next();
 				
 				DBcontroller mdao = new DBcontroller();
-				UserVO uv = new UserVO(user_id, user_pw) ;
+				
+				UserVO uv = new UserVO(user_id, user_pw, my_money, my_yield, my_item) ;
 				int row = mdao.insertMember(uv);
 				
 				if(row>0) {
