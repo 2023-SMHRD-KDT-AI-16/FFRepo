@@ -193,43 +193,7 @@ public class DBcontroller {
 		}
 
 	}
-<<<<<<< HEAD
-	
-	
-	
-	
-	
-	
-	// 주식 구매 기능 메소드
-//	public void byStock(StockVO stockVO) {
-//
-//		getConn();
-//
-//		try {
-//			// sql통과 통로
-//			String sql = "insert into member values(?,?,?,?)";
-//			psmt = conn.prepareStatement(sql);
-//
-//			// ?채우기 - ?가 없으면 생략
-//			psmt.setString(1, mdto.getId());
-//			psmt.setString(2, mdto.getPw());
-//			psmt.setString(3, mdto.getName());
-//			psmt.setInt(4, mdto.getAge());
-//
-//			// sql통과 하세요!
-//			int row = psmt.executeUpdate();
-//			return row;
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return 0;
-//		} finally {
-//			allClose();
-//		}
-//
-//	}
-//
-=======
+
 
 	// 5. 주식 매도 기능 메소드
 	public int stockSale(String sale_stock_name, int count) {
@@ -344,93 +308,7 @@ public class DBcontroller {
 		return 0;
 	}
 
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-16/FFRepo.git
-//	// select 기능 메소드
-//	public ArrayList<MemberDTO> selectMember() {
-//		ArrayList<MemberDTO> dtoList = new ArrayList<MemberDTO>();
-//
-//		getConn();
-//
-//		// 전체회원 조회 -- select 문과 관련 (Ex05, Ex06참고)
-//		// 동적로딩
-//		try {
-//			// sql통과 통로
-//			String sql = "select * from member";
-//			psmt = conn.prepareStatement(sql);
-//
-//			// ?채우기 - ?가 없으면 생략
-//
-//			// sql통과 하세요!
-//			rs = psmt.executeQuery();
-//
-//			// select 한줄의 데이터 확인 rs.next()
-//			
-//			while (rs.next()) {
-//				String id = rs.getString(1);
-//				String table_pw = rs.getString(2);
-//				String name = rs.getString(3);
-//				int age = rs.getInt(4);
-//				
-//				MemberDTO mdto= new MemberDTO(id, table_pw, name, age);
-//				dtoList.add(mdto);
-//				
-//			}
-//			return dtoList;
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return null;
-//		} finally {
-//			allClose();
-//		}
-//
-//	}
-//
-//	public ArrayList<MemberDTO> selectSearchMember(String family_name) {
-//		ArrayList<MemberDTO> dtoList = new ArrayList<MemberDTO>();
-//		// 동적로딩
-//		// DB 연결
-//		getConn();
-//		
-//		try {
-//			String sql = "select * from member where name like ? ";
-//			psmt = conn.prepareStatement(sql);
-//			
-//			// ? 채워주기 -- like문 같은 경우 %가 필요
-//			// % 넣는 방법 2가지 존재
-//			// 1번 방법이 간단
-//			// psmt.set타입(index, "%"+변수+"%")
-//			psmt.setString(1, family_name + "%");
-//			// 2번째 방법
-//			// sql문 내에 % 입력
-//			// "select * from member where name '%' || ? || '%'"
-//			
-//			// sql문 실행
-//			rs = psmt.executeQuery();
-//			
-//			while(rs.next()) {
-//				String select_id = rs.getString(1);
-//				String select_pw = rs.getString(2);
-//				String select_name = rs.getString(3);
-//				int select_age = rs.getInt(4);
-//				
-//				MemberDTO mdto = new MemberDTO(select_id, select_pw, select_name, select_age);
-//				
-//				dtoList.add(mdto);
-//			}
-//			
-//			return dtoList;
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			
-//			
-//			
-//		}finally {
-//			allClose();
-//		}return null;
-//		
 
-//	}
+
 
 }
