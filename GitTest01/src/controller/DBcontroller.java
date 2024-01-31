@@ -182,7 +182,10 @@ public class DBcontroller {
 
 			rs = psmt.executeQuery();
 
-			 int stockCount = rs.getInt(1);
+			int stockCount = 0; // 보유하고 있는 주식 수량 담을 변수
+			while(rs.next()) { 
+				stockCount = rs.getInt(1);
+			}
 			
 			if(stockCount == count) {
 				// sql 통과 통로
