@@ -136,7 +136,7 @@ public class DBcontroller {
 	}
 
 	// 2. 로그인 기능 메소드
-	public ArrayList<UserVO> userLogin(String user_id, String user_pw) {
+	public void userLogin(String user_id, String user_pw) {
 		ArrayList<UserVO> logList = new ArrayList<UserVO>();
 
 		getConn();
@@ -155,18 +155,18 @@ public class DBcontroller {
 			while (rs.next()) {
 				String id = rs.getString(1);
 				String table_pw = rs.getString(2);
-				int name = rs.getInt(3);
-				int age = rs.getInt(4);
+				int money = rs.getInt(3);
+				int yield = rs.getInt(4);
 				
-				UserVO UV= new UserVO(id, table_pw, name, age);
+				UserVO UV= new UserVO(id, table_pw, money, yield);
 				logList.add(UV);
-				
 			}
-			return logList;
+			
+			
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
 		} finally {
 			allClose();
 		}
