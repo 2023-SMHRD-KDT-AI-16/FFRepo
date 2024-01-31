@@ -1,54 +1,10 @@
 package view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 public class MainView {
 
 	public static void main(String[] args) {
 
-//	        Frame f= new Frame();
-//	        f.setTitle("첫 번째 프레임 입니다.");
-//	        f.setBounds(100, 100, 300, 300);
-//	        f.setVisible(true);
 
-//		new Button1("버튼 만들기");
-		
-		  JFrame frame = new JFrame("Input Box 예제");
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        frame.setSize(300, 150);
-
-	        JPanel panel = new JPanel();
-	        frame.add(panel);
-
-	        JLabel label = new JLabel("입력하세요:");
-	        panel.add(label);
-
-	        JTextField textField = new JTextField(20);
-	        panel.add(textField);
-
-	        JButton button = new JButton("출력");
-	        panel.add(button);
-
-	        // 버튼 클릭 이벤트 처리
-	        button.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent e) {
-	                String inputText = textField.getText(); // 입력된 텍스트 가져오기
-	                JOptionPane.showMessageDialog(null, "입력된 내용: " + inputText, "출력", JOptionPane.INFORMATION_MESSAGE);
-	                System.out.println(inputText);
-	            }
-	        });
-
-	        // UI 표시
-	        frame.setVisible(true);
 	        
 		
 		
@@ -129,8 +85,43 @@ public class MainView {
 //	
 //	
 //	
+//				GUI
 //	
-//	
+//        Frame f= new Frame();
+//        f.setTitle("첫 번째 프레임 입니다.");
+//        f.setBounds(100, 100, 300, 300);
+//        f.setVisible(true);
+
+//	new Button1("버튼 만들기");
+	
+//	  JFrame frame = new JFrame("Input Box 예제");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setSize(300, 150);
+//
+//        JPanel panel = new JPanel();
+//        frame.add(panel);
+//
+//        JLabel label = new JLabel("입력하세요:");
+//        panel.add(label);
+//
+//        JTextField textField = new JTextField(20);
+//        panel.add(textField);
+//
+//        JButton button = new JButton("출력");
+//        panel.add(button);
+//
+//        // 버튼 클릭 이벤트 처리
+//        button.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                String inputText = textField.getText(); // 입력된 텍스트 가져오기
+//                JOptionPane.showMessageDialog(null, "입력된 내용: " + inputText, "출력", JOptionPane.INFORMATION_MESSAGE);
+//                System.out.println(inputText);
+//            }
+//        });
+//
+//        // UI 표시
+//        frame.setVisible(true);
 
 	}
 
