@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.UserVO;
 
@@ -105,7 +106,7 @@ public class DBcontroller {
 
 	}
 
-	// 회원가입 기능
+	// 1. 회원가입 기능
 	
 	public int insertMember(UserVO user) {
 
@@ -113,7 +114,7 @@ public class DBcontroller {
 
 		try {
 			// sql통과 통로
-			String sql = "insert into my_user values(?,?,?,?,?)";
+			String sql = "insert into my_user values(?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 
 			// ?채우기 - ?가 없으면 생략
@@ -121,7 +122,6 @@ public class DBcontroller {
 			psmt.setString(2, user.getUser_pw());
 			psmt.setInt(3, user.getMy_money());
 			psmt.setInt(4, user.getMy_yield());
-			psmt.setString(5, user.getMy_item());
 
 			// sql통과 하세요!
 			int row = psmt.executeUpdate();
@@ -135,6 +135,49 @@ public class DBcontroller {
 		}
 	}
 
+	// 2. 로그인 기능 메소드
+	public ArrayList<String> userLogin() {
+		ArrayList<String> logList = new ArrayList<String>();
+
+		getConn();
+
+		// 동적로딩
+		try {
+			// sql통과 통로
+			String sql = "select * from my_user";
+			psmt = conn.prepareStatement(sql);
+
+			// sql통과
+			rs = psmt.executeQuery();
+
+			// select 한줄의 데이터 확인 rs.next()
+			
+			while (rs.next()) {
+				String  = rs.getString(1);
+				String table_pw = rs.getString(2);
+				int name = rs.getInt(3);
+				int age = rs.getInt(4);
+				
+				MemberDTO mdto= new MemberDTO(id, table_pw, name, age);
+				dtoList.add(mdto);
+				
+			}
+			return dtoList;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			allClose();
+		}
+
+	}
+	
+	
+	
+	
+	
+	
 	// 주식 구매 기능 메소드
 //	public void byStock(StockVO stockVO) {
 //
