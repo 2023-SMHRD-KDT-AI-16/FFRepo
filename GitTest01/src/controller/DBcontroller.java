@@ -80,31 +80,31 @@ public class DBcontroller {
 	}
 
 	// 기능 메소드
-	public int updateMember(String update_id, String update_pw) {
-
-		getConn();
-
-		try {
-			// sql통과 통로
-			String sql = "update member set pw = ? where id = ?";
-			psmt = conn.prepareStatement(sql);
-
-			// ?채우기 - ?가 없으면 생략
-			psmt.setString(1, update_pw);
-			psmt.setString(2, update_id);
-
-			// sql통과 하세요!
-			int row = psmt.executeUpdate();
-			return row;
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return 0;
-		} finally {
-			allClose();
-		}
-
-	}
+//	public int updateMember(String update_id, String update_pw) {
+//
+//		getConn();
+//
+//		try {
+//			// sql통과 통로
+//			String sql = "update member set pw = ? where id = ?";
+//			psmt = conn.prepareStatement(sql);
+//
+//			// ?채우기 - ?가 없으면 생략
+//			psmt.setString(1, update_pw);
+//			psmt.setString(2, update_id);
+//
+//			// sql통과 하세요!
+//			int row = psmt.executeUpdate();
+//			return row;
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return 0;
+//		} finally {
+//			allClose();
+//		}
+//
+//	}
 
 	// 1. 회원가입 기능
 	
@@ -135,16 +135,17 @@ public class DBcontroller {
 		}
 	}
 
-	// 2. 로그인 기능 메소드
-	public void userLogin(String user_id, String user_pw) {
-		ArrayList<UserVO> logList = new ArrayList<UserVO>();
+	// 2. 로그인
+	public int userLogin(String input_id, String input_pw) {
+		ArrayList<String> idList = new ArrayList<String>();
+		ArrayList<String> pwList = new ArrayList<String>();
 
 		getConn();
 
 		// 동적로딩
 		try {
 			// sql통과 통로
-			String sql = "select * from my_user";
+			String sql = "select user_id,user_pw from my_user";
 			psmt = conn.prepareStatement(sql);
 
 			// sql통과
@@ -154,15 +155,21 @@ public class DBcontroller {
 			
 			while (rs.next()) {
 				String id = rs.getString(1);
-				String table_pw = rs.getString(2);
-				int money = rs.getInt(3);
-				int yield = rs.getInt(4);
-				
-				UserVO UV= new UserVO(id, table_pw, money, yield);
-				logList.add(UV);
+				String pw = rs.getString(2);
+				idList.add(id);
+				pwList.add(pw);
 			}
-			
-			
+			for(int i = 0; i<idList.size(); i++) {
+				if(idList.get(i).equals(input_id)) {
+					if(pwList.get(i).equals(input_pw)) {
+						return 1;
+					}else {
+						return 0;
+					}
+				}else {
+					return 0;
+				}
+			}			
 			
 
 		} catch (SQLException e) {
@@ -170,6 +177,8 @@ public class DBcontroller {
 		} finally {
 			allClose();
 		}
+		return 0;
+		
 
 	}
 	
