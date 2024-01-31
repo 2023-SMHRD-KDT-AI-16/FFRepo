@@ -1,4 +1,4 @@
-package connection;
+package controller;
 
 public class MainController {
 	
