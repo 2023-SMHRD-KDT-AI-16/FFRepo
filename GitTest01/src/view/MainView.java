@@ -73,10 +73,10 @@ public class MainView {
 				
 				
 				
-				}else if(sel ==1) {//뒤로가기
-					break;
-				}else {//잘못입력
+				}
+				else {//잘못입력
 					System.out.println("잘못 입력된 값 입니다.");
+					System.out.println();
 					break;
 				}
 				
@@ -116,11 +116,13 @@ public class MainView {
 				
 				
 				}else {//잘못입력
-					System.out.println("잘못 입력된 값입니다.");
+					System.out.println("잘못된 입력입니다.");
+					System.out.println();
 					break;
 				}
 				
 			case 3:
+				while(true) {
 				//게임시작
 				System.out.println("====게임 화면 ====");
 				System.out.println("[1]메인화면 [2]전체 주식종목 [3]종목검색 [4]보유 주식 [5]아이템 상점 [6]하루 마감하기");
@@ -147,13 +149,25 @@ public class MainView {
 						System.out.println("등락률 : "+e.getRate());
 					}
 					
-					sel = sc.nextInt();
+					
+					
+					
+					System.out.println();
+					//해당 인덱스번호 주식으로 이동
 					System.out.println("[1]뒤로가기 [2]번호 입력");
+					sel = sc.nextInt();
+					if(sel == 1) {
+					break;
+					}else if(sel ==2) {
+					
 					int Stock_index = sc.nextInt()-1;
 					
-					
-					
-					
+					break;
+					}else {
+						System.out.println("잘못된 입력입니다.");
+						System.out.println();
+						break;
+					}
 					
 					
 					
@@ -203,12 +217,39 @@ public class MainView {
 								//매수 메소드 적용 칸
 								System.out.println("주식이름 "+stockCount+"주 매수완료");
 								break;
+							}else {
+//								System.out.println("잘못된 입력입니다.");
+								break;
 							}
 							
 						}else if(sel == 3) {//매도하기
 							System.out.println("==매도하기 화면==");
-							System.out.println("[1]뒤로가기 [2]주문 수량");
+							System.out.println("[1]뒤로가기 [2]매도 수량 입력");
+							int choice = sc.nextInt();
+							if(choice == 1) {//뒤로가기
+								break;
+							}else if(choice == 2) {//
+								System.out.print("매도 갯수 : ");
+								int stockCount = sc.nextInt();
+								
+								System.out.println(stockName + stockCount + "주 매도완료");
+								
 							
+								mdao.stockSale(stockName, stockCount);
+								
+								
+							
+							
+							
+							
+							
+							
+								break;
+							
+							
+							}else {
+//								System.out.println("잘못된 입력입니다.");
+							}
 							
 						}
 						
@@ -219,11 +260,29 @@ public class MainView {
 					
 					
 				}else if(sel == 4) {//보유 주식
+					System.out.println("보유주식 페이지");
+					System.out.println("[1]뒤로가기 [2]보유주식 이동");
+					int choice = sc.nextInt();
+					if(choice ==1 ) {
+						break;
+					}else if(choice == 2) {
+						System.out.println("보유주식 밑에 나열해야함");
+						//보유주식 나열해야함
+						//보유주식에서 인덱스를골라서 해당 주식페이지로 이동
+						
+						
+					}
+					
 					
 				}else if(sel == 5) {//아이템 상점
 					
+					
+					
 				}else if(sel == 6) {
 					
+				}else {
+					System.out.println("잘못된 입력입니다.");
+					break;
 				}
 				
 				
@@ -231,12 +290,15 @@ public class MainView {
 				
 				
 				
-				
+				}//while
 				
 			case 4:
 				//전체순위조회
-			
+			default :
+				System.out.println("잘못된 입력입니다.");
+				System.out.println();
 				
+			
 			
 			
 			}//switch sel
