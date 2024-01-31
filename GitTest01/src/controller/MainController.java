@@ -14,6 +14,7 @@ public class MainController extends DBcontroller {
 		
 		for (int i = 0; i < stock_rate.length; i++) {
 			float randomFloatInRange = random.nextFloat(60) - 30; // 등락률 퍼센트로 -30 ~ 30를 나타냄
+			
 			stock_rate[i] = randomFloatInRange / 100;
 			System.out.print(stock_rate[i] + "\t"); // 배열에 랜덤 등락률 적용된 현재가
 			System.out.println(randomFloatInRange); // 등락률 퍼센트로 -30 ~ 30를 나타냄
