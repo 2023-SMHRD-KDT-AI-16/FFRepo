@@ -4,7 +4,6 @@ public class StockVO {
 	
 	private String stockName;
 	private int stockCount;
-	private int buyPrice;
 	private int nowPrice;
 	
 	
@@ -12,7 +11,6 @@ public class StockVO {
 		super();
 		this.stockName = stockName;
 		this.stockCount = stockCount;
-		this.buyPrice = buyPrice;
 		this.nowPrice = nowPrice;
 	}
 	
@@ -29,12 +27,7 @@ public class StockVO {
 	public void setStockCount(int stockCount) {
 		this.stockCount = stockCount;
 	}
-	public int getBuyPrice() {
-		return buyPrice;
-	}
-	public void setBuyPrice(int buyPrice) {
-		this.buyPrice = buyPrice;
-	}
+
 	public int getNowPrice() {
 		return nowPrice;
 	}
