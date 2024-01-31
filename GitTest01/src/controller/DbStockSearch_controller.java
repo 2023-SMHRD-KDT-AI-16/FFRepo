@@ -28,10 +28,9 @@ public class DbStockSearch_controller extends DBcontroller {
 			while (rs.next()) {
 				String stockName = rs.getString(1);
 				int stockCount = rs.getInt(2);
-				int buyPrice = rs.getInt(3);
-				int nowPrice = rs.getInt(4);
+				int nowPrice = rs.getInt(3);
 
-				StockVO sdvo = new StockVO(stockName, stockCount, buyPrice, nowPrice);
+				StockVO sdvo = new StockVO(stockName, stockCount, nowPrice);
 				usertoList.add(sdvo);
 			}
 			return usertoList;
