@@ -2,6 +2,48 @@ package model;
 
 public class StockVO {
 	
+	private String stockName;
+	private int stockCount;
+	private int buyPrice;
+	private int nowPrice;
+	
+	
+	public StockVO(String stockName, int stockCount, int buyPrice, int nowPrice) {
+		super();
+		this.stockName = stockName;
+		this.stockCount = stockCount;
+		this.buyPrice = buyPrice;
+		this.nowPrice = nowPrice;
+	}
+	
+	
+	public String getStockName() {
+		return stockName;
+	}
+	public void setStockName(String stockName) {
+		this.stockName = stockName;
+	}
+	public int getStockCount() {
+		return stockCount;
+	}
+	public void setStockCount(int stockCount) {
+		this.stockCount = stockCount;
+	}
+	public int getBuyPrice() {
+		return buyPrice;
+	}
+	public void setBuyPrice(int buyPrice) {
+		this.buyPrice = buyPrice;
+	}
+	public int getNowPrice() {
+		return nowPrice;
+	}
+	public void setNowPrice(int nowPrice) {
+		this.nowPrice = nowPrice;
+	}
+	
+	
+	
 	
 	
 	
