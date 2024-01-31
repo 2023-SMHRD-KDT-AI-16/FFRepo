@@ -232,7 +232,20 @@ public class MainView {
 								int stockCount = sc.nextInt();
 								
 								System.out.println("주식이름 " + stockCount + "주 매도완료");
+								
+							
+								mdao.stockSale(stockName, stockCount);
+								
+								
+							
+							
+							
+							
+							
+							
 								break;
+							
+							
 							}else {
 								System.out.println("잘못된 입력입니다.");
 							}
