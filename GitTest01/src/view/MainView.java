@@ -44,7 +44,7 @@ public class MainView {
 				
 				DBcontroller mdao = new DBcontroller();
 				
-				UserVO uv = new UserVO(user_id, user_pw, my_money, my_yield, my_item) ;
+				UserVO uv = new UserVO(user_id, user_pw, my_money, my_yield) ;
 				int row = mdao.insertMember(uv);
 				
 				if(row>0) {
