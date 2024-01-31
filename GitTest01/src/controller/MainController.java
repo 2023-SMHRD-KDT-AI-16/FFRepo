@@ -6,47 +6,22 @@ import java.util.Random;
 import model.StockVO;
 
 public class MainController {
-		
-		public void stock_Rate_Update() {
-			
-			
-			ArrayList<StockVO> results = new ArrayList<>();
 
-			int now_price = 100000;
+	public void stock_Rate_Update() {
+		int now_price = 100000;
+		ArrayList<StockVO> results = new ArrayList<>();
 		float[] stock_rate = new float[20];
-		
 		Random random = new Random();
-		
 		float randomFloat = random.nextFloat();
-		
+
 		for (int i = 0; i < stock_rate.length; i++) {
-			float randomFloatInRange = random.nextFloat() * 30.0f;
-			stock_rate[i] = now_price+now_price*randomFloatInRange/100;
-			System.out.print(stock_rate[i]+"\t");
+			float randomFloatInRange = random.nextFloat(60) - 30;
+			stock_rate[i] = now_price + now_price * randomFloatInRange / 100;
+			System.out.print(stock_rate[i] + "\t");
 			System.out.println(randomFloatInRange);
-		} 
-		
-		
-		
-		
+		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 //=====================아래것은 MP3 프로젝트 할때 클래스들이니 참고하세요 주석처리함.
 //	static int count = 0;
 //	static int time_count = 0;
