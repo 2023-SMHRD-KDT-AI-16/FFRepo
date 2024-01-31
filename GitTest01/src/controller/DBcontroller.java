@@ -114,7 +114,7 @@ public class DBcontroller {
 
 		try {
 			// sql통과 통로
-			String sql = "insert into my_user values(?,?,?,?,?)";
+			String sql = "insert into my_user values(?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 
 			// ?채우기 - ?가 없으면 생략
@@ -122,7 +122,6 @@ public class DBcontroller {
 			psmt.setString(2, user.getUser_pw());
 			psmt.setInt(3, user.getMy_money());
 			psmt.setInt(4, user.getMy_yield());
-			psmt.setString(5, user.getMy_item());
 
 			// sql통과 하세요!
 			int row = psmt.executeUpdate();
@@ -138,7 +137,7 @@ public class DBcontroller {
 
 	// 2. 로그인 기능 메소드
 	public ArrayList<String> userLogin() {
-		ArrayList<String> dtoList = new ArrayList<String>();
+		ArrayList<String> logList = new ArrayList<String>();
 
 		getConn();
 
@@ -154,9 +153,9 @@ public class DBcontroller {
 			// select 한줄의 데이터 확인 rs.next()
 			
 			while (rs.next()) {
-				String id = rs.getString(1);
+				String  = rs.getString(1);
 				String table_pw = rs.getString(2);
-				String name = rs.getString(3);
+				int name = rs.getInt(3);
 				int age = rs.getInt(4);
 				
 				MemberDTO mdto= new MemberDTO(id, table_pw, name, age);
