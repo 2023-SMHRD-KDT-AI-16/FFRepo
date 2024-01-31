@@ -6,18 +6,18 @@ import java.util.Random;
 
 public class MainController extends DBcontroller {
 
-	public void stock_Rate_Update() {
+	public void stock_Rate_Update() throws SQLException, ClassNotFoundException {
 		float[] stock_rate = new float[20];
 		String[] Db_stock_name = new String[20];
 		Random random = new Random();
 		int row;
 		
-//		for (int i = 0; i < stock_rate.length; i++) {
-//			float randomFloatInRange = random.nextFloat(60) - 30; // 등락률 퍼센트로 -30 ~ 30를 나타냄
-//			stock_rate[i] = randomFloatInRange / 100;
-//			System.out.print(stock_rate[i] + "\t"); // 배열에 랜덤 등락률 적용된 현재가
-//			System.out.println(randomFloatInRange); // 등락률 퍼센트로 -30 ~ 30를 나타냄
-//		}
+		for (int i = 0; i < stock_rate.length; i++) {
+			float randomFloatInRange = random.nextFloat(60) - 30; // 등락률 퍼센트로 -30 ~ 30를 나타냄
+			stock_rate[i] = randomFloatInRange / 100;
+			System.out.print(stock_rate[i] + "\t"); // 배열에 랜덤 등락률 적용된 현재가
+			System.out.println(randomFloatInRange); // 등락률 퍼센트로 -30 ~ 30를 나타냄
+		}
 
 		getConn();
 		ArrayList<String> stock_name =  new ArrayList<>();
@@ -55,12 +55,12 @@ public class MainController extends DBcontroller {
 		
 		getConn();
 		for (int i = 0; i < 20; i++) {
+			String name_1 = Db_stock_name[i]; /// 0 대신 주식 이름 넣어야 함.
 			
 			try {
 				String sql = "UPDATE ALL_stock SET STOCK_RATE = ? WHERE STOCK_NAME = ?";
 				float rate = stock_rate[i]; // 등락률 집어 넣기
-				String name = Db_stock_name[i]; /// 0 대신 주식 이름 넣어야 함.
-				
+				String name = name_1;
 				psmt = conn.prepareStatement(sql);
 				
 				psmt.setFloat(1, rate);
@@ -74,8 +74,6 @@ public class MainController extends DBcontroller {
 					System.out.println("UPDATE FAIL");
 				}
 
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
 			}
 			// 통로 닫기
 			finally {
