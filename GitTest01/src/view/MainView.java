@@ -122,6 +122,7 @@ public class MainView {
 				}
 				
 			case 3:
+				while(true) {
 				//게임시작
 				System.out.println("====게임 화면 ====");
 				System.out.println("[1]메인화면 [2]전체 주식종목 [3]종목검색 [4]보유 주식 [5]아이템 상점 [6]하루 마감하기");
@@ -217,7 +218,7 @@ public class MainView {
 								System.out.println("주식이름 "+stockCount+"주 매수완료");
 								break;
 							}else {
-								System.out.println("잘못된 입력입니다.");
+//								System.out.println("잘못된 입력입니다.");
 								break;
 							}
 							
@@ -231,7 +232,7 @@ public class MainView {
 								System.out.print("매도 갯수 : ");
 								int stockCount = sc.nextInt();
 								
-								System.out.println("주식이름 " + stockCount + "주 매도완료");
+								System.out.println(stockName + stockCount + "주 매도완료");
 								
 							
 								mdao.stockSale(stockName, stockCount);
@@ -247,7 +248,7 @@ public class MainView {
 							
 							
 							}else {
-								System.out.println("잘못된 입력입니다.");
+//								System.out.println("잘못된 입력입니다.");
 							}
 							
 						}
@@ -289,7 +290,7 @@ public class MainView {
 				
 				
 				
-				
+				}//while
 				
 			case 4:
 				//전체순위조회
