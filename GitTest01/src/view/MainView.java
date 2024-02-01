@@ -98,9 +98,12 @@ public class MainView {
 					// ===========choice 2 보유주식 ============
 				} else if (choice == 3) {// 상점
 					System.out.println("상점");
+					
 
+					
 					// ===========choice 3 보유주식 ============
 				} else if (choice == 4) {// 하루마감
+					
 			
 					
 					System.out.println("하루마감");
