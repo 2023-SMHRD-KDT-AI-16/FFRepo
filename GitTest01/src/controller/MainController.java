@@ -161,7 +161,7 @@ public class MainController extends DBcontroller {
 			cnt++;
 			return cnt;
 		}else{
-			System.out.println("턴이 종료되었습니다. 닉네임을 등록하세요.");
+			
 		}return cnt;
 
 	}
