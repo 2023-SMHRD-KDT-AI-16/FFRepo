@@ -4,8 +4,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javazoom.jl.player.MP3Player;
+
 public class MainController extends DBcontroller {
-	
+	ArrayList<MusicVO> musicList = new ArrayList<MusicVO>(1);
+	MP3Player mp3 = new MP3Player();
+
+	public MainController() {
+		// TODO Auto-generated constructor stub
+		musicList.add(new MusicVO("짱구 개미송개미의 하루 (20초짜리)", "짱구", 020, "../GitTest01/src/짱구 개미송개미의 하루 (20초짜리).mp3"));
+	}
+	public void play() {
+//		count = 0;
+		// 현재 재생중인 음악이 있는지 확인하기
+		if (mp3.isPlaying()) {
+			// 재생중인 음악을 중지
+			mp3.stop();
+		}
+		//
+		mp3.play(musicList.get(0).getMusicPath());
+
+	}
 	public int stock_Rate_Update() throws SQLException, ClassNotFoundException {
 		int cnt = 0;
 		float[] stock_rate = new float[20];
