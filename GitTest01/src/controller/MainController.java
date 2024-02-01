@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainController extends DBcontroller {
+	
+	
+	
+	
+	
 	public int stock_Rate_Update(int input) throws SQLException, ClassNotFoundException {
 		int cnt = 0;
 		float[] stock_rate = new float[20];
@@ -109,5 +114,151 @@ public class MainController extends DBcontroller {
 
 		cnt++;
 		return cnt;
+	}
+	public void art() {
+
+		System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+		try {
+            Thread.sleep(150);
+			}
+		 catch (Exception e) {
+		}
+
+		System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("█░░░░░░░░▀█▄▀▄▀██████░▀█▄▀▄▀██████░");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("░░░░░░░░░░░▀█▄█▄███▀░░░ ▀██▄█▄███▀░");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡴⠛⠉⣤⣌⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠙⠁⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⣤⣀⣀⣴⣿⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡧⠜⠿⠁⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⢀⡀⠀⠉⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣇⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⢀⡀⠀⠉⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⡀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⣿⡇⠸⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣭⣭⣾⣿⣿⣾⣭⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+
+		System.out.println("□□□□□□□■■□■□□□□□□□□□□■■□□□■■□□□□□□□□□□□□□□■■■■■■■■■■□□■■■■■■■■■■□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□■■■■■□■■□■□□■■■■■■■□■■□□□■■□□□□□□□□□□□□□□■■□□□■■□□□□□■■□□□■■□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□■■□■■□■□□■■□□□■■□■■□□□■■□□□□□□□□□□□□□□■■□□□■■□□□□□■■□□□■■□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□■■□■■□■□□■■□□□■■□■■□□□■■■■■■■■■□□□□□□□■■■■■■■■■■□□■■■■■■■■■■□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□■■□■■□■□□■■□□□■■□■■□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□■■■□■■■■□□■■□□□■■□■■□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□■■■□□■■□■□□■■□□□■■□■■□■■■■■■■■■■■■□□□□□■■■■■■■■■■■■■■■■■■■■■■■■");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□■■■□□□■■□■□□■■□□□■■□■■□□□□□□□□□□□□□□□□□□□□□□□■■□□□□□□□□□□■■□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("■■■□□□□■■□■□□■■■■■■■□■■□□□■■□□□□□□□□□□□□□□□■□□■■□□□□□□□■□□■■□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□□□□■■□■□□□□□□□□□□■■□□□■■□□□□□□□□□□□□□□□■□□■■□□□□□□□■□□■■□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□□□□■■□■□□□□□□□□□□■■□□□■■□□□□□□□□□□□□□□□■□□□□□□□□□□□■□□□□□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□□□□■■□■□□□□□□□□□□■■□□□■■■■■■■■■□□□□□□□□■■■■■■■■■□□□■■■■■■■■■□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
 	}
 }
