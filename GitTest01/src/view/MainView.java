@@ -52,7 +52,7 @@ public class MainView {
 						System.out.println("등락률 : " + e.getRate());
 					} // for 전체종목
 
-					System.out.println("[1]뒤로가기 [2]주식번호 입력");
+					System.out.println("[1]뒤로가기 [2]주식번호 선택");
 					int choice2 = sc.nextInt();
 
 					if (choice2 == 1) {// 게임화면으로 뒤로가기
@@ -98,6 +98,7 @@ public class MainView {
 					System.out.println("보유주식");
 					
 					
+					
 					HaveStock hvo = new HaveStock();
 					ArrayList<MyStockVO> mvoList = hvo.MyStock();
 					int Stock_cnt = 0; 
@@ -105,14 +106,46 @@ public class MainView {
 					for (MyStockVO e : mvoList) {
 						Stock_cnt++;
 						System.out.println("===" + (Stock_cnt) + "===");
-						System.out.println(e.getPurchased_stock_amount());
-						System.out.println(e.getCurrent_stock_amount());
 						System.out.println(e.getStock_name());
-						System.out.println(e.getStock_yield());
-						System.out.println(e.getStock_count());
+						System.out.println("보유 : "+e.getStock_count()+"주");
+						System.out.println("시가 : " + e.getCurrent_stock_amount());
+						System.out.println("수익률 : "+e.getStock_yield()+"%");
+						System.out.println("평가 총액 : "+e.getPurchased_stock_amount()+"원");
 					} // for 전체종목
 					
-
+					System.out.println("[1]주식번호 선택 [2]뒤로가기");
+					int choice4 = sc.nextInt();
+					if(choice4==1) {
+						
+						
+						
+						System.out.print("주식번호 입력 : ");
+						int select5 = sc.nextInt();
+						
+					
+						int myStockNum = sc.nextInt()-1;
+						System.out.println("ddddd");
+							
+					
+						System.out.println("종목이름 : " + hvo.MyStock().get(myStockNum).getStock_name());
+//						System.out.println("전일가 : " + hvo.MyStock().get(myStockNum).get
+//						System.out.println("시가 : " +  mdao.everyStock().get(stockNum).getNowPrice()+"원");
+//						System.out.println("전일대비 등락률 : "+mdao.everyStock().get(stockNum).getRate() +"%" );
+//						System.out.println("======");
+						System.out.println("[1]매수하기 [2]매도하기 [3]뒤로가기");
+						
+						
+						
+						
+						
+					}else if(choice4 == 2) {
+						break;
+					}
+					
+					
+					
+					
+					
 					// ===========choice 2 보유주식 ============
 				} else if (choice == 3) {// 상점
 					System.out.println("상점");
