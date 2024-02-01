@@ -346,6 +346,7 @@ public class DBcontroller {
 	
 	public ArrayList<UserVO> userRank() {
 		ArrayList<UserVO> uvos = new ArrayList<UserVO>();
+		
 		getConn();
 		try {
 			String sql = "select * from my_user order by my_money";
