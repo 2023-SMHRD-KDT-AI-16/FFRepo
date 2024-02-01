@@ -5,11 +5,11 @@ import java.sql.SQLException;
 public class testMain {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		int number = 0;
+//		int number = 0;
 		MainController mainController = new MainController();
-		todayEnd play = new todayEnd();
+//		todayEnd play = new todayEnd();
 		
-//		mainController.stock_Rate_Update();
+		mainController.stock_Rate_Update(3);
 		
 	}
 
