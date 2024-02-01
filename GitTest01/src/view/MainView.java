@@ -184,11 +184,13 @@ public class MainView {
 
 			case 3: // 룰설명
 				System.out.println("룰설명");
-				System.out.println("뒤로가기 [1]");
+				System.out.println("[1]뒤로가기  [2]종료");
 				sel = sc.nextInt();
 				if (sel == 1) {
 					sel = 0;
 					break;
+				}else if (sel == 2) {
+					System.exit(0);
 				}
 
 				break;
