@@ -76,6 +76,9 @@ public class MyStockVO {
 				+ current_stock_amount + ", stock_name=" + stock_name + ", stock_yield=" + stock_yield
 				+ ", stock_count=" + stock_count + "]";
 	}
+
+
+	
 	
 	
 	
