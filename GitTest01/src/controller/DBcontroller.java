@@ -308,7 +308,7 @@ public class DBcontroller {
 				return row;
 			} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
 				String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ?,current_stock_amount = ?, stock_yield = ? where stock_name = ?";
-				psmt = conn.prepareStatement(sql_2);
+				psmt = conn.prepareStatement(sql_3);
 
 				// ? 채우기
 				psmt.setInt(1, (stockCount + count));
