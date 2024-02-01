@@ -151,6 +151,8 @@ public class MainView {
 						}else if(numselect ==2) {
 							System.out.print("매도량 : ");
 							int sellCount = sc.nextInt();
+							hvo.stockSale(select5, sellCount);
+							System.out.println(mvoList.get(select5).getStock_name()+" "+sellCount+"주 매도 완료");
 						}else if(numselect ==3){
 							
 						}
@@ -175,10 +177,14 @@ public class MainView {
 					System.out.println(count+"턴");
 					
 					
-					if(count>=21) {
+					if(count==20) {
 						
 						
-						sel = 97;
+						System.out.print("닉네임을 입력해주세요 : ");
+						String nickname = sc.next();
+						mdao.insertName(nickname);
+						
+//						sel = 97;
 						
 						
 						
@@ -224,10 +230,10 @@ public class MainView {
 			case 4 : // 종료
 				System.exit(0);
 
-			case 97 ://닉네임 등록 시크릿 창
-				
-				System.out.print("닉네임을 입력해주세요 : ");
-				String nickname = sc.next();
+//			case 97 ://닉네임 등록 시크릿 창
+//				
+//				System.out.print("닉네임을 입력해주세요 : ");
+//				String nickname = sc.next();
 				
 				
 			
