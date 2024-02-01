@@ -200,7 +200,7 @@ public class HaveStock {
 						int row = psmt.executeUpdate();
 						score = score + (sell_stockPrice * count);
 
-						return row;
+						return score;
 					} else {
 						String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ? where stock_name = ?";
 						psmt = conn.prepareStatement(sql_3);
@@ -217,7 +217,7 @@ public class HaveStock {
 
 						int row = psmt.executeUpdate();
 						score = score + (sell_stockPrice * count);
-						return row;
+						return score;
 
 					}
 				}
@@ -272,6 +272,7 @@ public class HaveStock {
 				my_current_stock = rs.getInt("current_stock_amount");
 				my_stock = rs.getString("stock_name");
 				MyStockVO mvo = new MyStockVO( my_purchased, my_current_stock, my_stock,  my_yield, my_cnt);
+//				myvo.add(mvo);
 				
 			}
 		
