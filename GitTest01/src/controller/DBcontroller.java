@@ -272,8 +272,8 @@ public class DBcontroller {
 			String sql_2 = "select stock_count, purchased_stock_amount, stock_yield from my_stock where stock_name = ?";
 			psmt = conn.prepareStatement(sql_2);
 			
-			String stockName = stock_name.get(buy_stock_name); // 기업 이름
-			int buy_price = pur_price.get(buy_stock_name); // 기업 현재 주식 금액
+			String stockName = stock_name.get(buy_stock_name-1); // 기업 이름
+			int buy_price = pur_price.get(buy_stock_name-1); // 기업 현재 주식 금액
 
 			// ? 채우기
 			psmt.setString(1, stockName);
