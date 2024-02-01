@@ -18,6 +18,7 @@ public class MainView {
 
 		DBcontroller mdao = new DBcontroller();
 		MainController mco = new MainController();
+		HaveStock hvo = new HaveStock();
 		Scanner sc = new Scanner(System.in);
 
 		int sel = 0;
@@ -98,7 +99,7 @@ public class MainView {
 				} else if (choice == 2) {// 보유주식
 					System.out.println("보유주식");
 
-					HaveStock hvo = new HaveStock();
+					
 					ArrayList<MyStockVO> mvoList = hvo.MyStock();
 					int Stock_cnt = 0;
 
@@ -121,25 +122,32 @@ public class MainView {
 						int select5 = sc.nextInt() - 1;
 
 						MyStockVO igohome = mvoList.get(select5);
-						System.out.println("===" + (Stock_cnt) + "===");
+						System.out.println("===" + (select5+1) + "===");
 						System.out.println(igohome.getStock_name());
 						System.out.println("보유 : " + igohome.getStock_count() + "주");
 						System.out.println("시가 : " + igohome.getCurrent_stock_amount());
 						System.out.println("수익률 : " + igohome.getStock_yield() + "%");
 						System.out.println("평가 총액 : " + igohome.getPurchased_stock_amount() + "원");
-
-						System.out.println("[1] [2]");   //수정하세요~~!!!!!!
-
-						// =====================
-						int myStockNum = sc.nextInt() - 1;
 						
-
-						System.out.println("종목이름 : " + hvo.MyStock().get(myStockNum).getStock_name());
-//						System.out.println("전일가 : " + hvo.MyStock().get(myStockNum).get
-//						System.out.println("시가 : " +  mdao.everyStock().get(stockNum).getNowPrice()+"원");
-//						System.out.println("전일대비 등락률 : "+mdao.everyStock().get(stockNum).getRate() +"%" );
-//						System.out.println("======");
+						
 						System.out.println("[1]매수하기 [2]매도하기 [3]뒤로가기");
+						System.out.print("번호 입력 : ");
+						int numselect = sc.nextInt();
+						
+						if(numselect == 1) {
+							System.out.print("매수량 : ");
+							int buyCount = sc.nextInt();
+							//매수하기
+							
+							
+						
+						}else if(numselect ==2) {
+							System.out.print("매도량 : ");
+							int sellCount = sc.nextInt();
+						}
+						
+						
+						// =====================
 						
 						
 						
