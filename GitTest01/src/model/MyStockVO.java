@@ -5,11 +5,11 @@ public class MyStockVO {
 	private int purchased_stock_amount;
 	private int current_stock_amount;
 	private String stock_name;
-	private int stock_yield;
+	private float stock_yield;
 	private int stock_count;
 	
 	
-	public MyStockVO(int purchased_stock_amount,int current_stock_amount, String stock_name, int stock_yield, int stock_count ) {
+	public MyStockVO(int purchased_stock_amount,int current_stock_amount, String stock_name, float stock_yield, int stock_count ) {
 		this.purchased_stock_amount = purchased_stock_amount;
 		this.current_stock_amount = current_stock_amount;
 		this.stock_name = stock_name;
@@ -50,7 +50,7 @@ public class MyStockVO {
 	}
 
 
-	public int getStock_yield() {
+	public float getStock_yield() {
 		return stock_yield;
 	}
 
