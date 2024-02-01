@@ -172,10 +172,10 @@ public class DBcontroller {
 	}
 
 	// 4. 주식 매도 기능 메소드
-	public int stockSale(int sale_stock_name, int count) {
+	public int stockSale(int sell_stock_index, int count) {
 		
-		ArrayList<String> stock_name = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
-		ArrayList<Integer> pur_price = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
+		ArrayList<String> stock_names = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
+		ArrayList<Integer> sell_prices = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
 
 		getConn();
 
@@ -190,20 +190,20 @@ public class DBcontroller {
 			while (rs.next()) {
 				String stockName = rs.getString("stock_name");
 				int nowPrice = rs.getInt("stock_now_price");
-				int yesterdayPrice = rs.getInt("stock_yesterday_Price");
+				int yesterdayPrice = rs.getInt("stock_yesterday_price");
 				int stockrate = rs.getInt("stock_rate");
-				stock_name.add(stockName);
-				pur_price.add(nowPrice);
+				stock_names.add(stockName);
+				sell_prices.add(nowPrice);
 			}
 			
 			
-			String sell_stockName = stock_name.get(sale_stock_name);
-			int sell_stockPrice = pur_price.get(sale_stock_name);
+			String sell_stockName = stock_names.get(sell_stock_index);
+			int sell_stockPrice = sell_prices.get(sell_stock_index);
 			String sql_2 = "select stock_count, purchased_stock_amount from my_stock where stock_name = ?";
 			psmt = conn.prepareStatement(sql_2);
 
 			// ? 채우기
-			psmt.setString(1,sell_stockName );
+			psmt.setString(1,sell_stockName);
 
 			rs = psmt.executeQuery();
 
@@ -212,6 +212,7 @@ public class DBcontroller {
 			while (rs.next()) {
 				stockCount = rs.getInt("stock_count");
 				my_price = rs.getInt("purchased_stock_amount");
+				System.out.println("보유 주식 : " + stockCount );
 				
 			}
 
@@ -239,6 +240,7 @@ public class DBcontroller {
 				// sql통과
 				int row = psmt.executeUpdate();
 				return row;
+				
 			}
 
 		} catch (SQLException e) {
