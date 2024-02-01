@@ -9,7 +9,6 @@ public class testMain {
 		MainController mainController = new MainController();
 		todayEnd play = new todayEnd();
 		
-//		mainController.stock_Rate_Update();
 		
 	}
 
