@@ -14,7 +14,7 @@ import model.UserVO;
 public class MainView {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		int my_money = 50000000; // 초기자금
+		static int my_money = 50000000; // 초기자금
 
 		DBcontroller mdao = new DBcontroller();
 		MainController mco = new MainController();
