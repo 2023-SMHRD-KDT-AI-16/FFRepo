@@ -59,110 +59,99 @@ public class MainView {
 						break;
 					} else if (choice2 == 2) {// 주식번호 입력
 						System.out.print("주식번호 입력 : ");
-						int stockNum = sc.nextInt()-1;
+						int stockNum = sc.nextInt() - 1;
 
 						ArrayList<StockVO> stockList = mdao.everyStock();
 						System.out.println("종목이름 : " + mdao.everyStock().get(stockNum).getStockName());
-						System.out.println("전일가 : " + mdao.everyStock().get(stockNum).getYesterdayPrice()+"원");
-						System.out.println("시가 : " +  mdao.everyStock().get(stockNum).getNowPrice()+"원");
-						System.out.println("전일대비 등락률 : "+mdao.everyStock().get(stockNum).getRate() +"%" );
+						System.out.println("전일가 : " + mdao.everyStock().get(stockNum).getYesterdayPrice() + "원");
+						System.out.println("시가 : " + mdao.everyStock().get(stockNum).getNowPrice() + "원");
+						System.out.println("전일대비 등락률 : " + mdao.everyStock().get(stockNum).getRate() + "%");
 						System.out.println("======");
 						System.out.println("[1]매수하기 [2]매도하기 [3]뒤로가기");
 						int choice3 = sc.nextInt();
-						
-						if(choice3 == 1) {//매수하기
-							
+
+						if (choice3 == 1) {// 매수하기
+
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
-							mdao.stockBuy(stockNum, buyCount );
-							System.out.println(mdao.everyStock().get(stockNum).getStockName() +" "+ buyCount+"주 매수완료");
-						
-						}else if(choice3 == 2) {//매도하기
-						
+							mdao.stockBuy(stockNum, buyCount);
+							System.out.println(
+									mdao.everyStock().get(stockNum).getStockName() + " " + buyCount + "주 매수완료");
+
+						} else if (choice3 == 2) {// 매도하기
+
 							System.out.print("매도량 : ");
 							int sellCount = sc.nextInt();
 							mdao.stockSale(stockNum, sellCount);
-							System.out.println(mdao.everyStock().get(stockNum).getStockName()+" " + sellCount+"주 매도완료");
-							
-						}else if(choice3 == 3) {//뒤로가기
+							System.out.println(
+									mdao.everyStock().get(stockNum).getStockName() + " " + sellCount + "주 매도완료");
+
+						} else if (choice3 == 3) {// 뒤로가기
 							break;
 						}
-						
-						
-
 
 					}
 
 					// ==========choice 1 전체종목 =============
 				} else if (choice == 2) {// 보유주식
 					System.out.println("보유주식");
-					
-					
-					
+
 					HaveStock hvo = new HaveStock();
 					ArrayList<MyStockVO> mvoList = hvo.MyStock();
-					int Stock_cnt = 0; 
+					int Stock_cnt = 0;
 
 					for (MyStockVO e : mvoList) {
 						Stock_cnt++;
 						System.out.println("===" + (Stock_cnt) + "===");
 						System.out.println(e.getStock_name());
-						System.out.println("보유 : "+e.getStock_count()+"주");
+						System.out.println("보유 : " + e.getStock_count() + "주");
 						System.out.println("시가 : " + e.getCurrent_stock_amount());
-						System.out.println("수익률 : "+e.getStock_yield()+"%");
-						System.out.println("평가 총액 : "+e.getPurchased_stock_amount()+"원");
+						System.out.println("수익률 : " + e.getStock_yield() + "%");
+						System.out.println("평가 총액 : " + e.getPurchased_stock_amount() + "원");
 					} // for 전체종목
-					
+
 					System.out.println("[1]주식번호 선택 [2]뒤로가기");
 					int choice4 = sc.nextInt();
-					if(choice4==1) {
-						
-						
-						
+					if (choice4 == 1) {
+
+						//선택된 보유주식 출력
 						System.out.print("주식번호 입력 : ");
-						int select5 = sc.nextInt();
-						
-					
-						int myStockNum = sc.nextInt()-1;
+						int select5 = sc.nextInt() - 1;
+
+						MyStockVO igohome = mvoList.get(select5);
+						System.out.println("===" + (Stock_cnt) + "===");
+						System.out.println(igohome.getStock_name());
+						System.out.println("보유 : " + igohome.getStock_count() + "주");
+						System.out.println("시가 : " + igohome.getCurrent_stock_amount());
+						System.out.println("수익률 : " + igohome.getStock_yield() + "%");
+						System.out.println("평가 총액 : " + igohome.getPurchased_stock_amount() + "원");
+
+						System.out.println("[1]주식번호 선택 [2]뒤로가기");   //수정하세요~~!!!!!!
+
+						// =====================
+						int myStockNum = sc.nextInt() - 1;
 						System.out.println("ddddd");
-							
-					
+
 						System.out.println("종목이름 : " + hvo.MyStock().get(myStockNum).getStock_name());
 //						System.out.println("전일가 : " + hvo.MyStock().get(myStockNum).get
 //						System.out.println("시가 : " +  mdao.everyStock().get(stockNum).getNowPrice()+"원");
 //						System.out.println("전일대비 등락률 : "+mdao.everyStock().get(stockNum).getRate() +"%" );
 //						System.out.println("======");
 						System.out.println("[1]매수하기 [2]매도하기 [3]뒤로가기");
-						
-						
-						
-						
-						
-					}else if(choice4 == 2) {
+
+					} else if (choice4 == 2) {
 						break;
 					}
-					
-					
-					
-					
-					
+
 					// ===========choice 2 보유주식 ============
 				} else if (choice == 3) {// 상점
 					System.out.println("상점");
-					
 
-					
 					// ===========choice 3 보유주식 ============
 				} else if (choice == 4) {// 하루마감
-					
-			
-					
+
 					System.out.println("하루마감");
 
-					
-					
-					
-					
 					// ===========choice 4 보유주식 ============
 				} else if (choice == 0) {// 메인화면
 					sel = 0;
