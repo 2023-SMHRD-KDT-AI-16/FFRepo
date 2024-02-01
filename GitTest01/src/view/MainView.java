@@ -80,9 +80,7 @@ public class MainView {
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
 							mdao.stockBuy(stockNum, buyCount, score);
-							System.out.println(
-									mdao.everyStock().get(stockNum).getStockName() + " " + buyCount + "주 매수완료");
-
+							
 						} else if (choice3 == 2) {// 매도하기
 
 							System.out.print("매도량 : ");
