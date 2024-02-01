@@ -65,6 +65,7 @@ public class DBcontroller {
 
 		try {
 			String sql_1 = "select stock_yield, purchased_stock_amount from my_stock";
+			psmt = conn.prepareStatement(sql_1);
 			rs = psmt.executeQuery();
 			
 			float final_yield = 0.0f;
@@ -79,7 +80,7 @@ public class DBcontroller {
 				sum += my_price;
 
 			}
-			final_yield = final_yield / cnt;
+			final_yield = sum / final_yield;
 			
 			// sql통과 통로
 			String sql_2 = "insert into my_user values(?,?,?)";

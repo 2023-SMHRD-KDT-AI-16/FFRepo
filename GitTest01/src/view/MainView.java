@@ -184,6 +184,7 @@ public class MainView {
 						String nickname = sc.next();
 						mdao.insertName(nickname);
 						
+						
 //						sel = 97;
 						
 						
