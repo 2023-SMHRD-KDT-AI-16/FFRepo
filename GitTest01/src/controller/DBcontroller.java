@@ -361,12 +361,13 @@ public class DBcontroller {
 
 				UserVO uvo = new UserVO(name, money, yiyi);
 				uvos.add(uvo);
+				
 			}
 			System.out.println(uvos);
 				
 				
 			return uvos;
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
