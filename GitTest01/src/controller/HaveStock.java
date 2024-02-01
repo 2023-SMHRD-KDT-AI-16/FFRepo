@@ -190,7 +190,7 @@ public class HaveStock {
 						// sql 통과 통로
 						String sql_3 = "delete from my_stock where stock_name = ?";
 						psmt = conn.prepareStatement(sql_3);
-						
+
 						sell_stockName = stock_names.get(i);
 
 						// ? 채우기
@@ -204,7 +204,7 @@ public class HaveStock {
 					} else {
 						String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ? where stock_name = ?";
 						psmt = conn.prepareStatement(sql_3);
-						
+
 						sell_stockName = stock_names.get(i);
 						sell_stockPrice = sell_prices.get(i);
 
@@ -212,7 +212,6 @@ public class HaveStock {
 						psmt.setInt(1, (stockCount - count));
 						psmt.setInt(2, my_price - (sell_stockPrice * count)); // 가지고 있던 금액 - 현재 매도할 금액
 						psmt.setString(3, sell_stockName);
-
 
 						// sql통과
 
@@ -256,27 +255,27 @@ public class HaveStock {
 				pur_price.add(nowPrice);
 			}
 
-			String sql_2 = "select stock_count, purchased_stock_amount, stock_yield from my_stock where stock_name = ?";
+			String sql_2 = "select * my_stock";
 			psmt = conn.prepareStatement(sql_2);
 
-			String stockName = stock_name.get(buy_stock_name); // 기업 이름
-			int buy_price = pur_price.get(buy_stock_name); // 기업 현재 주식 금액
-
-			// ? 채우기
-			psmt.setString(1, stockName);
-
+			
 			rs = psmt.executeQuery();
-
-			int stockCount = 0; // 보유하고 있는 주식 수량 담을 변수
-			int purchased_amount = 0; // 구매 총액
-			float yield = 0.0f;
-			while (rs.next()) {
-				stockCount = rs.getInt("stock_count");
-				purchased_amount = rs.getInt("purchased_stock_amount");
-				yield = rs.getFloat("stock_yield");
-
+			
+			while(rs.next()) {
+				int my_cnt = rs.getInt("stock_count");
+				int my_purchased = rs.getInt("purchased_stock_amount");
+				float my_yield = rs.getFloat("stock_yield");
+				rs.getString("current_stock_amount");
+				rs.get
 			}
-//			if() {
+				
+				
+				
+				
+				
+			}
+			for(int i = 0 ; i <)
+			if() {
 			if (stockCount == 0) {// 원하는 주식 처음 구매 시
 				// sql 통과 통로
 				String sql_3 = "insert into my_stock values(?,?,?,?,?)";
@@ -312,7 +311,8 @@ public class HaveStock {
 					int row = psmt.executeUpdate();
 					score = score - (buy_price * count);
 					return score;
-				}}
+				}
+				}
 			}
 
 		} catch (SQLException e) {
