@@ -92,16 +92,7 @@ public class MainView {
 
 					// ===========choice 3 보유주식 ============
 				} else if (choice == 4) {// 하루마감
-					try {
-						todayEnd todayEnd = new todayEnd();
-						
-					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+			
 					
 					System.out.println("하루마감");
 
