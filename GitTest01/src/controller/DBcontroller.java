@@ -298,7 +298,7 @@ public class DBcontroller {
 				// ? 채우기
 				psmt.setInt(1, buy_price*count); //전체 소유 금액
 				psmt.setInt(2, buy_price); // 현재 금액
-				psmt.setString(3, stockName);
+				psmt.setString(3, stockName); 
 				psmt.setInt(4, 0);
 				psmt.setInt(5, count);
 
