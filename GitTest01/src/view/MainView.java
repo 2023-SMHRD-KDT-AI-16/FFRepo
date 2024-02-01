@@ -140,7 +140,7 @@ public class MainView {
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
 							hvo.stockBuy(select5, buyCount);
-							System.out.println(mvoList.get(select5).getStock_name() + " " + buyCount + "주 매도 완료");
+							System.out.println(mvoList.get(select5).getStock_name() + " " + buyCount + "주 매수 완료");
 
 							// 매수하기
 
