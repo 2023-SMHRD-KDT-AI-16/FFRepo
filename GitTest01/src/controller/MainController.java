@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainController extends DBcontroller {
+	ArrayList<MusicVO> musicList = new ArrayList<MusicVO>(1);
+
+	public MainController() {
+		// TODO Auto-generated constructor stub
+		musicList.add(new MusicVO("짱구 개미송개미의 하루 (20초짜리)", "짱구", 020, "../GitTest01/src/짱구 개미송개미의 하루 (20초짜리).mp3"));
+	}
 	
 	public int stock_Rate_Update() throws SQLException, ClassNotFoundException {
 		int cnt = 0;
