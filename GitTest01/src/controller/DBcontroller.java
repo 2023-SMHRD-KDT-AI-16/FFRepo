@@ -348,6 +348,10 @@ public class DBcontroller {
 						return score;
 					}
 				}
+				System.out.println(
+						everyStock().get(buy_stock_name).getStockName() + " " + count + "주 매수완료");
+			}else {
+				System.out.println("돈이 없습니다.");
 			}
 
 		} catch (SQLException e) {
