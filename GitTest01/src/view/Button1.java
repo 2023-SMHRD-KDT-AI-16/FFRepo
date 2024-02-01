@@ -1,8 +1,15 @@
 package view;
 
-import java.awt.Frame;
-
-public class Button1 extends Frame {
+public class Button1{
+	public static void main(String[] args) {
+		
+		subView sv = new subView();
+		String str = "test1";
+		
+		sv.gameEnd(str, 500000);
+		
+		
+	}
 
 	
 	
