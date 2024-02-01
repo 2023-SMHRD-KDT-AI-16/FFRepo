@@ -144,6 +144,9 @@ public class MainView {
 						if(numselect == 1) {
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
+							hvo.stockBuy(select5, buyCount);
+							System.out.println(mvoList.get(select5).getStock_name()+" " + buyCount+"주 매도 완료");
+							
 							//매수하기
 							
 							
@@ -174,7 +177,7 @@ public class MainView {
 					System.out.println("하루마감");
 					
 					int count = mco.stock_Rate_Update();
-					System.out.println(count+"턴");
+					System.out.println(count+"턴 종료");
 					
 					
 					if(count==20) {
