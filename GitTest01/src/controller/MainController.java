@@ -115,7 +115,7 @@ public class MainController extends DBcontroller {
         
         int first_price = purchased_price * count; //수익률 계산 시 필요(전체 금액/보유주)
         System.out.println(first_price);
-        int yield = first_price/now_price;
+        int yield = now_price/first_price;
         System.out.println(yield);
         String sql_4 = "update my_stock set stock_yield = ?, current_stock_amount = ? where stock_name = ?";
        
