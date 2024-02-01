@@ -110,51 +110,51 @@ public class DBcontroller {
 	}
 
 	// 2. 로그인
-	public int userLogin(String input_id, String input_pw) {
-		ArrayList<String> idList = new ArrayList<String>();
-		ArrayList<String> pwList = new ArrayList<String>();
+//	public int userLogin(String input_id, String input_pw) {
+//		ArrayList<String> idList = new ArrayList<String>();
+//		ArrayList<String> pwList = new ArrayList<String>();
+//
+//		getConn();
+//
+//		// 동적로딩
+//		try {
+//			// sql통과 통로
+//			String sql = "select user_id,user_pw from my_user";
+//			psmt = conn.prepareStatement(sql);
+//
+//			// sql통과
+//			rs = psmt.executeQuery();
+//
+//			// select 한줄의 데이터 확인 rs.next()
+//
+//			while (rs.next()) {
+//				String id = rs.getString(1);
+//				String pw = rs.getString(2);
+//				idList.add(id);
+//				pwList.add(pw);
+//			}
+//			for (int i = 0; i < idList.size(); i++) {
+//				if (idList.get(i).equals(input_id)) {
+//					if (pwList.get(i).equals(input_pw)) {
+//						return 1;
+//					} else {
+//						return 0;
+//					}
+//				} else {
+//					return 0;
+//				}
+//			}
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			allClose();
+//		}
+//		return 0;
+//
+//	}
 
-		getConn();
-
-		// 동적로딩
-		try {
-			// sql통과 통로
-			String sql = "select user_id,user_pw from my_user";
-			psmt = conn.prepareStatement(sql);
-
-			// sql통과
-			rs = psmt.executeQuery();
-
-			// select 한줄의 데이터 확인 rs.next()
-
-			while (rs.next()) {
-				String id = rs.getString(1);
-				String pw = rs.getString(2);
-				idList.add(id);
-				pwList.add(pw);
-			}
-			for (int i = 0; i < idList.size(); i++) {
-				if (idList.get(i).equals(input_id)) {
-					if (pwList.get(i).equals(input_pw)) {
-						return 1;
-					} else {
-						return 0;
-					}
-				} else {
-					return 0;
-				}
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			allClose();
-		}
-		return 0;
-
-	}
-
-	// 4. 전체 주식 보기 메소드
+	// 3. 전체 주식 보기 메소드
 	public ArrayList<StockVO> everyStock() {
 		ArrayList<StockVO> svoList = new ArrayList<StockVO>();
 
@@ -192,7 +192,7 @@ public class DBcontroller {
 
 	}
 
-	// 5. 주식 매도 기능 메소드
+	// 4. 주식 매도 기능 메소드
 	public int stockSale(String sale_stock_name, int count) {
 
 		getConn();
