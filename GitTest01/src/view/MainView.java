@@ -180,14 +180,14 @@ public class MainView {
 					System.out.println(count+"턴 종료");
 					
 					
-					if(count==20) {
+					if(count==2) {
 						
 						
 						System.out.print("닉네임을 입력해주세요 : ");
 						String nickname = sc.next();
 						mdao.insertName(nickname);
 						
-						score = 50000000;
+						
 						
 //						sel = 97;
 						

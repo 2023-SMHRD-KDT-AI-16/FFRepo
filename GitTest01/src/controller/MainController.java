@@ -29,7 +29,7 @@ public class MainController extends DBcontroller {
 	}
 
 	public int stock_Rate_Update() throws SQLException, ClassNotFoundException {
-		if (cnt < 20) {
+		if (cnt < 3) {
 
 			float[] stock_rate = new float[20];
 			String[] Db_stock_name = new String[20];
