@@ -30,6 +30,11 @@ public class UserVO
 	public void setMy_yield(int my_yield) {
 		this.my_yield = my_yield;
 	}
+	@Override
+	public String toString() {
+		return "UserVO [user_id=" + user_id + ", my_money=" + my_money + ", my_yield=" + my_yield + "]";
+	}
+	
 	
 	
 

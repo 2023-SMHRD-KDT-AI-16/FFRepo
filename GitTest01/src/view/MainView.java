@@ -200,7 +200,7 @@ break;
 
 				ArrayList<UserVO> uvoList = new ArrayList<UserVO>();
 				uvoList = mdao.userRank();
-					System.out.println(uvoList.get(0).getMy_money());
+					System.out.println(uvoList.get(0));
 					
 				break;
 
