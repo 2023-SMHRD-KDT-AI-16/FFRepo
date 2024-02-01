@@ -197,11 +197,13 @@ public class DBcontroller {
 			}
 			
 			
+			String sell_stockName = stock_name.get(sale_stock_name);
+			int sell_stockPrice = pur_price.get(sale_stock_name);
 			String sql_2 = "select stock_count, purchased_stock_amount from my_stock where stock_name = ?";
 			psmt = conn.prepareStatement(sql_2);
 
 			// ? 채우기
-			psmt.setString(1, stock_name.get(sale_stock_name));
+			psmt.setString(1,sell_stockName );
 
 			rs = psmt.executeQuery();
 
@@ -219,7 +221,7 @@ public class DBcontroller {
 				psmt = conn.prepareStatement(sql_3);
 
 				// ? 채우기
-				psmt.setString(1, stock_name.get(sale_stock_name));
+				 psmt.setString(1, sell_stockName);
 
 				// sql통과
 				int row = psmt.executeUpdate();
@@ -231,8 +233,8 @@ public class DBcontroller {
 
 				// ? 채우기
 				psmt.setInt(1, (stockCount - count));
-				psmt.setInt(2, my_price - (pur_price.get(sale_stock_name)*count)); // 가지고 있던 금액 - 현재 매도할 금액
-				psmt.setString(3, stock_name.get(count));
+				psmt.setInt(2, my_price - (sell_stockPrice*count)); // 가지고 있던 금액 - 현재 매도할 금액
+				psmt.setString(3, sell_stockName );
 
 				// sql통과
 				int row = psmt.executeUpdate();
