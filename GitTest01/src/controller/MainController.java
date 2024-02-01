@@ -150,4 +150,150 @@ public class MainController extends DBcontroller {
 		return cnt;
 		
 	}
+	public void art() {
+
+		System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
+		try {
+            Thread.sleep(150);
+			}
+		 catch (Exception e) {
+		}
+
+		System.out.println("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("█░░░░░░░░▀█▄▀▄▀██████░▀█▄▀▄▀██████░");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("░░░░░░░░░░░▀█▄█▄███▀░░░ ▀██▄█▄███▀░");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡴⠛⠉⣤⣌⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠙⠁⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⣤⣀⣀⣴⣿⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡧⠜⠿⠁⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⢀⡀⠀⠉⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣇⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⢀⡀⠀⠉⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⡀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⣿⡇⠸⣶⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣭⣭⣾⣿⣿⣾⣭⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+
+		System.out.println("□□□□□□□■■□■□□□□□□□□□□■■□□□■■□□□□□□□□□□□□□□■■■■■■■■■■□□■■■■■■■■■■□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□■■■■■□■■□■□□■■■■■■■□■■□□□■■□□□□□□□□□□□□□□■■□□□■■□□□□□■■□□□■■□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□■■□■■□■□□■■□□□■■□■■□□□■■□□□□□□□□□□□□□□■■□□□■■□□□□□■■□□□■■□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□■■□■■□■□□■■□□□■■□■■□□□■■■■■■■■■□□□□□□□■■■■■■■■■■□□■■■■■■■■■■□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□■■□■■□■□□■■□□□■■□■■□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□■■■□■■■■□□■■□□□■■□■■□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□■■■□□■■□■□□■■□□□■■□■■□■■■■■■■■■■■■□□□□□■■■■■■■■■■■■■■■■■■■■■■■■");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□■■■□□□■■□■□□■■□□□■■□■■□□□□□□□□□□□□□□□□□□□□□□□■■□□□□□□□□□□■■□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("■■■□□□□■■□■□□■■■■■■■□■■□□□■■□□□□□□□□□□□□□□□■□□■■□□□□□□□■□□■■□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□□□□■■□■□□□□□□□□□□■■□□□■■□□□□□□□□□□□□□□□■□□■■□□□□□□□■□□■■□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□□□□■■□■□□□□□□□□□□■■□□□■■□□□□□□□□□□□□□□□■□□□□□□□□□□□■□□□□□□□□□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+		System.out.println("□□□□□□□■■□■□□□□□□□□□□■■□□□■■■■■■■■■□□□□□□□□■■■■■■■■■□□□■■■■■■■■■□");try {
+			Thread.sleep(150);
+		}
+	 catch (Exception e) {
+	}
+	}
 }

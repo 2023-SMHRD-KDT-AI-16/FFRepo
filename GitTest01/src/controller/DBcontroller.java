@@ -229,8 +229,6 @@ public class DBcontroller {
 				psmt.setInt(2, my_price - (sell_stockPrice * count)); // 가지고 있던 금액 - 현재 매도할 금액
 				psmt.setString(3, sell_stockName);
 				
-				System.out.println((stockCount - count )+ " " + (my_price - (sell_stockPrice * count)) + " " + sell_stockName);
-				
 				// sql통과
 				
 				int row = psmt.executeUpdate();
@@ -290,7 +288,6 @@ public class DBcontroller {
 				yield = rs.getFloat("stock_yield");
 
 			}
-			System.out.println(yield);
 			if (stockCount == 0) {// 원하는 주식 처음 구매 시
 				// sql 통과 통로
 				String sql_3 = "insert into my_stock values(?,?,?,?,?)";
@@ -302,7 +299,6 @@ public class DBcontroller {
 				psmt.setString(3, stockName);
 				psmt.setInt(4, 0);
 				psmt.setInt(5, count);
-				System.out.println(buy_price + " " + count + " " + stockCount);
 				// sql통과
 				int row = psmt.executeUpdate();
 
@@ -317,8 +313,6 @@ public class DBcontroller {
 				psmt.setInt(3, buy_price);
 				psmt.setFloat(4, yield); // 수익룰
 				psmt.setString(5, stockName);
-				System.out.println("helllllllllll");
-				System.out.println(buy_price + " " + yield + " " + stockCount + " " + stockName);
 				// sql통과
 				int row = psmt.executeUpdate();
 				return row;
