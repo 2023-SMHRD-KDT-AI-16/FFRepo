@@ -22,7 +22,7 @@ public class MainView {
 		Scanner sc = new Scanner(System.in);
 
 		int sel = 0;
-		int page = 0;
+		
 
 		mco.art();
 		mco.play();
@@ -92,9 +92,13 @@ public class MainView {
 									mdao.everyStock().get(stockNum).getStockName() + " " + sellCount + "주 매도완료");
 
 						} else if (choice3 == 3) {// 뒤로가기
+							sel = 1;
+							choice = 2;
 							break;
 						}
 
+					}else {
+						System.out.println("잘못된 입력입니다.");
 					}
 
 					// ==========choice 1 전체종목 =============
@@ -146,6 +150,8 @@ public class MainView {
 						}else if(numselect ==2) {
 							System.out.print("매도량 : ");
 							int sellCount = sc.nextInt();
+						}else if(numselect ==3){
+							
 						}
 						
 						
@@ -155,6 +161,8 @@ public class MainView {
 						
 					} else if (choice4 == 2) {
 						break;
+					}else {
+						System.out.println("잘못 입력");
 					}
 
 					// ===========choice 2 보유주식 ============
@@ -175,7 +183,7 @@ public class MainView {
 					sel = 0;
 					break;
 				} else {
-					System.out.println("잘못된 입력입니다 1");
+					System.out.println("잘못된 입력입니다 ");
 				}
 
 			case 2: // 랭킹보기
@@ -190,7 +198,6 @@ public class MainView {
 					sel = 0;
 					break;
 				}
-
 				break;
 			case 4: // 종료
 				System.exit(0);
