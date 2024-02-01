@@ -363,6 +363,7 @@ public class DBcontroller {
 	}
 
 	public ArrayList<UserVO> userRank() {
+		ArrayList<UserVO> uvos = new ArrayList<UserVO>();
 		getConn();
 		try {
 			String sql = "select * from my_user order by my_money";
@@ -370,14 +371,13 @@ public class DBcontroller {
 
 			rs = psmt.executeQuery();
 
-			ArrayList<UserVO> uvos = new ArrayList<UserVO>();
 			//랭킹부분 안풀리는데..?
 			while (rs.next()) {
-				UserVO uvo = new UserVO();
-				uvo.setUser_id(rs.getString("user_id"));
-				uvo.setMy_money(rs.getInt("my_money"));
-				uvo.setMy_yield(rs.getInt("my_yield"));
+				String name = rs.getString("user_id");
+				int money = rs.getInt("my_money");
+				int yiyi = rs.getInt("my_yield");
 
+				UserVO uvo = new UserVO(name, money, yiyi);
 				uvos.add(uvo);
 			}
 			System.out.println(uvos);
