@@ -80,7 +80,7 @@ public class MainView {
 
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
-							mdao.stockBuy(stockNum, buyCount);
+							mdao.stockBuy(stockNum, buyCount,score);
 							System.out.println(
 									mdao.everyStock().get(stockNum).getStockName() + " " + buyCount + "주 매수완료");
 
@@ -88,7 +88,7 @@ public class MainView {
 
 							System.out.print("매도량 : ");
 							int sellCount = sc.nextInt();
-							mdao.stockSale(stockNum, sellCount);
+							score = mdao.stockSale(stockNum, sellCount,score);
 							System.out.println(
 									mdao.everyStock().get(stockNum).getStockName() + " " + sellCount + "주 매도완료");
 
@@ -154,7 +154,7 @@ public class MainView {
 						}else if(numselect ==2) {
 							System.out.print("매도량 : ");
 							int sellCount = sc.nextInt();
-							hvo.stockSale(select5, sellCount);
+							score = hvo.stockSale(select5, sellCount);
 							System.out.println(mvoList.get(select5).getStock_name()+" "+sellCount+"주 매도 완료");
 						}else if(numselect ==3){
 							
@@ -186,6 +186,7 @@ public class MainView {
 						System.out.print("닉네임을 입력해주세요 : ");
 						String nickname = sc.next();
 						mdao.insertName(nickname);
+						
 						score = 50000000;
 						
 //						sel = 97;

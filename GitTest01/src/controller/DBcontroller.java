@@ -15,7 +15,7 @@ public class DBcontroller {
 	public Connection conn;
 	public PreparedStatement psmt;
 	public ResultSet rs;
-	public int score = 50000000;
+//	public int score = 50000000;
 
 	// DB 연결 메소드
 	public void getConn() {
@@ -68,34 +68,33 @@ public class DBcontroller {
 			String sql_1 = "select stock_yield, purchased_stock_amount from my_stock";
 			psmt = conn.prepareStatement(sql_1);
 			rs = psmt.executeQuery();
-			
+
 			float final_yield = 0.0f;
 			int cnt = 0;
 			int sum = 0;
-			
+
 			while (rs.next()) {
 				float id = rs.getFloat("stock_yield");
 				int my_price = rs.getInt("purchased_stock_amount");
 				final_yield += id;
-				cnt +=1 ;
+				cnt += 1;
 				sum += my_price;
 
 			}
-			final_yield = sum / 50000000 ;
-			
+			final_yield = sum / 50000000;
+
 			// sql통과 통로
 			String sql_2 = "insert into my_user values(?,?,?)";
 			psmt = conn.prepareStatement(sql_2);
 
 			// ?채우기
-			psmt.setString(1,Nickname);
+			psmt.setString(1, Nickname);
 			psmt.setInt(2, sum);
 			psmt.setFloat(3, final_yield);
 
 			// sql통과 하세요!
 			int row = psmt.executeUpdate();
 			return 50000000;
-			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -103,7 +102,7 @@ public class DBcontroller {
 		} finally {
 			allClose();
 		}
-		
+
 	}
 
 //	// 2. 로그인
@@ -190,7 +189,7 @@ public class DBcontroller {
 	}
 
 	// 4. 주식 매도 기능 메소드
-	public int stockSale(int sell_stock_index, int count) {
+	public int stockSale(int sell_stock_index, int count, int score) {
 
 		ArrayList<String> stock_names = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
 		ArrayList<Integer> sell_prices = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
@@ -251,7 +250,6 @@ public class DBcontroller {
 				psmt.setInt(2, my_price - (sell_stockPrice * count)); // 가지고 있던 금액 - 현재 매도할 금액
 				psmt.setString(3, sell_stockName);
 
-
 				// sql통과
 
 				int row = psmt.executeUpdate();
@@ -269,7 +267,7 @@ public class DBcontroller {
 	}
 
 	// 5. 주식 매수 기능 메소드
-	public int stockBuy(int buy_stock_name, int count) {
+	public int stockBuy(int buy_stock_name, int count,int score) {
 		ArrayList<String> stock_name = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
 		ArrayList<Integer> pur_price = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
 
@@ -292,6 +290,7 @@ public class DBcontroller {
 				pur_price.add(nowPrice);
 			}
 
+			// 내 주식 테이블에서 stock_count, purchased_stock_amount 출력
 			String sql_2 = "select stock_count, purchased_stock_amount, stock_yield from my_stock where stock_name = ?";
 			psmt = conn.prepareStatement(sql_2);
 
@@ -312,40 +311,42 @@ public class DBcontroller {
 				yield = rs.getFloat("stock_yield");
 
 			}
+			if (score > purchased_amount * stockCount) {
 
-			if (stockCount == 0) {// 원하는 주식 처음 구매 시
-				// sql 통과 통로
-				String sql_3 = "insert into my_stock values(?,?,?,?,?)";
-				psmt = conn.prepareStatement(sql_3);
+				if (stockCount == 0) {// 원하는 주식 처음 구매 시
+					// sql 통과 통로
+					String sql_3 = "insert into my_stock values(?,?,?,?,?)";
+					psmt = conn.prepareStatement(sql_3);
 
-				// ? 채우기
-				psmt.setInt(1, buy_price * count); // 전체 소유 금액
-				psmt.setInt(2, buy_price); // 현재 금액
-				psmt.setString(3, stockName);
-				psmt.setInt(4, 0);
-				psmt.setInt(5, count);
-				// sql통과
-				if (score >= buy_price * count) {
-					int row = psmt.executeUpdate();
+					// ? 채우기
+					psmt.setInt(1, buy_price * count); // 전체 소유 금액
+					psmt.setInt(2, buy_price); // 현재 금액
+					psmt.setString(3, stockName);
+					psmt.setInt(4, 0);
+					psmt.setInt(5, count);
+					// sql통과
+					if (score >= buy_price * count) {
+						int row = psmt.executeUpdate();
 
-					score = score - (buy_price * count);
-					return score;
-				}
-			} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
-				String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ?,current_stock_amount = ?, stock_yield = ? where stock_name = ?";
-				psmt = conn.prepareStatement(sql_3);
+						score = score - (buy_price * count);
+						return score;
+					}
+				} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
+					String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ?,current_stock_amount = ?, stock_yield = ? where stock_name = ?";
+					psmt = conn.prepareStatement(sql_3);
 
-				// ? 채우기
-				psmt.setInt(1, (stockCount + count));
-				psmt.setInt(2, purchased_amount + (buy_price * count)); // 전체 구매한 금액
-				psmt.setInt(3, buy_price);
-				psmt.setFloat(4, yield); // 수익룰
-				psmt.setString(5, stockName);
-				// sql통과
-				if (score >= buy_price * purchased_amount + (buy_price * count)) {
-					int row = psmt.executeUpdate();
-					score = score - (buy_price * count);
-					return score;
+					// ? 채우기
+					psmt.setInt(1, (stockCount + count));
+					psmt.setInt(2, purchased_amount + (buy_price * count)); // 전체 구매한 금액
+					psmt.setInt(3, buy_price);
+					psmt.setFloat(4, yield); // 수익룰
+					psmt.setString(5, stockName);
+					// sql통과
+					if (score >= buy_price * purchased_amount + (buy_price * count)) {
+						int row = psmt.executeUpdate();
+						score = score - (buy_price * count);
+						return score;
+					}
 				}
 			}
 
@@ -356,62 +357,34 @@ public class DBcontroller {
 		}
 		return 0;
 	}
-	
-	
-	public ArrayList<UserVO> userRank () {
-	getConn();
-	try {
-		String sql = "select * from my_user order by my_money";
-		psmt = conn.prepareStatement(sql);
-		
-		rs = psmt.executeQuery();
-		
-		ArrayList<UserVO> uvos = new ArrayList<UserVO>();
-		
-		while(rs.next()) {
-			String a = rs.getString("user_id");
-			int b =rs.getInt("my_money");
-			int c= rs.getInt("my_yield");
-			
-			UserVO uvo = new UserVO(a, b, c);
-			uvos.add(uvo);
-			return uvos;
-		}
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}finally {
-		allClose();
-	}
-	return null;
-	
-	
-	
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
 
+	public ArrayList<UserVO> userRank() {
+		getConn();
+		try {
+			String sql = "select * from my_user order by my_money";
+			psmt = conn.prepareStatement(sql);
+
+			rs = psmt.executeQuery();
+
+			ArrayList<UserVO> uvos = new ArrayList<UserVO>();
+
+			while (rs.next()) {
+				String a = rs.getString("user_id");
+				int b = rs.getInt("my_money");
+				int c = rs.getInt("my_yield");
+
+				UserVO uvo = new UserVO(a, b, c);
+				uvos.add(uvo);
+				return uvos;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			allClose();
+		}
+		return null;
+
+	}
+
+}
