@@ -149,6 +149,7 @@ public class MainView {
 							int sellCount = sc.nextInt();
 							score = hvo.stockSale(select5, sellCount);
 							System.out.println(mvoList.get(select5).getStock_name() + " " + sellCount + "주 매도 완료");
+							
 						} else if (numselect == 3) {
 
 						}
@@ -174,9 +175,7 @@ public class MainView {
 
 						System.out.print("닉네임을 입력해주세요 : ");
 						String nickname = sc.next();
-						mdao.insertName(nickname);
-
-						score = 50000000;
+						score = mdao.insertName(nickname);
 
 //						sel = 97;
 
@@ -196,14 +195,10 @@ public class MainView {
 break;
 			case 2: // 랭킹보기
 
-				ArrayList<UserVO> uvoList = mdao.userRank();
-				for (UserVO e : uvoList) {
-					System.out.println("======");
-					System.out.println(e.getUser_id());
-					System.out.println(e.getMy_money());
-					System.out.println(e.getMy_yield());
-				}
+				ArrayList<UserVO> uvoList = new ArrayList<UserVO>();
+				uvoList = mdao.userRank();
 
+					System.out.println(uvoList.get(0).getMy_money());
 				break;
 
 			case 3: // 룰설명
