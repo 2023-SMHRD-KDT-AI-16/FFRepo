@@ -14,6 +14,7 @@ public class gameStart {
 
 	void start() {
 		// TODO Auto-generated method stub
+		
 		for (int i = 0; i < 20; i++) {
 			System.out.print(dbco.everyStock().get(i).getStockName() + "\t \t \t" +dbco.everyStock().get(i).getYesterdayPrice()
 					+ "\t \t" + dbco.everyStock().get(i).getNowPrice() + "\t \t"+ dbco.everyStock().get(i).getRate());
