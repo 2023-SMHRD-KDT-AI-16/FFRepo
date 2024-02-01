@@ -151,6 +151,8 @@ public class MainView {
 						}else if(numselect ==2) {
 							System.out.print("매도량 : ");
 							int sellCount = sc.nextInt();
+							hvo.stockSale(select5, sellCount);
+							System.out.println(mvoList.get(select5).getStock_name()+" "+sellCount+"주 매도 완료");
 						}else if(numselect ==3){
 							
 						}
