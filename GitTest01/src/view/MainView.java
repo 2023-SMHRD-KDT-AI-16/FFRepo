@@ -32,7 +32,7 @@ public class MainView {
 
 			case 0:
 				System.out.println("개미는 뚠뚠");// 초기 메인화면
-				System.out.println("[1]게임시작 [2]랭킹보기 [3]룰 설명 [4]종료");
+				System.out.println("[1]게임시작 [2]랭킹보기 [3]룰 설명 [4]종료 ");//[97]닉네임 등록(시크릿창)
 				sel = sc.nextInt();
 				break;
 
@@ -168,13 +168,27 @@ public class MainView {
 
 					// ===========choice 3 하루마감 ============
 				}  else if (choice == 3) {// 하루마감
+					
 					System.out.println("하루마감");
 					
 					int count = mco.stock_Rate_Update();
+					System.out.println(count+"턴");
+					
+					
 					if(count>=21) {
-						sel = 0;
-						break;
-					}
+						
+						
+						sel = 97;
+						
+						
+						
+//						sel = 0;
+//						break;
+					}//if count
+					break;
+					//while
+					
+					
 					
 					// ===========choice 4 메인화면 ============
 				} else if (choice == 0) {// 메인화면
@@ -204,9 +218,25 @@ public class MainView {
 				}
 
 				break;
-			case 4: // 종료
+			
+			
+				
+			case 4 : // 종료
 				System.exit(0);
 
+			case 97 ://닉네임 등록 시크릿 창
+				
+				System.out.print("닉네임을 입력해주세요 : ");
+				String nickname = sc.next();
+				
+				
+			
+			
+			
+			default : 
+				System.out.println("잘못된 입력입니다.");
+				break;
+				
 			}// switch 게임화면
 
 		} // while -- 메인 while
