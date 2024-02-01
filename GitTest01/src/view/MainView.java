@@ -209,6 +209,9 @@ public class MainView {
 					System.out.println("잘못된 입력입니다 ");
 				}
 break;
+
+
+
 			case 2: // 랭킹보기
 				
 				ArrayList<UserVO> uvoList = mdao.userRank();
