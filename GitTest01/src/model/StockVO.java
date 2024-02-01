@@ -46,6 +46,13 @@ public class StockVO {
 	public void setRate(int rate) {
 		this.rate = rate;
 	}
+
+	@Override
+	public String toString() {
+		return "StockVO [stockName=" + stockName + ", yesterdayPrice=" + yesterdayPrice + ", nowPrice=" + nowPrice
+				+ ", rate=" + rate + "]";
+	}
+	
 	
 	
 }
