@@ -66,6 +66,7 @@ public class DBcontroller {
 
 		try {
 			String sql_1 = "select stock_yield, purchased_stock_amount from my_stock";
+			psmt = conn.prepareStatement(sql_1);
 			rs = psmt.executeQuery();
 			
 			float final_yield = 0.0f;
@@ -80,7 +81,7 @@ public class DBcontroller {
 				sum += my_price;
 
 			}
-			final_yield = final_yield / cnt;
+			final_yield = sum / 50000000 ;
 			
 			// sql통과 통로
 			String sql_2 = "insert into my_user values(?,?,?)";
@@ -93,7 +94,8 @@ public class DBcontroller {
 
 			// sql통과 하세요!
 			int row = psmt.executeUpdate();
-			return row;
+			return 50000000;
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -101,6 +103,7 @@ public class DBcontroller {
 		} finally {
 			allClose();
 		}
+		
 	}
 
 //	// 2. 로그인

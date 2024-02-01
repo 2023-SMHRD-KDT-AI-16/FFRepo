@@ -15,7 +15,6 @@ public class MainView {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		int my_money = 50000000; // 초기자금
-		int my_turn = 0; // 턴을 카운터 측정 30턴이면 종료
 
 		DBcontroller mdao = new DBcontroller();
 		MainController mco = new MainController();
@@ -145,6 +144,9 @@ public class MainView {
 						if(numselect == 1) {
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
+							hvo.stockBuy(select5, buyCount);
+							System.out.println(mvoList.get(select5).getStock_name()+" " + buyCount+"주 매도 완료");
+							
 							//매수하기
 							
 							
@@ -175,7 +177,7 @@ public class MainView {
 					System.out.println("하루마감");
 					
 					int count = mco.stock_Rate_Update();
-					System.out.println(count+"턴");
+					System.out.println(count+"턴 종료");
 					
 					
 					if(count==20) {
@@ -184,6 +186,7 @@ public class MainView {
 						System.out.print("닉네임을 입력해주세요 : ");
 						String nickname = sc.next();
 						mdao.insertName(nickname);
+						
 						
 //						sel = 97;
 						
