@@ -9,6 +9,7 @@ import javazoom.jl.player.MP3Player;
 public class MainController extends DBcontroller {
 	ArrayList<MusicVO> musicList = new ArrayList<MusicVO>(1);
 	MP3Player mp3 = new MP3Player();
+	int cnt = 0;
 
 	public MainController() {
 		// TODO Auto-generated constructor stub
@@ -26,7 +27,7 @@ public class MainController extends DBcontroller {
 
 	}
 	public int stock_Rate_Update() throws SQLException, ClassNotFoundException {
-		int cnt = 0;
+		
 		float[] stock_rate = new float[20];
 		String[] Db_stock_name = new String[20];
 		int[] Db_yesterday_price = new int[20];
