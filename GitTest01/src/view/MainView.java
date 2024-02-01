@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import controller.DBcontroller;
 import controller.HaveStock;
+import controller.MainController;
 import model.MyStockVO;
 import model.StockVO;
 
@@ -15,7 +16,7 @@ public class MainView {
 		int my_turn = 0; // 턴을 카운터 측정 30턴이면 종료
 
 		DBcontroller mdao = new DBcontroller();
-
+		MainController mco = new MainController();
 		Scanner sc = new Scanner(System.in);
 
 		int sel = 0;
@@ -126,7 +127,7 @@ public class MainView {
 						System.out.println("수익률 : " + igohome.getStock_yield() + "%");
 						System.out.println("평가 총액 : " + igohome.getPurchased_stock_amount() + "원");
 
-						System.out.println("[1]주식번호 선택 [2]뒤로가기");   //수정하세요~~!!!!!!
+						System.out.println("[1] [2]");   //수정하세요~~!!!!!!
 
 						// =====================
 						int myStockNum = sc.nextInt() - 1;
@@ -146,12 +147,16 @@ public class MainView {
 					// ===========choice 2 보유주식 ============
 				} else if (choice == 3) {// 상점
 					System.out.println("상점");
-
+					
 					// ===========choice 3 보유주식 ============
 				} else if (choice == 4) {// 하루마감
-
 					System.out.println("하루마감");
-
+					
+					mco.stock_Rate_Update(0);
+					
+					
+					
+					
 					// ===========choice 4 보유주식 ============
 				} else if (choice == 0) {// 메인화면
 					sel = 0;
