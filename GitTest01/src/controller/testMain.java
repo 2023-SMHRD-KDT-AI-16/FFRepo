@@ -10,7 +10,6 @@ public class testMain {
 		
 		// TODO Auto-generated method stub
 //		mainController.stock_Rate_Update();
-		playStart.start();
 		
 	}
 

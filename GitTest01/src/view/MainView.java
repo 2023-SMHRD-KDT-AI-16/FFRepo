@@ -92,6 +92,10 @@ public class MainView {
 				} else if (choice == 4) {// 하루마감
 					System.out.println("하루마감");
 
+					
+					
+					
+					
 					// ===========choice 4 보유주식 ============
 				} else if (choice == 0) {// 메인화면
 					sel = 0;
