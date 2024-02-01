@@ -140,7 +140,7 @@ public class MainView {
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
 							hvo.stockBuy(select5, buyCount);
-							System.out.println(mvoList.get(select5).getStock_name() + " " + buyCount + "주 매도 완료");
+							System.out.println(mvoList.get(select5).getStock_name() + " " + buyCount + "주 매수 완료");
 
 							// 매수하기
 
@@ -193,6 +193,9 @@ public class MainView {
 					System.out.println("잘못된 입력입니다 ");
 				}
 break;
+
+
+
 			case 2: // 랭킹보기
 
 				ArrayList<UserVO> uvoList = new ArrayList<UserVO>();
