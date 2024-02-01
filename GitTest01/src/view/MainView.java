@@ -188,6 +188,10 @@ public class MainView {
 				sel = sc.nextInt();
 				if (sel == 1) {
 					sel = 0;
+					System.out.println("설명문");
+					System.out.println("설명문");
+					System.out.println("설명문");
+					System.out.println("설명문");
 					break;
 				}else if (sel == 2) {
 					System.exit(0);
