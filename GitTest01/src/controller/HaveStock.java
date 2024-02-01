@@ -77,8 +77,9 @@ public class HaveStock {
 				int stock_yield = rs.getInt("stock_yield");
 				int stock_count = rs.getInt("stock_count");
 
-				MyStockVO mvo = new MyStockVO(purchased_stock_amount, current_stock_amount, stock_name, stock_yield,
-						stock_count);
+				MyStockVO mvo = new MyStockVO( stock_name, purchased_stock_amount, current_stock_amount,stock_count,
+						stock_yield
+						);
 				myStockList.add(mvo);
 
 			}
@@ -117,8 +118,8 @@ public class HaveStock {
 				int stock_yield = rs.getInt("stock_yield");
 				int stock_count = rs.getInt("stock_count");
 
-				MyStockVO mvo = new MyStockVO(purchased_stock_amount, current_stock_amount, stock_name, stock_yield,
-						stock_count);
+				MyStockVO mvo = new MyStockVO(stock_name,purchased_stock_amount, current_stock_amount, stock_count, stock_yield
+						);
 				myStockList.add(mvo);
 
 			}
@@ -271,7 +272,7 @@ public class HaveStock {
 				my_yield = rs.getFloat("stock_yield");
 				my_current_stock = rs.getInt("current_stock_amount");
 				my_stock = rs.getString("stock_name");
-				MyStockVO mvo = new MyStockVO( my_purchased, my_current_stock, my_stock,  my_yield, my_cnt);
+				MyStockVO mvo = new MyStockVO( my_stock, my_purchased, my_current_stock,  my_cnt, my_yield );
 //				myvo.add(mvo);
 				
 			}
