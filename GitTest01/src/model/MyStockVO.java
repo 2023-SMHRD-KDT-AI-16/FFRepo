@@ -2,19 +2,19 @@ package model;
 
 public class MyStockVO {
 
+	private String stock_name;
 	private int purchased_stock_amount;
 	private int current_stock_amount;
-	private String stock_name;
-	private float stock_yield;
 	private int stock_count;
+	private float stock_yield;
 	
 	
-	public MyStockVO(int purchased_stock_amount,int current_stock_amount, String stock_name, float stock_yield, int stock_count ) {
+	public MyStockVO(String stock_name,int purchased_stock_amount,int current_stock_amount, int stock_count, float stock_yield ) {
+		this.stock_name = stock_name;
 		this.purchased_stock_amount = purchased_stock_amount;
 		this.current_stock_amount = current_stock_amount;
-		this.stock_name = stock_name;
-		this.stock_yield = stock_yield;
 		this.stock_count = stock_count;
+		this.stock_yield = stock_yield;
 		
 		
 	}
