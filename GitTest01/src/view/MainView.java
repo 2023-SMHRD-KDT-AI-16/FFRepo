@@ -132,7 +132,7 @@ public class MainView {
 
 						// =====================
 						int myStockNum = sc.nextInt() - 1;
-						System.out.println("ddddd");
+						
 
 						System.out.println("종목이름 : " + hvo.MyStock().get(myStockNum).getStock_name());
 //						System.out.println("전일가 : " + hvo.MyStock().get(myStockNum).get
@@ -140,7 +140,9 @@ public class MainView {
 //						System.out.println("전일대비 등락률 : "+mdao.everyStock().get(stockNum).getRate() +"%" );
 //						System.out.println("======");
 						System.out.println("[1]매수하기 [2]매도하기 [3]뒤로가기");
-
+						
+						
+						
 					} else if (choice4 == 2) {
 						break;
 					}
