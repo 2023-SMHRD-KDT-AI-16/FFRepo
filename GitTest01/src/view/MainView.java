@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import controller.DBcontroller;
+import controller.HaveStock;
+import model.MyStockVO;
 import model.StockVO;
 
 public class MainView {
@@ -94,6 +96,22 @@ public class MainView {
 					// ==========choice 1 전체종목 =============
 				} else if (choice == 2) {// 보유주식
 					System.out.println("보유주식");
+					
+					
+					HaveStock hvo = new HaveStock();
+					ArrayList<MyStockVO> mvoList = hvo.MyStock();
+					int Stock_cnt = 0; 
+
+					for (MyStockVO e : mvoList) {
+						Stock_cnt++;
+						System.out.println("===" + (Stock_cnt) + "===");
+						System.out.println(e.getPurchased_stock_amount());
+						System.out.println(e.getCurrent_stock_amount());
+						System.out.println(e.getStock_name());
+						System.out.println(e.getStock_yield());
+						System.out.println(e.getStock_count());
+					} // for 전체종목
+					
 
 					// ===========choice 2 보유주식 ============
 				} else if (choice == 3) {// 상점
