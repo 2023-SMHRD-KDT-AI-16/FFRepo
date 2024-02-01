@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.StockVO;
-import model.UserVO;
 
 public class DBcontroller {
 
 	protected Connection conn;
 	protected PreparedStatement psmt;
 	protected ResultSet rs;
+	protected int score = 50000000;
 
 	// DB 연결 메소드
 	protected void getConn() {
@@ -56,36 +56,36 @@ public class DBcontroller {
 
 	}
 
-	// 1. 회원가입 기능
-
-	public int insertMember(UserVO user) {
-
-		getConn();
-
-		try {
-			// sql통과 통로
-			String sql = "insert into my_user values(?,?,?,?)";
-			psmt = conn.prepareStatement(sql);
-
-			// ?채우기 - ?가 없으면 생략
-			psmt.setString(1, user.getUser_id());
-			psmt.setString(2, user.getUser_pw());
-			psmt.setInt(3, user.getMy_money());
-			psmt.setInt(4, user.getMy_yield());
-
-			// sql통과 하세요!
-			int row = psmt.executeUpdate();
-			return row;
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return 0;
-		} finally {
-			allClose();
-		}
-	}
-
-	// 2. 로그인
+//	// 1. 회원가입 기능
+//
+//	public int insertMember(UserVO user) {
+//
+//		getConn();
+//
+//		try {
+//			// sql통과 통로
+//			String sql = "insert into my_user values(?,?,?,?)";
+//			psmt = conn.prepareStatement(sql);
+//
+//			// ?채우기 - ?가 없으면 생략
+//			psmt.setString(1, user.getUser_id());
+//			psmt.setString(2, user.getUser_pw());
+//			psmt.setInt(3, user.getMy_money());
+//			psmt.setInt(4, user.getMy_yield());
+//
+//			// sql통과 하세요!
+//			int row = psmt.executeUpdate();
+//			return row;
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return 0;
+//		} finally {
+//			allClose();
+//		}
+//	}
+//
+//	// 2. 로그인
 //   public int userLogin(String input_id, String input_pw) {
 //      ArrayList<String> idList = new ArrayList<String>();
 //      ArrayList<String> pwList = new ArrayList<String>();
@@ -305,8 +305,9 @@ public class DBcontroller {
 				System.out.println(buy_price + " " + count + " " + stockCount);
 				// sql통과
 				int row = psmt.executeUpdate();
-
-				return row;
+				
+				score = score - (buy_price * count);
+				return score;
 			} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
 				String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ?,current_stock_amount = ?, stock_yield = ? where stock_name = ?";
 				psmt = conn.prepareStatement(sql_3);
@@ -321,7 +322,8 @@ public class DBcontroller {
 				System.out.println(buy_price + " " + yield + " " + stockCount + " " + stockName);
 				// sql통과
 				int row = psmt.executeUpdate();
-				return row;
+				score = score - (buy_price * count);
+				return score;
 			}
 
 		} catch (SQLException e) {
