@@ -12,9 +12,9 @@ import model.StockVO;
 import model.UserVO;
 
 public class MainView {
+	static int score = 50000000; // 초기자금
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		static int my_money = 50000000; // 초기자금
 
 		DBcontroller mdao = new DBcontroller();
 		MainController mco = new MainController();
@@ -186,7 +186,7 @@ public class MainView {
 						System.out.print("닉네임을 입력해주세요 : ");
 						String nickname = sc.next();
 						mdao.insertName(nickname);
-						
+						score = 50000000;
 						
 //						sel = 97;
 						
