@@ -40,7 +40,8 @@ public class MainController extends DBcontroller {
 			rs = psmt.executeQuery();
 
 			// select 한줄의 데이터 확인 rs.next()
-
+			
+			// 회사명과 현재 가격 배열에 담기
 			while (rs.next()) {
 				String name = rs.getString("stock_name");
 				int now_price = rs.getInt("stock_now_price");
@@ -56,7 +57,8 @@ public class MainController extends DBcontroller {
 
 				System.out.println(Db_stock_name[i]);
 			}
-
+			
+			// 다음날 주식으로 DB update
 			for (int i = 0; i < 20; i++) {
 				String name_l = Db_stock_name[i]; /// 0 대신 주식 이름 넣어야 함.
 				int yes_price = Db_yesterday_price[i];
@@ -74,11 +76,22 @@ public class MainController extends DBcontroller {
 				row = psmt.executeUpdate();
 
 				if (row > 0) {
-					System.out.println("UPDATE SUCCESS");
+					System.out.println("ALL_STOCK_UPDATE SUCCESS");
 				} else {
-					System.out.println("UPDATE FAIL");
+					System.out.println("ALL_STOCK_UPDATE FAIL");
 				}
+				
+//				String sql_3 = 
+				
+				
+				
+				
 			}
+			
+			// my_stock에서 current, stock_yield 업데이트
+			// from my_stock에서 stock_name이 all_stock과 동일할 때 
+			
+			
 			
 		}
 
