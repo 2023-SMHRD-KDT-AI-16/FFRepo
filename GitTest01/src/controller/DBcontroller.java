@@ -246,8 +246,6 @@ public class DBcontroller {
 				psmt.setInt(2, my_price - (sell_stockPrice * count)); // 가지고 있던 금액 - 현재 매도할 금액
 				psmt.setString(3, sell_stockName);
 
-				System.out.println(
-						(stockCount - count) + " " + (my_price - (sell_stockPrice * count)) + " " + sell_stockName);
 
 				// sql통과
 
@@ -321,7 +319,6 @@ public class DBcontroller {
 				psmt.setString(3, stockName);
 				psmt.setInt(4, 0);
 				psmt.setInt(5, count);
-				System.out.println(buy_price + " " + count + " " + stockCount);
 				// sql통과
 				if (score >= buy_price * count) {
 					int row = psmt.executeUpdate();
@@ -339,7 +336,6 @@ public class DBcontroller {
 				psmt.setInt(3, buy_price);
 				psmt.setFloat(4, yield); // 수익룰
 				psmt.setString(5, stockName);
-				System.out.println(buy_price + " " + yield + " " + stockCount + " " + stockName);
 				// sql통과
 				if (score >= buy_price * purchased_amount + (buy_price * count)) {
 					int row = psmt.executeUpdate();

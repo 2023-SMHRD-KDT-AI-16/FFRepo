@@ -24,8 +24,8 @@ public class MainView {
 		int sel = 0;
 		
 
-		mco.art();
-		mco.play();
+//		mco.art();
+//		mco.play();
 		while (true) {/// 메인 while
 			// 페이지 메뉴 표시,선택
 			switch (sel) {
@@ -173,10 +173,11 @@ public class MainView {
 				} else if (choice == 4) {// 하루마감
 					System.out.println("하루마감");
 					
-					mco.stock_Rate_Update();
-					
-					
-					
+					int count = mco.stock_Rate_Update();
+					if(count>=21) {
+						sel = 0;
+						break;
+					}
 					
 					// ===========choice 4 보유주식 ============
 				} else if (choice == 0) {// 메인화면
