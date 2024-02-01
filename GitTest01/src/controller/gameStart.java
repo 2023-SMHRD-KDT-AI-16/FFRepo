@@ -14,11 +14,16 @@ public class gameStart {
 
 	void start() {
 		// TODO Auto-generated method stub
-		
-		for (int i = 0; i < 20; i++) {
-			System.out.print(dbco.everyStock().get(i).getStockName() + "\t \t \t" +dbco.everyStock().get(i).getYesterdayPrice()
-					+ "\t \t" + dbco.everyStock().get(i).getNowPrice() + "\t \t"+ dbco.everyStock().get(i).getRate());
+		for (StockVO x : dbco.everyStock()) {
+			System.out.print(x.getStockName()+ "\t"+ "\t");
+			System.out.print(x.getNowPrice()+ "\t");
+			System.out.print(x.getYesterdayPrice()+ "\t");
+			System.out.println(x.getRate()+ "\t");
 		}
+//		for (int i = 0; i < 20; i++) {
+//			System.out.print(dbco.everyStock().get(i).getStockName() + "\t \t \t" +dbco.everyStock().get(i).getYesterdayPrice()
+//					+ "\t \t" + dbco.everyStock().get(i).getNowPrice() + "\t \t"+ dbco.everyStock().get(i).getRate());
+//		}
 		
 
 //	switch (key) {
