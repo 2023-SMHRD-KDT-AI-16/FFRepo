@@ -8,7 +8,7 @@ public class todayEnd {
 	public todayEnd(){
 		
 		try {
-			int num = mcr.stock_Rate_Update(cnt); //첫째날 마감
+			int num = mcr.stock_Rate_Update(); //첫째날 마감
 			System.out.println(num);
 			
 		} catch (ClassNotFoundException e) {
@@ -19,7 +19,7 @@ public class todayEnd {
 			e.printStackTrace();
 		}
 		try {
-			int num = mcr.stock_Rate_Update(cnt); //첫째날 마감
+			int num = mcr.stock_Rate_Update(); //첫째날 마감
 			System.out.println(num);
 			
 		} catch (ClassNotFoundException e) {
@@ -30,7 +30,7 @@ public class todayEnd {
 			e.printStackTrace();
 		}
 		try {
-			int num = mcr.stock_Rate_Update(cnt); //첫째날 마감
+			int num = mcr.stock_Rate_Update(); //첫째날 마감
 			System.out.println(num);
 			
 		} catch (ClassNotFoundException e) {
