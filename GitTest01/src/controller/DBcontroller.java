@@ -15,7 +15,7 @@ public class DBcontroller {
 	public Connection conn;
 	public PreparedStatement psmt;
 	public ResultSet rs;
-	public int score = 50000000;
+//	public int score = 50000000;
 
 	// DB 연결 메소드
 	public void getConn() {
@@ -189,7 +189,7 @@ public class DBcontroller {
 	}
 
 	// 4. 주식 매도 기능 메소드
-	public int stockSale(int sell_stock_index, int count) {
+	public int stockSale(int sell_stock_index, int count, int score) {
 
 		ArrayList<String> stock_names = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
 		ArrayList<Integer> sell_prices = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
@@ -267,7 +267,7 @@ public class DBcontroller {
 	}
 
 	// 5. 주식 매수 기능 메소드
-	public int stockBuy(int buy_stock_name, int count) {
+	public int stockBuy(int buy_stock_name, int count,int score) {
 		ArrayList<String> stock_name = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
 		ArrayList<Integer> pur_price = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
 
