@@ -60,25 +60,32 @@ public class MainView {
 					} else if (choice2 == 2) {// 주식번호 입력
 						System.out.print("주식번호 입력 : ");
 						int stockNum = sc.nextInt()-1;
-					
+
 						ArrayList<StockVO> stockList = mdao.everyStock();
-						System.out.println("종목이름 : "+mdao.everyStock().get(stockNum).getStockName());
-						System.out.println(mdao.everyStock().get(stockNum).getNowPrice());
-						System.out.println(mdao.everyStock().get(stockNum).getYesterdayPrice());
-						System.out.println(mdao.everyStock().get(stockNum).getRate());
+						System.out.println("종목이름 : " + mdao.everyStock().get(stockNum).getStockName());
+						System.out.println("전일가 : " + mdao.everyStock().get(stockNum).getYesterdayPrice()+"원");
+						System.out.println("시가 : " +  mdao.everyStock().get(stockNum).getNowPrice()+"원");
+						System.out.println("전일대비 등락률 : "+mdao.everyStock().get(stockNum).getRate() +"%" );
+						System.out.println("======");
+						System.out.println("[1]매수하기 [2]매도하기 [3]뒤로가기");
+						int choice3 = sc.nextInt();
+						if(choice3 == 1) {//매수하기
+							System.out.print("매수량 : ");
+							int buyCount = sc.nextInt();
+							mdao.stockBuy(stockNum, buyCount );
+							System.out.println(mdao.everyStock().get(stockNum).getStockName() +" "+ buyCount+"주 매수완료");
+						}else if(choice3 == 2) {//매도하기
+							System.out.print("매도량 : ");
+							int sellCount = sc.nextInt();
+							mdao.stockSale(stockNum, sellCount);
+							System.out.println(mdao.everyStock().get(stockNum).getStockName()+" " + sellCount+"주 매도완료");
+							
+						}else if(choice3 == 3) {//뒤로가기
+							break;
+						}
 						
-			
 						
-//						mdao.stockBuy(stockNum, 2);
-					
-						
-						
-//						for (StockVO x : stockList) {
-//							System.out.println(x.getStockName());
-//							System.out.println(x.getNowPrice());
-//							System.out.println(x.getYesterdayPrice());
-//							System.out.println(x.getRate());
-//						}
+
 
 					}
 
