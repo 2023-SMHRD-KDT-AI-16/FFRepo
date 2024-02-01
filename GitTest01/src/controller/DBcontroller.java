@@ -170,20 +170,17 @@ public class DBcontroller {
 
 	// 4. 주식 매도 기능 메소드
 	public int stockSale(int sell_stock_index, int count) {
-		
+
 		ArrayList<String> stock_names = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
 		ArrayList<Integer> sell_prices = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
-      getConn();
+		getConn();
 
-      try {
-         String sql = "select * from all_stock";
-		String sql_2 = "select stock_count, purchased_stock_amount from my_stock where stock_name = ?";
-         String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ? where stock_name = ?";
+		try {
+			String sql = "select * from all_stock";
+			psmt = conn.prepareStatement(sql);
 
-         psmt = conn.prepareStatement(sql);
-
-         // sql통과
-         rs = psmt.executeQuery();
+			// sql통과
+			rs = psmt.executeQuery();
 
 			// select 한줄의 데이터 확인 rs.next()
 			while (rs.next()) {
@@ -194,61 +191,59 @@ public class DBcontroller {
 				stock_names.add(stockName);
 				sell_prices.add(nowPrice);
 			}
-			
-			try{
+
 			String sell_stockName = stock_names.get(sell_stock_index);
 			int sell_stockPrice = sell_prices.get(sell_stock_index);
+			String sql_2 = "select stock_count, purchased_stock_amount from my_stock where stock_name = ?";
 			psmt = conn.prepareStatement(sql_2);
-			psmt.setString(1,sell_stockName);
-         rs = psmt.executeQuery();
+			psmt.setString(1, sell_stockName);
+			rs = psmt.executeQuery();
 
 			int stockCount = 0; // 보유하고 있는 주식 수량 담을 변수
 			int my_price = 0; // 내가 가지고 있는 금액
-			
-			
 			while (rs.next()) {
 				stockCount = rs.getInt("stock_count");
 				my_price = rs.getInt("purchased_stock_amount");
-				System.out.println("보유 주식 : " + stockCount );
-				
+				System.out.println("보유 주식 : " + stockCount);
+
 			}
-			}	
-			
-try{
-         if (stockCount == count) {
-            // sql 통과 통로
-            psmt = conn.prepareStatement(sql_3);
+
+			if (stockCount == count) {
+				// sql 통과 통로
+				String sql_3 = "delete from my_stock where stock_name = ?";
+				psmt = conn.prepareStatement(sql_3);
 
 				// ? 채우기
-				 psmt.setString(1, sell_stockName);
-
-            // sql통과
-            int row = psmt.executeUpdate();
-
-            return row;
-         } else {
-            psmt = conn.prepareStatement(sql_3);
-
-				// ? 채우기
-				psmt.setInt(1, (stockCount - count));
-				psmt.setInt(2, my_price - (sell_stockPrice*count)); // 가지고 있던 금액 - 현재 매도할 금액
-				psmt.setString(3, sell_stockName );
+				psmt.setString(1, sell_stockName);
 
 				// sql통과
 				int row = psmt.executeUpdate();
+
 				return row;
+			} else {
+				String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ? where stock_name = ?";
+				psmt = conn.prepareStatement(sql_3);
+
+				// ? 채우기
+				psmt.setInt(1, (stockCount - count));
+				psmt.setInt(2, my_price - (sell_stockPrice * count)); // 가지고 있던 금액 - 현재 매도할 금액
+				psmt.setString(3, sell_stockName);
 				
+				System.out.println((stockCount - count )+ " " + (my_price - (sell_stockPrice * count)) + " " + sell_stockName);
+				
+				// sql통과
+				
+				int row = psmt.executeUpdate();
+				return row;
+
 			}
 
-         
-         
-      } catch (SQLException e) {
-         e.printStackTrace();
-      } finally {
-         allClose();
-      }
-      return 0;
-      }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			allClose();
+		}
+		return 0;
 	}
 
 	// 5. 주식 매수 기능 메소드
@@ -295,7 +290,7 @@ try{
 				yield = rs.getFloat("stock_yield");
 
 			}
-
+			System.out.println(yield);
 			if (stockCount == 0) {// 원하는 주식 처음 구매 시
 				// sql 통과 통로
 				String sql_3 = "insert into my_stock values(?,?,?,?,?)";
@@ -307,7 +302,7 @@ try{
 				psmt.setString(3, stockName);
 				psmt.setInt(4, 0);
 				psmt.setInt(5, count);
-
+				System.out.println(buy_price + " " + count + " " + stockCount);
 				// sql통과
 				int row = psmt.executeUpdate();
 
@@ -322,7 +317,8 @@ try{
 				psmt.setInt(3, buy_price);
 				psmt.setFloat(4, yield); // 수익룰
 				psmt.setString(5, stockName);
-
+				System.out.println("helllllllllll");
+				System.out.println(buy_price + " " + yield + " " + stockCount + " " + stockName);
 				// sql통과
 				int row = psmt.executeUpdate();
 				return row;
