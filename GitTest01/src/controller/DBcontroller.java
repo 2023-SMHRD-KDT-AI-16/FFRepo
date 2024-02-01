@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.StockVO;
-import model.UserVO;
 
 public class DBcontroller {
 
@@ -57,21 +56,38 @@ public class DBcontroller {
 
 	}
 
-	// 1. 회원가입 기능
+	// 1. 회원등록 기능
 
-	public int insertMember(UserVO user) {
+	public int insertName(String Nickname) {
 
 		getConn();
 
 		try {
+			String sql_1 = "select stock_yield, purchased_stock_amount from my_stock";
+			rs = psmt.executeQuery();
+			
+			float final_yield = 0.0f;
+			int cnt = 0;
+			int sum = 0;
+			
+			while (rs.next()) {
+				float id = rs.getFloat("stock_yield");
+				int my_price = rs.getInt("purchased_stock_amount");
+				final_yield += id;
+				cnt +=1 ;
+				sum += my_price;
+
+			}
+			final_yield = final_yield / cnt;
+			
 			// sql통과 통로
-			String sql = "insert into my_user values(?,?,?)";
-			psmt = conn.prepareStatement(sql);
+			String sql_2 = "insert into my_user values(?,?,?)";
+			psmt = conn.prepareStatement(sql_2);
 
 			// ?채우기
-			psmt.setString(1, user.getUser_id());
-			psmt.setInt(2, 50000000);
-			psmt.setInt(3, user.getMy_yield());
+			psmt.setString(1,Nickname);
+			psmt.setInt(2, sum);
+			psmt.setFloat(3, final_yield);
 
 			// sql통과 하세요!
 			int row = psmt.executeUpdate();
@@ -218,7 +234,7 @@ public class DBcontroller {
 
 				// sql통과
 				int row = psmt.executeUpdate();
-				score = score + (sell_stockPrice*count);
+				score = score + (sell_stockPrice * count);
 
 				return row;
 			} else {
@@ -236,7 +252,7 @@ public class DBcontroller {
 				// sql통과
 
 				int row = psmt.executeUpdate();
-				score = score + (sell_stockPrice*count);
+				score = score + (sell_stockPrice * count);
 				return row;
 
 			}
