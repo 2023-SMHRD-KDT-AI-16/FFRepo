@@ -20,20 +20,15 @@ public class gameStart {
 			System.out.print(x.getYesterdayPrice()+ "\t");
 			System.out.println(x.getRate()+ "\t");
 		}
-//		for (int i = 0; i < 20; i++) {
-//			System.out.print(dbco.everyStock().get(i).getStockName() + "\t \t \t" +dbco.everyStock().get(i).getYesterdayPrice()
-//					+ "\t \t" + dbco.everyStock().get(i).getNowPrice() + "\t \t"+ dbco.everyStock().get(i).getRate());
-//		}
 		
-
-//	switch (key) {
-//	case value: {
-//		
-//		yield type;
-//	}
-//	default:
-//		throw new IllegalArgumentException("Unexpected value: " + key);
-//	}
+		for (int i = 0; i < 30; i++) {
+			
+			
+			
+			
+			//하루 마감 했을때
+			my_turn++;
+		}
 
 	}
 
