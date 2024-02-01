@@ -240,7 +240,7 @@ public class DBcontroller {
 				int row = psmt.executeUpdate();
 				score = score + (sell_stockPrice * count);
 
-				return row;
+				return score;
 			} else {
 				String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ? where stock_name = ?";
 				psmt = conn.prepareStatement(sql_3);
@@ -254,7 +254,7 @@ public class DBcontroller {
 
 				int row = psmt.executeUpdate();
 				score = score + (sell_stockPrice * count);
-				return row;
+				return score;
 
 			}
 
