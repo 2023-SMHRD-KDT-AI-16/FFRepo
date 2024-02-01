@@ -371,17 +371,20 @@ public class DBcontroller {
 			rs = psmt.executeQuery();
 
 			ArrayList<UserVO> uvos = new ArrayList<UserVO>();
-
+			//랭킹부분 안풀리는데..?
 			while (rs.next()) {
-				String a = rs.getString("user_id");
-				int b = rs.getInt("my_money");
-				int c = rs.getInt("my_yield");
+				UserVO uvo = new UserVO();
+				uvo.setUser_id(rs.getString("user_id"));
+				uvo.setMy_money(rs.getInt("my_money"));
+				uvo.setMy_yield(rs.getInt("my_yield"));
 
-				UserVO uvo = new UserVO(a, b, c);
 				uvos.add(uvo);
-				return uvos;
 			}
-		} catch (SQLException e) {
+			System.out.println(uvos);
+				
+				
+			return uvos;
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
