@@ -14,7 +14,6 @@ public class MainView {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		int my_money = 50000000; // 초기자금
-		int my_turn = 0; // 턴을 카운터 측정 30턴이면 종료
 
 		DBcontroller mdao = new DBcontroller();
 		MainController mco = new MainController();

@@ -80,7 +80,7 @@ public class DBcontroller {
 				sum += my_price;
 
 			}
-			final_yield = sum / final_yield;
+			final_yield = sum / 50000000 ;
 			
 			// sql통과 통로
 			String sql_2 = "insert into my_user values(?,?,?)";
@@ -93,7 +93,8 @@ public class DBcontroller {
 
 			// sql통과 하세요!
 			int row = psmt.executeUpdate();
-			return row;
+			return 50000000;
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -101,6 +102,7 @@ public class DBcontroller {
 		} finally {
 			allClose();
 		}
+		
 	}
 
 //	// 2. 로그인
