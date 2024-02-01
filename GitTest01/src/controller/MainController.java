@@ -77,7 +77,6 @@ public class MainController extends DBcontroller {
 				Db_stock_name[i] = stock_name.get(i);
 				Db_yesterday_price[i] = stock_now_price.get(i);
 
-				System.out.println(Db_stock_name[i]);
 			}
 
 			int yesterday_price = 0;
@@ -162,7 +161,7 @@ public class MainController extends DBcontroller {
 			cnt++;
 			return cnt;
 		}else{
-			System.out.println("턴이 종료되었습니다. 닉네임을 등록하세요.");
+			
 		}return cnt;
 
 	}
