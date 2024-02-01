@@ -9,6 +9,7 @@ import controller.HaveStock;
 import controller.MainController;
 import model.MyStockVO;
 import model.StockVO;
+import model.UserVO;
 
 public class MainView {
 
@@ -205,7 +206,15 @@ public class MainView {
 				}
 
 			case 2: // 랭킹보기
-
+				
+				ArrayList<UserVO> uvoList = mdao.userRank();
+				for (UserVO e : uvoList) {
+					System.out.println("======");
+					System.out.println(e.getUser_id());
+					System.out.println(e.getMy_money());
+					System.out.println(e.getMy_yield());
+					}
+				
 				break;
 
 			case 3: // 룰설명
