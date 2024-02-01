@@ -6,11 +6,15 @@ import java.util.Random;
 
 public class MainController extends DBcontroller {
 	
+<<<<<<< HEAD
 	
 	
 	
 	
 	public int stock_Rate_Update(int input) throws SQLException, ClassNotFoundException {
+=======
+	public int stock_Rate_Update() throws SQLException, ClassNotFoundException {
+>>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-16/FFRepo.git
 		int cnt = 0;
 		float[] stock_rate = new float[20];
 		String[] Db_stock_name = new String[20];
@@ -63,6 +67,7 @@ public class MainController extends DBcontroller {
 
 		int yesterday_price = 0;
 		float rate = 0;
+		int now_price = 0;
 		
 		// 다음날 주식으로 DB update
 		for (int i = 0; i < 20; i++) {
@@ -70,12 +75,13 @@ public class MainController extends DBcontroller {
 			yesterday_price = Db_yesterday_price[i];
 			String sql_2 = "UPDATE all_stock SET STOCK_now_price = ?, stock_yesterday_price = ?, STOCK_RATE = ? WHERE STOCK_NAME = ?";
 			rate = Math.round(-(1 - stock_rate[i]) * 10000.0) / 100.0f; // 등락률 집어 넣기(소수점 3번째 자리에서 반올림)
-			float now_price = yesterday_price * stock_rate[i];
+			float price = yesterday_price * stock_rate[i];
+			now_price = (int)price;
 			String name = name_l;
 			
 			psmt = conn.prepareStatement(sql_2);
 
-			psmt.setInt(1, (int) now_price);
+			psmt.setInt(1, now_price);
 			psmt.setFloat(2, yesterday_price);
 			psmt.setFloat(3, rate);
 			psmt.setString(4, name);
@@ -93,27 +99,64 @@ public class MainController extends DBcontroller {
 		
 		// my_stock 수정 시작
 		
-		String sql_3 = "select purchased_stock_amount, stock_count, stock_name from my_stock where";
+		String sql_3 = "select purchased_stock_amount, stock_count, stock_name from my_stock";
         psmt = conn.prepareStatement(sql_3);
         
-        int purchased_price = 0;
-        int count = 0;
-        String my_stock_name = null;
+        rs = psmt.executeQuery();
+        
+        ArrayList<Integer> purchased_prices = new ArrayList<Integer>();
+        ArrayList<Integer> counts = new ArrayList<Integer>();
+        ArrayList<String> my_stock_names = new ArrayList<String>();
         
         while (rs.next()) {
-           purchased_price = rs.getInt("purchased_stock_amount");
-           count = rs.getInt("stock_count");
-           my_stock_name = rs.getString("stock_name");
+           int price = rs.getInt("purchased_stock_amount");
+           int cnot = rs.getInt("stock_count");
+           String name = rs.getString("stock_name");
+           purchased_prices.add(price);
+           counts.add(cnot);
+           my_stock_names.add(name);
            }
+        for(int i = 0; i<counts.size(); i++) {
+        	int purchased_price = purchased_prices.get(i);
+        	int count = counts.get(i);
+        	String my_stock_name = my_stock_names.get(i);
         
+        int first_price = purchased_price * count; //수익률 계산 시 필요(전체 금액/보유주)
+        System.out.println(first_price);
+        int yield = now_price/first_price;
+        System.out.println(yield);
         String sql_4 = "update my_stock set stock_yield = ?, current_stock_amount = ? where stock_name = ?";
+       
+        psmt = conn.prepareStatement(sql_4);
         
+        psmt.setInt(1, yield);
+        psmt.setInt(2, now_price);
+        psmt.setString(3, my_stock_name);
+        row = psmt.executeUpdate();
+        if (row > 0) {
+			System.out.println("MY_STOCK_UPDATE SUCCESS");
+		} else {
+			System.out.println("MY_STOCK_UPDATE FAIL");
+		}
+
+        }
+        	try{
+        		if(psmt != null) {
+        			psmt.close();
+        		}if(conn != null) {
+        			conn.close();
+        		}
+        	}catch (SQLException e) {
+				// TODO: handle exception
+        		e.printStackTrace();
+			}finally {
+	        	allClose();
+        	
+        }
         
-        int first_price = purchased_price / count; //수익률 계산 시 필요(전체 금액/보유주)
-
-
 		cnt++;
 		return cnt;
+		
 	}
 	public void art() {
 
