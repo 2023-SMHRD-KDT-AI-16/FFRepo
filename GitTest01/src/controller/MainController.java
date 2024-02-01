@@ -6,15 +6,7 @@ import java.util.Random;
 
 public class MainController extends DBcontroller {
 	
-<<<<<<< HEAD
-	
-	
-	
-	
-	public int stock_Rate_Update(int input) throws SQLException, ClassNotFoundException {
-=======
 	public int stock_Rate_Update() throws SQLException, ClassNotFoundException {
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-KDT-AI-16/FFRepo.git
 		int cnt = 0;
 		float[] stock_rate = new float[20];
 		String[] Db_stock_name = new String[20];
