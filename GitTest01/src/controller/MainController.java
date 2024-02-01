@@ -58,15 +58,18 @@ public class MainController extends DBcontroller {
 			}
 
 			for (int i = 0; i < 20; i++) {
-				String name_1 = Db_stock_name[i]; /// 0 대신 주식 이름 넣어야 함.
-
-				String sql_2 = "UPDATE all_stock SET STOCK_RATE = ? WHERE STOCK_NAME = ?";
+				String name_l = Db_stock_name[i]; /// 0 대신 주식 이름 넣어야 함.
+				int yes_price = Db_yesterday_price[i];
+				String sql_2 = "UPDATE all_stock SET STOCK_now_price = ?, stock_yesterday_price = ?, STOCK_RATE = ? WHERE STOCK_NAME = ?";
 				float rate = Math.round((1-stock_rate[i])*10000.0)/100.0f; // 등락률 집어 넣기(소수점 3번째 자리에서 반올림)
-				String name = name_1;
+				float now_price = yes_price*stock_rate[i];
+				String name = name_l;
 				psmt = conn.prepareStatement(sql_2);
 
-				psmt.setFloat(1, rate);
-				psmt.setString(2, name);
+				psmt.setFloat(1, (int)now_price);
+				psmt.setFloat(2, yes_price);
+				psmt.setFloat(3, rate);
+				psmt.setString(4, name);
 
 				row = psmt.executeUpdate();
 
@@ -77,24 +80,6 @@ public class MainController extends DBcontroller {
 				}
 			}
 			
-			for (int i = 0; i < 20; i++) {
-				String name = Db_stock_name[i]; /// 0 대신 주식 이름 넣어야 함.
-				String sql_2 = "UPDATE all_stock SET STOCK_now_price = ?,stock_yesterday_price WHERE STOCK_NAME = ?";
-				float rate = Math.round((1-stock_rate[i])*10000.0)/100.0f; // 등락률 집어 넣기
-				
-				psmt = conn.prepareStatement(sql_2);
-
-				psmt.setFloat(1, rate);
-				psmt.setString(2, name);
-
-				row = psmt.executeUpdate();
-
-				if (row > 0) {
-					System.out.println("UPDATE SUCCESS");
-				} else {
-					System.out.println("UPDATE FAIL");
-				}
-			}
 		}
 
 		// 통로 닫기
