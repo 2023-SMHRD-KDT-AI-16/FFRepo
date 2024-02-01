@@ -17,7 +17,8 @@ public class DBcontroller {
 	protected int score = 50000000;
 
 	// DB 연결 메소드
-	protected void getConn() {
+	public void getConn() {
+
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String user = "mp_21K_bigdata22_p1_2";
@@ -38,7 +39,7 @@ public class DBcontroller {
 	}
 
 	// 통로 close 하는 메소드
-	protected void allClose() {
+	public void allClose() {
 
 		try {
 
