@@ -38,7 +38,7 @@ public class MainView {
 
 			case 1: // 게임 화면
 
-				System.out.println("[1]전체종목보기 [2]보유주식 [3]상점 [4]하루마감 [0]메인화면");
+				System.out.println("[1]전체종목보기 [2]보유주식 [3]하루마감  [0]메인화면");
 				int choice = sc.nextInt();
 
 				if (choice == 1) {// 전체 종목
@@ -166,11 +166,7 @@ public class MainView {
 					}
 
 					// ===========choice 2 보유주식 ============
-				} else if (choice == 3) {// 상점
-					System.out.println("상점");
-					
-					// ===========choice 3 보유주식 ============
-				} else if (choice == 4) {// 하루마감
+				}  else if (choice == 3) {// 하루마감
 					System.out.println("하루마감");
 					
 					int count = mco.stock_Rate_Update();
@@ -192,19 +188,20 @@ public class MainView {
 				break;
 
 			case 3: // 룰설명
-				System.out.println("룰설명");
-				System.out.println("[1]뒤로가기  [2]종료");
+				System.out.println("턴제식 주식모의투자\r\n"
+						+ "초기자금 : 5000만, 턴 20턴\r\n"
+						+ "턴 지날때마다 주식전체종목의 현재가 랜덤으로 변동\r\n"
+						+ "(단 2턴마다 이벤트 발생)\r\n"
+						+ "하루마감 버튼입력시 당일 장 마감+다음턴으로 이동\r\n"
+						+ "마지막 20턴까지 끝낼 시 닉네임 등록후 랭킹적용");
+				System.out.println("[1]뒤로가기");
 				sel = sc.nextInt();
 				if (sel == 1) {
 					sel = 0;
-					System.out.println("설명문");
-					System.out.println("설명문");
-					System.out.println("설명문");
-					System.out.println("설명문");
+					
 					break;
-				}else if (sel == 2) {
-					System.exit(0);
 				}
+
 				break;
 			case 4: // 종료
 				System.exit(0);
