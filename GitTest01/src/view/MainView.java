@@ -58,7 +58,8 @@ public class MainView {
 					} else if (choice2 == 2) {// 주식번호 입력
 						System.out.print("주식번호 입력 : ");
 						int stockNum = sc.nextInt();
-//						ArrayList<StockVO> stockList = mdao.everyStock();
+//						
+						ArrayList<StockVO> stockList = mdao.everyStock();
 //						System.out.println(mdao.everyStock().get(stockNum).getStockName());
 //						System.out.println(mdao.everyStock().get(stockNum).getNowPrice());
 //						System.out.println(mdao.everyStock().get(stockNum).getYesterdayPrice());
@@ -66,7 +67,7 @@ public class MainView {
 //						
 			
 						
-						mdao.stockBuy(stockNum, 2);
+//						mdao.stockBuy(stockNum, 2);
 					
 						
 						
