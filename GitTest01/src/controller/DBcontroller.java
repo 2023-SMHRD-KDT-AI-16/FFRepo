@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.StockVO;
+import model.UserVO;
 
 public class DBcontroller {
 
@@ -355,4 +356,62 @@ public class DBcontroller {
 		}
 		return 0;
 	}
+	
+	
+	public ArrayList<UserVO> userRank () {
+	getConn();
+	try {
+		String sql = "select * from my_user order by my_money";
+		psmt = conn.prepareStatement(sql);
+		
+		rs = psmt.executeQuery();
+		
+		ArrayList<UserVO> uvos = new ArrayList<UserVO>();
+		
+		while(rs.next()) {
+			String a = rs.getString("user_id");
+			int b =rs.getInt("my_money");
+			int c= rs.getInt("my_yield");
+			
+			UserVO uvo = new UserVO(a, b, c);
+			uvos.add(uvo);
+			return uvos;
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally {
+		allClose();
+	}
+	return null;
+	
+	
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
+
