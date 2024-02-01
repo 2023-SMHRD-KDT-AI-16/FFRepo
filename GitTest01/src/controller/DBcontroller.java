@@ -193,43 +193,67 @@ public class DBcontroller {
 	}
 
 	// 4. 주식 매도 기능 메소드
-	public int stockSale(String sale_stock_name, int count) {
+	public int stockSale(int sale_stock_name, int count) {
+		
+		ArrayList<String> stock_name = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
+		ArrayList<Integer> pur_price = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
 
 		getConn();
 
 		try {
-			String sql = "select stock_count from my_stock where stock_name = ?";
+			String sql = "select * from all_stock";
 			psmt = conn.prepareStatement(sql);
 
+			// sql통과
+			rs = psmt.executeQuery();
+
+			// select 한줄의 데이터 확인 rs.next()
+			while (rs.next()) {
+				String stockName = rs.getString("stock_name");
+				int nowPrice = rs.getInt("stock_now_price");
+				int yesterdayPrice = rs.getInt("stock_yesterday_Price");
+				int stockrate = rs.getInt("stock_rate");
+				stock_name.add(stockName);
+				pur_price.add(nowPrice);
+			}
+			
+			
+			String sql_2 = "select stock_count, purchase_stock_amount from my_stock where stock_name = ?";
+			psmt = conn.prepareStatement(sql_2);
+
 			// ? 채우기
-			psmt.setString(1, sale_stock_name);
+			psmt.setString(1, stock_name.get(sale_stock_name));
 
 			rs = psmt.executeQuery();
 
 			int stockCount = 0; // 보유하고 있는 주식 수량 담을 변수
+			int my_price = 0; // 내가 가지고 있는 금액
 			while (rs.next()) {
-				stockCount = rs.getInt(1);
+				stockCount = rs.getInt("stock_count");
+				my_price = rs.getInt("purchased_stock_amount");
+				
 			}
 
 			if (stockCount == count) {
 				// sql 통과 통로
-				String sql_2 = "delete from my_stock where stock_name = ?";
-				psmt = conn.prepareStatement(sql_2);
+				String sql_3 = "delete from my_stock where stock_name = ?";
+				psmt = conn.prepareStatement(sql_3);
 
 				// ? 채우기
-				psmt.setString(1, sale_stock_name);
+				psmt.setString(1, stock_name.get(count));
 
 				// sql통과
 				int row = psmt.executeUpdate();
 
 				return row;
 			} else {
-				String sql_2 = "update my_stock set stock_count = ? where stock_name = ?";
-				psmt = conn.prepareStatement(sql_2);
+				String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ? where stock_name = ?";
+				psmt = conn.prepareStatement(sql_3);
 
 				// ? 채우기
 				psmt.setInt(1, (stockCount - count));
-				psmt.setString(2, sale_stock_name);
+				psmt.setInt(2, my_price - (pur_price.get(sale_stock_name)*count)); // 가지고 있던 금액 - 현재 매도할 금액
+				psmt.setString(3, stock_name.get(count));
 
 				// sql통과
 				int row = psmt.executeUpdate();
