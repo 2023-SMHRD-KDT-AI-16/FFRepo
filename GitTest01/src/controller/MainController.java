@@ -94,26 +94,60 @@ public class MainController extends DBcontroller {
 		String sql_3 = "select purchased_stock_amount, stock_count, stock_name from my_stock";
         psmt = conn.prepareStatement(sql_3);
         
-        int purchased_price = 0;
-        int count = 0;
-        String my_stock_name = null;
+        rs = psmt.executeQuery();
+        
+        ArrayList<Integer> purchased_prices = new ArrayList<Integer>();
+        ArrayList<Integer> counts = new ArrayList<Integer>();
+        ArrayList<String> my_stock_names = new ArrayList<String>();
         
         while (rs.next()) {
-           purchased_price = rs.getInt("purchased_stock_amount");
-           count = rs.getInt("stock_count");
-           my_stock_name = rs.getString("stock_name");
+           int price = rs.getInt("purchased_stock_amount");
+           int cnot = rs.getInt("stock_count");
+           String name = rs.getString("stock_name");
+           purchased_prices.add(price);
+           counts.add(cnot);
+           my_stock_names.add(name);
            }
+        for(int i = 0; i<counts.size(); i++) {
+        	int purchased_price = purchased_prices.get(i);
+        	int count = counts.get(i);
+        	String my_stock_name = my_stock_names.get(i);
         
         int first_price = purchased_price * count; //수익률 계산 시 필요(전체 금액/보유주)
+        System.out.println(first_price);
         int yield = first_price/now_price;
+        System.out.println(yield);
         String sql_4 = "update my_stock set stock_yield = ?, current_stock_amount = ? where stock_name = ?";
+       
+        psmt = conn.prepareStatement(sql_4);
+        
         psmt.setInt(1, yield);
         psmt.setInt(2, now_price);
         psmt.setString(3, my_stock_name);
+        row = psmt.executeUpdate();
+        if (row > 0) {
+			System.out.println("MY_STOCK_UPDATE SUCCESS");
+		} else {
+			System.out.println("MY_STOCK_UPDATE FAIL");
+		}
+
+        }
+        	try{
+        		if(psmt != null) {
+        			psmt.close();
+        		}if(conn != null) {
+        			conn.close();
+        		}
+        	}catch (SQLException e) {
+				// TODO: handle exception
+        		e.printStackTrace();
+			}finally {
+	        	allClose();
+        	
+        }
         
-
-
 		cnt++;
 		return cnt;
+		
 	}
 }

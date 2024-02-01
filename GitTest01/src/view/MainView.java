@@ -1,5 +1,6 @@
 package view;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ import model.StockVO;
 
 public class MainView {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		int my_money = 50000000; // 초기자금
 		int my_turn = 0; // 턴을 카운터 측정 30턴이면 종료
 
@@ -152,7 +153,7 @@ public class MainView {
 				} else if (choice == 4) {// 하루마감
 					System.out.println("하루마감");
 					
-					mco.stock_Rate_Update(0);
+					mco.stock_Rate_Update();
 					
 					
 					
