@@ -57,14 +57,14 @@ public class MainView {
 						break;
 					} else if (choice2 == 2) {// 주식번호 입력
 						System.out.print("주식번호 입력 : ");
-						int stockNum = sc.nextInt();
-//						
+						int stockNum = sc.nextInt()-1;
+					
 						ArrayList<StockVO> stockList = mdao.everyStock();
-//						System.out.println(mdao.everyStock().get(stockNum).getStockName());
-//						System.out.println(mdao.everyStock().get(stockNum).getNowPrice());
-//						System.out.println(mdao.everyStock().get(stockNum).getYesterdayPrice());
-//						System.out.println(mdao.everyStock().get(stockNum).getRate());
-//						
+						System.out.println("종목이름 : "+mdao.everyStock().get(stockNum).getStockName());
+						System.out.println(mdao.everyStock().get(stockNum).getNowPrice());
+						System.out.println(mdao.everyStock().get(stockNum).getYesterdayPrice());
+						System.out.println(mdao.everyStock().get(stockNum).getRate());
+						
 			
 						
 //						mdao.stockBuy(stockNum, 2);
