@@ -41,6 +41,7 @@ public class MainView {
 				System.out.println("[1]전체종목보기 [2]보유주식 [3]하루마감  [0]메인화면");
 				int choice = sc.nextInt();
 
+				//==========choice 1 전체 종목 =============
 				if (choice == 1) {// 전체 종목
 
 					System.out.println("전체 종목");
@@ -101,7 +102,7 @@ public class MainView {
 						System.out.println("잘못된 입력입니다.");
 					}
 
-					// ==========choice 1 전체종목 =============
+					// ==========choice 2 보유주식 =============
 				} else if (choice == 2) {// 보유주식
 					System.out.println("보유주식");
 
@@ -165,7 +166,7 @@ public class MainView {
 						System.out.println("잘못 입력");
 					}
 
-					// ===========choice 2 보유주식 ============
+					// ===========choice 3 하루마감 ============
 				}  else if (choice == 3) {// 하루마감
 					System.out.println("하루마감");
 					
@@ -175,7 +176,7 @@ public class MainView {
 						break;
 					}
 					
-					// ===========choice 4 보유주식 ============
+					// ===========choice 4 메인화면 ============
 				} else if (choice == 0) {// 메인화면
 					sel = 0;
 					break;
