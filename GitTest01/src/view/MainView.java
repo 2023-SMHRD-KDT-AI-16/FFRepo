@@ -19,6 +19,8 @@ public class MainView {
 		DBcontroller mdao = new DBcontroller();
 		MainController mco = new MainController();
 		HaveStock hvo = new HaveStock();
+		ArrayList<UserVO> uvoList = new ArrayList<UserVO>();
+
 		Scanner sc = new Scanner(System.in);
 
 		int sel = 0;
@@ -198,9 +200,7 @@ break;
 
 			case 2: // 랭킹보기
 
-				ArrayList<UserVO> uvoList = new ArrayList<UserVO>();
-				uvoList = mdao.userRank();
-					System.out.println(uvoList.get(0));
+					System.out.println(mdao.userRank());
 					
 				break;
 
