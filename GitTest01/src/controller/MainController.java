@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class MainController extends DBcontroller {
 	
-	public int stock_Rate_Update(int input) throws SQLException, ClassNotFoundException {
+	public int stock_Rate_Update() throws SQLException, ClassNotFoundException {
 		int cnt = 0;
 		float[] stock_rate = new float[20];
 		String[] Db_stock_name = new String[20];
