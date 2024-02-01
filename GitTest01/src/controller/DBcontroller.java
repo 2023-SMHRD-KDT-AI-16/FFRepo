@@ -11,10 +11,10 @@ import model.StockVO;
 
 public class DBcontroller {
 
-	protected Connection conn;
-	protected PreparedStatement psmt;
-	protected ResultSet rs;
-	protected int score = 50000000;
+	public Connection conn;
+	public PreparedStatement psmt;
+	public ResultSet rs;
+	public int score = 50000000;
 
 	// DB 연결 메소드
 	public void getConn() {
