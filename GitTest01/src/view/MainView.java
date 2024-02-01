@@ -1,11 +1,9 @@
 package view;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import controller.DBcontroller;
-import controller.todayEnd;
 import model.StockVO;
 
 public class MainView {
@@ -69,11 +67,13 @@ public class MainView {
 						System.out.println("======");
 						System.out.println("[1]매수하기 [2]매도하기 [3]뒤로가기");
 						int choice3 = sc.nextInt();
+						
 						if(choice3 == 1) {//매수하기
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
 							mdao.stockBuy(stockNum, buyCount );
 							System.out.println(mdao.everyStock().get(stockNum).getStockName() +" "+ buyCount+"주 매수완료");
+						
 						}else if(choice3 == 2) {//매도하기
 							System.out.print("매도량 : ");
 							int sellCount = sc.nextInt();
