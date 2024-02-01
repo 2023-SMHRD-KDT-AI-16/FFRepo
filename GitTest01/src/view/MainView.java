@@ -40,13 +40,13 @@ public class MainView {
 
 
 			case 1 : //게임 화면
-				
+
 
 
 				System.out.println("[1]전체종목보기 [2]보유주식 [3]상점 [4]하루마감 [0]메인화면");
 				int choice = sc.nextInt();
 
-				
+
 				if(choice == 1) {//전체 종목
 
 
@@ -68,13 +68,13 @@ public class MainView {
 
 					System.out.println("[1]뒤로가기 [2]주식번호 입력");
 					int choice2 = sc.nextInt();
-					
+
 					if(choice2 == 1) {//게임화면으로 뒤로가기
 						break;
 					}else if(choice2 == 2) {//주식번호 입력
-						
-						
-						
+
+
+
 					}
 
 
@@ -85,7 +85,7 @@ public class MainView {
 					System.out.println("보유주식");
 
 
-					
+
 					//===========choice 2 보유주식 ============
 				}else if(choice == 3) {//상점
 					System.out.println("상점");
@@ -93,8 +93,8 @@ public class MainView {
 					//===========choice 3 보유주식 ============
 				}else if(choice == 4) {//하루마감
 					System.out.println("하루마감");
-					
-					
+
+
 					//===========choice 4 보유주식 ============
 				}else if(choice ==0) {//메인화면
 					sel = 0;
@@ -112,19 +112,11 @@ public class MainView {
 
 
 
-
-
-
-
-
-
-
-
 			case 2 : //랭킹보기
-				
-				
-				
-				
+
+
+
+
 				break;
 
 			case 3: //룰설명
@@ -135,7 +127,7 @@ public class MainView {
 					sel = 0;
 					break;
 				}
-				
+
 				break;
 			case 4 : //종료
 				break;
