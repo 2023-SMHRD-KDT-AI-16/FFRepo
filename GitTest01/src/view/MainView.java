@@ -15,35 +15,38 @@ public class MainView {
 		Scanner sc = new Scanner(System.in);
 
 
-				
+
 
 		int sel = 0;
+		int page = 0;
 
 		while(true) {///메인 while
 			//페이지 메뉴 표시,선택
 			switch(sel) {
-			
+
 			case 0 :
-			System.out.println("개미는 뚠뚠");//초기 메인화면
-			System.out.println("[1]게임시작 [2]랭킹보기 [3]종료");
-			sel = sc.nextInt();
-			int cnt = 0;
+				System.out.println("개미는 뚠뚠");//초기 메인화면
+				System.out.println("[1]게임시작 [2]랭킹보기 [3]룰 설명 [4]종료");
+				sel = sc.nextInt();
+				break;
 
 
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
+
 			case 1 : //게임 화면
-				System.out.println("룰 설명");
+				
 
 
-				System.out.println("[1]전체종목보기 [2]보유주식 [3]상점 [4]하루마감");
+				System.out.println("[1]전체종목보기 [2]보유주식 [3]상점 [4]하루마감 [0]메인화면");
 				int choice = sc.nextInt();
 
+				
 				if(choice == 1) {//전체 종목
 
 
@@ -65,8 +68,13 @@ public class MainView {
 
 					System.out.println("[1]뒤로가기 [2]주식번호 입력");
 					int choice2 = sc.nextInt();
-					if(choice2 == 1) {
+					
+					if(choice2 == 1) {//게임화면으로 뒤로가기
 						break;
+					}else if(choice2 == 2) {//주식번호 입력
+						
+						
+						
 					}
 
 
@@ -77,22 +85,29 @@ public class MainView {
 					System.out.println("보유주식");
 
 
+					
+					//===========choice 2 보유주식 ============
 				}else if(choice == 3) {//상점
 					System.out.println("상점");
 
-
+					//===========choice 3 보유주식 ============
 				}else if(choice == 4) {//하루마감
 					System.out.println("하루마감");
-
-
-				}else {
+					
+					
+					//===========choice 4 보유주식 ============
+				}else if(choice ==0) {//메인화면
+					sel = 0;
+					break;
+				}
+				else {
 					System.out.println("잘못된 입력입니다 1");
 				}
 
 
 
 
-			
+
 
 
 
@@ -106,10 +121,23 @@ public class MainView {
 
 
 			case 2 : //랭킹보기
+				
+				
+				
+				
 				break;
 
-
-			case 3 : //종료
+			case 3: //룰설명
+				System.out.println("룰설명");
+				System.out.println("뒤로가기 [1]");
+				sel = sc.nextInt();
+				if(sel == 1) {
+					sel = 0;
+					break;
+				}
+				
+				break;
+			case 4 : //종료
 				break;
 
 
@@ -118,7 +146,7 @@ public class MainView {
 
 
 
-		
+
 
 		}//while -- 메인 while
 
