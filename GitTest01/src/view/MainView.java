@@ -22,7 +22,6 @@ public class MainView {
 		Scanner sc = new Scanner(System.in);
 
 		int sel = 0;
-		
 
 //		mco.art();
 //		mco.play();
@@ -32,7 +31,7 @@ public class MainView {
 
 			case 0:
 				System.out.println("개미는 뚠뚠");// 초기 메인화면
-				System.out.println("[1]게임시작 [2]랭킹보기 [3]룰 설명 [4]종료 ");//[97]닉네임 등록(시크릿창)
+				System.out.println("[1]게임시작 [2]랭킹보기 [3]룰 설명 [4]종료 ");// [97]닉네임 등록(시크릿창)
 				sel = sc.nextInt();
 				break;
 
@@ -41,7 +40,7 @@ public class MainView {
 				System.out.println("[1]전체종목보기 [2]보유주식 [3]하루마감  [0]메인화면");
 				int choice = sc.nextInt();
 
-				//==========choice 1 전체 종목 =============
+				// ==========choice 1 전체 종목 =============
 				if (choice == 1) {// 전체 종목
 
 					System.out.println("전체 종목");
@@ -80,15 +79,13 @@ public class MainView {
 
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
-							mdao.stockBuy(stockNum, buyCount,score);
-							System.out.println(
-									mdao.everyStock().get(stockNum).getStockName() + " " + buyCount + "주 매수완료");
-
+							mdao.stockBuy(stockNum, buyCount, score);
+							
 						} else if (choice3 == 2) {// 매도하기
 
 							System.out.print("매도량 : ");
 							int sellCount = sc.nextInt();
-							score = mdao.stockSale(stockNum, sellCount,score);
+							score = mdao.stockSale(stockNum, sellCount, score);
 							System.out.println(
 									mdao.everyStock().get(stockNum).getStockName() + " " + sellCount + "주 매도완료");
 
@@ -98,7 +95,7 @@ public class MainView {
 							break;
 						}
 
-					}else {
+					} else {
 						System.out.println("잘못된 입력입니다.");
 					}
 
@@ -106,7 +103,6 @@ public class MainView {
 				} else if (choice == 2) {// 보유주식
 					System.out.println("보유주식");
 
-					
 					ArrayList<MyStockVO> mvoList = hvo.MyStock();
 					int Stock_cnt = 0;
 
@@ -124,83 +120,71 @@ public class MainView {
 					int choice4 = sc.nextInt();
 					if (choice4 == 1) {
 
-						//선택된 보유주식 출력
+						// 선택된 보유주식 출력
 						System.out.print("주식번호 입력 : ");
 						int select5 = sc.nextInt() - 1;
 
 						MyStockVO igohome = mvoList.get(select5);
-						System.out.println("===" + (select5+1) + "===");
+						System.out.println("===" + (select5 + 1) + "===");
 						System.out.println(igohome.getStock_name());
 						System.out.println("보유 : " + igohome.getStock_count() + "주");
 						System.out.println("시가 : " + igohome.getCurrent_stock_amount());
 						System.out.println("수익률 : " + igohome.getStock_yield() + "%");
 						System.out.println("평가 총액 : " + igohome.getPurchased_stock_amount() + "원");
-						
-						
+
 						System.out.println("[1]매수하기 [2]매도하기 [3]뒤로가기");
 						System.out.print("번호 입력 : ");
 						int numselect = sc.nextInt();
-						
-						if(numselect == 1) {
+
+						if (numselect == 1) {
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
 							hvo.stockBuy(select5, buyCount);
-							System.out.println(mvoList.get(select5).getStock_name()+" " + buyCount+"주 매도 완료");
-							
-							//매수하기
-							
-							
-						
-						}else if(numselect ==2) {
+							System.out.println(mvoList.get(select5).getStock_name() + " " + buyCount + "주 매도 완료");
+
+							// 매수하기
+
+						} else if (numselect == 2) {
 							System.out.print("매도량 : ");
 							int sellCount = sc.nextInt();
 							score = hvo.stockSale(select5, sellCount);
-							System.out.println(mvoList.get(select5).getStock_name()+" "+sellCount+"주 매도 완료");
-						}else if(numselect ==3){
-							
+							System.out.println(mvoList.get(select5).getStock_name() + " " + sellCount + "주 매도 완료");
+						} else if (numselect == 3) {
+
 						}
-						
-						
+
 						// =====================
-						
-						
-						
+
 					} else if (choice4 == 2) {
 						break;
-					}else {
+					} else {
 						System.out.println("잘못 입력");
 					}
 
 					// ===========choice 3 하루마감 ============
-				}  else if (choice == 3) {// 하루마감
-					
+				} else if (choice == 3) {// 하루마감
+
 					System.out.println("하루마감");
-					
+
 					int count = mco.stock_Rate_Update();
-					System.out.println(count+"턴 종료");
-					
-					
-					if(count==20) {
-						
-						
+					System.out.println(count + "턴 종료");
+
+					if (count == 20) {
+
 						System.out.print("닉네임을 입력해주세요 : ");
 						String nickname = sc.next();
 						mdao.insertName(nickname);
-						
+
 						score = 50000000;
-						
+
 //						sel = 97;
-						
-						
-						
+
 //						sel = 0;
 //						break;
-					}//if count
+					} // if count
 					break;
-					//while
-					
-					
-					
+					// while
+
 					// ===========choice 4 메인화면 ============
 				} else if (choice == 0) {// 메인화면
 					sel = 0;
@@ -213,52 +197,42 @@ break;
 
 
 			case 2: // 랭킹보기
-				
+
 				ArrayList<UserVO> uvoList = mdao.userRank();
 				for (UserVO e : uvoList) {
 					System.out.println("======");
 					System.out.println(e.getUser_id());
 					System.out.println(e.getMy_money());
 					System.out.println(e.getMy_yield());
-					}
-				
+				}
+
 				break;
 
 			case 3: // 룰설명
-				System.out.println("턴제식 주식모의투자\r\n"
-						+ "초기자금 : 5000만, 턴 20턴\r\n"
-						+ "턴 지날때마다 주식전체종목의 현재가 랜덤으로 변동\r\n"
-						+ "(단 2턴마다 이벤트 발생)\r\n"
-						+ "하루마감 버튼입력시 당일 장 마감+다음턴으로 이동\r\n"
-						+ "마지막 20턴까지 끝낼 시 닉네임 등록후 랭킹적용");
+				System.out.println("턴제식 주식모의투자\r\n" + "초기자금 : 5000만, 턴 20턴\r\n" + "턴 지날때마다 주식전체종목의 현재가 랜덤으로 변동\r\n"
+						+ "(단 2턴마다 이벤트 발생)\r\n" + "하루마감 버튼입력시 당일 장 마감+다음턴으로 이동\r\n" + "마지막 20턴까지 끝낼 시 닉네임 등록후 랭킹적용");
 				System.out.println("[1]뒤로가기");
 				sel = sc.nextInt();
 				if (sel == 1) {
 					sel = 0;
-					
+
 					break;
 				}
 
 				break;
-			
-			
-				
-			case 4 : // 종료
+
+			case 4: // 종료
 				System.exit(0);
 
 //			case 97 ://닉네임 등록 시크릿 창
 //				
 //				System.out.print("닉네임을 입력해주세요 : ");
 //				String nickname = sc.next();
-				
-				
-			
-			
-			
-			default : 
+
+			default:
 				System.out.println("잘못된 입력입니다.");
 				break;
-				
+
 			}// switch 게임화면
 
 		} // while -- 메인 while
