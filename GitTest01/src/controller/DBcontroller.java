@@ -219,7 +219,7 @@ public class DBcontroller {
 				psmt = conn.prepareStatement(sql_3);
 
 				// ? 채우기
-				psmt.setString(1, stock_name.get(count));
+				psmt.setString(1, stock_name.get(sale_stock_name));
 
 				// sql통과
 				int row = psmt.executeUpdate();
