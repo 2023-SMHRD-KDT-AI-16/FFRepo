@@ -19,8 +19,8 @@ public class DbStockSearch_controller extends DBcontroller {
 
 			// sql통과 하세요!
 			psmt = conn.prepareStatement(sql);
-			//
-			// ?채우기 - ?가 없으면 생략
+			
+			// ?채우기
 			psmt.setString(1, search_stock_name);
 
 			rs = psmt.executeQuery();
@@ -31,8 +31,8 @@ public class DbStockSearch_controller extends DBcontroller {
 				int nowPrice = rs.getInt("STOCK_NOW_PRICE");
 				float anything = rs.getFloat("STOCK_RATE");
 
-
 				StockVO sdvo = new StockVO(stockName, stockCount, nowPrice, anything);
+				
 				usertoList.add(sdvo);
 			}
 			return usertoList;

@@ -176,7 +176,7 @@ public class MainView {
 
 						System.out.print("닉네임을 입력해주세요 : ");
 						String nickname = sc.next();
-						score = mdao.insertName(nickname);
+						mdao.insertName(nickname);
 						mco.new_people();
 						System.out.println("랭킹에 등록되었습니다.");
 						score = 50000000;
@@ -213,8 +213,8 @@ public class MainView {
 				System.out.println("턴제식 주식모의투자\r\n" + "초기자금 : 5000만, 턴 20턴\r\n" + "턴 지날때마다 주식전체종목의 현재가 랜덤으로 변동\r\n"
 						+ "(단 2턴마다 이벤트 발생)\r\n" + "하루마감 버튼입력시 당일 장 마감+다음턴으로 이동\r\n" + "마지막 20턴까지 끝낼 시 닉네임 등록후 랭킹적용");
 				System.out.println("[1]뒤로가기");
-				sel = sc.nextInt();
-				if (sel == 1) {
+				choice = sc.nextInt();
+				if (choice == 1) {
 					sel = 0;
 
 					break;
