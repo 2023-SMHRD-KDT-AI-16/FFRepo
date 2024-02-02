@@ -54,10 +54,11 @@ public class MainController extends DBcontroller {
 
 			}
 
-			ArrayList<MyStockVO> my_stocks = select_my_stock();
-			for (int i = 0; i < my_stocks.size(); i++) { // DB에 있는 1~20위 종목 이름
-				Db_stock_name[i] = my_stocks.get(i).getStock_name();
-				Db_yesterday_price[i] = my_stocks.get(i).getCurrent_stock_amount();
+//			ArrayList<MyStockVO> my_stocks = select_my_stock();
+			ArrayList<StockVO> all_stocks = select_all_stock();
+			for (int i = 0; i < all_stocks.size(); i++) { // DB에 있는 1~20위 종목 이름
+				Db_stock_name[i] = all_stocks.get(i).getStockName();
+				Db_yesterday_price[i] = all_stocks.get(i).getYesterdayPrice();
 			}
 
 			int yesterday_price = 0;
