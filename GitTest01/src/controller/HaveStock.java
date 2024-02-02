@@ -6,14 +6,11 @@ import java.util.ArrayList;
 import model.MyStockVO;
 import model.StockVO;
 
-public class HaveStock extends DBcontroller{
-
+public class HaveStock extends DBcontroller {
 
 	public ArrayList<MyStockVO> MyStock() {// 내 주식 확인
 		return select_my_stock();
 	}
-		
-		
 
 //	public ArrayList<MyStockVO> MyStock(String giupName) {// 내 주식 확인
 //		ArrayList<MyStockVO> myStockList = new ArrayList<MyStockVO>();
@@ -55,13 +52,12 @@ public class HaveStock extends DBcontroller{
 //
 //	}
 
-
 	// 선택창에서 주식 매도 기능 메소드
 	public int stockSale(int sale_stock_index, int count) {
 
 		ArrayList<StockVO> all_stocks = select_all_stock();
 		ArrayList<MyStockVO> my_stocks = new ArrayList<MyStockVO>(); // 내 소유 주식 담을 어레이리스트
-		
+
 		getConn();
 
 		try {
@@ -72,7 +68,7 @@ public class HaveStock extends DBcontroller{
 			psmt.setString(1, sale_stock_name);
 			rs = psmt.executeQuery();
 
-			while (rs.next()) {
+			while (rs.next()) {// 내 주식 담는 코드
 				String giup_name = rs.getString("stock_name");
 				int my_price = rs.getInt("purchased_stock_amount");
 				int stockCount = rs.getInt("stock_count");
@@ -83,39 +79,37 @@ public class HaveStock extends DBcontroller{
 			// 보유하고 있는 주식 수량 담을 변수
 			// 내가 가지고 있는 금액
 			for (int i = 0; i < my_stocks.size(); i++) {// 내 주식 수
-				if (my_stocks.get(sale_stock_index).equals(stock_names.get(i))) {
+				if (my_stocks.get(i).getStock_name().equals(sale_stock_name)) {
 
-					if (stockCount == count) {
+					if (my_stocks.get(i).getStock_count() == count) {
 						// sql 통과 통로
-						String sql_3 = "delete from my_stock where stock_name = ?";
-						psmt = conn.prepareStatement(sql_3);
-
-						sell_stockName = stock_names.get(i);
+						String sql_2 = "delete from my_stock where stock_name = ?";
+						psmt = conn.prepareStatement(sql_2);
 
 						// ? 채우기
-						psmt.setString(1, sell_stockName);
+						psmt.setString(1, my_stocks.get(i).getStock_name());
 
 						// sql통과
 						int row = psmt.executeUpdate();
-						score = score + (sell_stockPrice * count);
+						score = score + (all_stocks.get(sale_stock_index).getNowPrice() * count);
+						System.out.println(score + "보유주식에서 넘어간 경우");
 
 						return score;
 					} else {
 						String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ? where stock_name = ?";
 						psmt = conn.prepareStatement(sql_3);
 
-						sell_stockName = stock_names.get(i);
-						sell_stockPrice = sell_prices.get(i);
-
 						// ? 채우기
-						psmt.setInt(1, (stockCount - count));
-						psmt.setInt(2, my_price - (sell_stockPrice * count)); // 가지고 있던 금액 - 현재 매도할 금액
-						psmt.setString(3, sell_stockName);
+						psmt.setInt(1, (my_stocks.get(i).getStock_count() - count));
+						psmt.setInt(2, my_stocks.get(i).getPurchased_stock_amount()
+								- (all_stocks.get(sale_stock_index).getNowPrice() * count)); // 가지고 있던 금액 - 현재 매도할 금액
+						psmt.setString(3, my_stocks.get(i).getStock_name());
 
 						// sql통과
 
 						int row = psmt.executeUpdate();
-						score = score + (sell_stockPrice * count);
+						score = score + (all_stocks.get(sale_stock_index).getNowPrice() * count);
+						System.out.println(score + "보유주식에서 넘어간 경우");
 						return score;
 
 					}
@@ -131,7 +125,7 @@ public class HaveStock extends DBcontroller{
 	}
 
 	// 선택창에서 주식 매수 기능 메소드
-	public int stockBuy(int buy_stock_name, int count) {
+	public int stockBuy(int buy_stock_index, int count) {
 		ArrayList<String> stock_name = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
 		ArrayList<Integer> pur_price = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
 
@@ -154,77 +148,61 @@ public class HaveStock extends DBcontroller{
 				pur_price.add(nowPrice);
 			}
 
-			String sql_2 = "select * my_stock";
-			psmt = conn.prepareStatement(sql_2);
+			ArrayList<MyStockVO> myvos = select_my_stock();
 
-			ArrayList<MyStockVO> myvo = new ArrayList<MyStockVO>();
-			rs = psmt.executeQuery();
-			int my_cnt = 0; 
-			int my_purchased = 0;
-			String my_stock = null;
-			float my_yield = 0f;
-			int my_current_stock = 0;
-			while(rs.next()) {
-				my_cnt = rs.getInt("stock_count");
-				my_purchased = rs.getInt("purchased_stock_amount");
-				my_yield = rs.getFloat("stock_yield");
-				my_current_stock = rs.getInt("current_stock_amount");
-				my_stock = rs.getString("stock_name");
-				MyStockVO mvo = new MyStockVO( my_stock, my_purchased, my_current_stock,  my_cnt, my_yield );
-//				myvo.add(mvo);
-				
-			}
-		
-			
-			for(int i = 0 ; i <myvo.size(); i++) {
-			if(myvo.get(i).getStock_name().equals(stock_name.get(buy_stock_name))) {
-			if (my_cnt == 0) {// 원하는 주식 처음 구매 시
-				// sql 통과 통로
-				String sql_3 = "insert into my_stock values(?,?,?,?,?)";
-				psmt = conn.prepareStatement(sql_3);
+			for (int i = 0; i < myvos.size(); i++) {
+				if (myvos.get(i).getStock_name().equals(stock_name.get(buy_stock_index))) {
+					if (myvos.get(i).getStock_count() == 0) {// 원하는 주식 처음 구매 시
+						// sql 통과 통로
+						String sql_2 = "insert into my_stock values(?,?,?,?,?)";
+						psmt = conn.prepareStatement(sql_2);
 
-				// ? 채우기
-				psmt.setInt(1, my_purchased * count); // 전체 소유 금액
-				psmt.setInt(2, my_purchased); // 현재 금액
-				psmt.setString(3, my_stock);
-				psmt.setInt(4, 0); // 수익률
-				psmt.setInt(5, count); // 수량
-				// sql통과
-				if (score >= my_purchased * count) {
-					int row = psmt.executeUpdate();
-					score = score - (my_purchased * count);
-					return score;
-					}else {
-						return 0;
+						// ? 채우기
+						psmt.setInt(1, pur_price.get(buy_stock_index) * count); // 전체 소유 금액
+						psmt.setInt(2, pur_price.get(buy_stock_index)); // 현재 금액
+						psmt.setString(3, myvos.get(i).getStock_name());
+						psmt.setInt(4, 0); // 수익률
+						psmt.setInt(5, count); // 수량
+						// sql통과
+						if (score >= pur_price.get(buy_stock_index) * count) {
+							int row = psmt.executeUpdate();
+							score = score - (pur_price.get(buy_stock_index) * count);
+							return score;
+						} else {
+							return score;
+						}
+
+					} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
+						String sql_2 = "update my_stock set stock_count = ?, purchased_stock_amount = ?,current_stock_amount = ?, stock_yield = ? where stock_name = ?";
+						psmt = conn.prepareStatement(sql_2);
+
+						// ? 채우기
+						psmt.setInt(1, (myvos.get(i).getStock_count() + count));
+						psmt.setInt(2,
+								myvos.get(i).getPurchased_stock_amount() + (pur_price.get(buy_stock_index) * count)); // 전체
+																														// 구매한
+																														// 금액
+						psmt.setInt(3, pur_price.get(buy_stock_index));
+						psmt.setFloat(4, myvos.get(i).getStock_yield()); // 수익룰
+						psmt.setString(5, myvos.get(i).getStock_name());
+						// sql통과
+						if (score >= pur_price.get(buy_stock_index) * count) {
+							int row = psmt.executeUpdate();
+							score = score - (pur_price.get(buy_stock_index) * count * count);
+							return score;
+						}
+
 					}
-					
-				
-			} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
-				String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ?,current_stock_amount = ?, stock_yield = ? where stock_name = ?";
-				psmt = conn.prepareStatement(sql_3);
-
-				// ? 채우기
-				psmt.setInt(1, (my_cnt + count));
-				psmt.setInt(2, my_purchased + (nowPrice * count)); // 전체 구매한 금액
-				psmt.setInt(3, my_purchased);
-				psmt.setFloat(4, my_yield); // 수익룰
-				psmt.setString(5, my_stock);
-				// sql통과
-				if (score >= my_purchased  + (nowPrice * count)) {
-					int row = psmt.executeUpdate();
-					score = score - (my_purchased * count);
-					return score;
 				}
-				
 			}
-			}}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			allClose();
 
-		}		return 0;
-	
-}
+		}
+		return score;
+
 	}
+}
