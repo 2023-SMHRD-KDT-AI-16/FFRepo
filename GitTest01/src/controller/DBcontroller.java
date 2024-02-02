@@ -281,9 +281,12 @@ public class DBcontroller {
 		int all_now_price = all_stocks.get(buy_stock_index).getNowPrice(); // 사길 원하는 회사 현재 금액
 		
 		int index = 0;
+		System.out.println(index);
 		for(int i = 0; i<my_stocks.size(); i++) {
-			if(my_stocks.get(i).getStock_name().equals(my_stock_name))
-			{i = index;}
+			if(my_stocks.get(i).getStock_name().equals(my_stock_name)){
+				i = index;
+				System.out.println(i);
+				}
 		}
 		int my_stock_count = my_stocks.get(index).getStock_count(); // 보유하고 있는 주식 수량
 		float my_stock_yield = my_stocks.get(index).getStock_yield(); // 뽑은 회사 중 이미 보유하고 있던 회사의 수익률

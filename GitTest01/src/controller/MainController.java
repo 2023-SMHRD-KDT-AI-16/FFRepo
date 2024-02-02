@@ -324,7 +324,7 @@ public class MainController extends DBcontroller {
 				allClose();
 			}
 			
-			score = 50000000;
+			
 			
 		}
 	}
