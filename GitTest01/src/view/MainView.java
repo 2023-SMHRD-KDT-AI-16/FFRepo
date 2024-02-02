@@ -2,6 +2,7 @@ package view;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import controller.DBcontroller;
@@ -82,7 +83,7 @@ public class MainView {
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
 							mdao.stockBuy(stockNum, buyCount, score);
-							
+
 						} else if (choice3 == 2) {// 매도하기
 
 							System.out.print("매도량 : ");
@@ -151,7 +152,7 @@ public class MainView {
 							int sellCount = sc.nextInt();
 							score = hvo.stockSale(select5, sellCount);
 							System.out.println(mvoList.get(select5).getStock_name() + " " + sellCount + "주 매도 완료");
-							
+
 						} else if (numselect == 3) {
 
 						}
@@ -194,14 +195,16 @@ public class MainView {
 				} else {
 					System.out.println("잘못된 입력입니다 ");
 				}
-break;
-
-
+				break;
 
 			case 2: // 랭킹보기
-
-					System.out.println(mdao.userRank());
+				uvoList = mdao.userRank();
+				for (int i = 1; i <= 5; i++) {
+					System.out.print(i+"등 \t"+"이름 : "+uvoList.get(i).getUser_id()+ "\t");
+					System.out.println("총 점수 : "+uvoList.get(i).getMy_money());
 					
+				}
+				sel = 0;
 				break;
 
 			case 3: // 룰설명
