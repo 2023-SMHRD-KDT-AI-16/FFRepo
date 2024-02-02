@@ -330,7 +330,7 @@ public class DBcontroller {
 					}
 			} else {
 				System.out.println("돈이 없습니다.");
-				score = score;
+				
 				return score;
 			}
 

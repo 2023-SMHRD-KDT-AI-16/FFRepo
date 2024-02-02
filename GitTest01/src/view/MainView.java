@@ -25,7 +25,7 @@ public class MainView {
 
 		int sel = 0;
 
-		mco.art();
+//		mco.art();
 //		mco.play();
 		while (true) {/// 메인 while
 			// 페이지 메뉴 표시,선택
@@ -37,6 +37,7 @@ public class MainView {
 				break;
 
 			case 1: // 게임 화면
+				System.out.println("현재 보유 금액 : " + score);
 				System.out.println("[1]전체종목보기 [2]보유주식 [3]하루마감  [0]메인화면");
 				int choice = sc.nextInt();
 
@@ -79,8 +80,8 @@ public class MainView {
 
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
-							mdao.stockBuy(stockNum, buyCount, score);
-
+							score = mdao.stockBuy(stockNum, buyCount, score);
+							System.out.println("여기 는 매수구간");
 						} else if (choice3 == 2) {// 매도하기
 
 							System.out.print("매도량 : ");
@@ -139,7 +140,7 @@ public class MainView {
 						if (numselect == 1) {
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
-							hvo.stockBuy(select5, buyCount);
+							score = hvo.stockBuy(select5, buyCount);
 							System.out.println(mvoList.get(select5).getStock_name() + " " + buyCount + "주 매수 완료");
 
 							// 매수하기
