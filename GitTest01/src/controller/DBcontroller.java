@@ -32,6 +32,9 @@ public class DBcontroller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		
+
 	}
 
 	// ii. 통로 close 하는 메소드

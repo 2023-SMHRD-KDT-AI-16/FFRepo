@@ -178,6 +178,8 @@ public class MainView {
 						String nickname = sc.next();
 						score = mdao.insertName(nickname);
 						mco.new_people();
+						System.out.println("랭킹에 등록되었습니다.");
+						score = 50000000;
 
 //						sel = 97;
 

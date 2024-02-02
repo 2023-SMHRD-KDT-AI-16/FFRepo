@@ -111,15 +111,17 @@ public class MainController extends DBcontroller {
 
 			int my_current_price = all_stocks.get(i).getNowPrice() * my_count; // 수익률 계산 시 필요(전체 금액/보유주)
 
-			int yield = my_current_price / my_purchased_amount;
+			float yield = (float)my_current_price / (float)my_purchased_amount;
 			String sql = "update my_stock set stock_yield = ?, current_stock_amount = ? where stock_name = ?";
 
 			try {
 				psmt = conn.prepareStatement(sql);
-				psmt.setInt(1, yield);
+				psmt.setFloat(1, yield);
 				psmt.setInt(2, all_stocks.get(i).getNowPrice() );
 				psmt.setString(3, my_stock_name);
 				int row = psmt.executeUpdate();
+				
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
