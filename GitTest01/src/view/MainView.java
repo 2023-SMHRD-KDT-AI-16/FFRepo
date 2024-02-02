@@ -183,7 +183,7 @@ public class MainView {
 //						break;
 					} // if count
 					break;
-					// while
+					// while'
 
 					// ===========choice 4 메인화면 ============
 				} else if (choice == 0) {// 메인화면
