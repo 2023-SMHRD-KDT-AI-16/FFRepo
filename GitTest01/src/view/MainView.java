@@ -177,6 +177,7 @@ public class MainView {
 						System.out.print("닉네임을 입력해주세요 : ");
 						String nickname = sc.next();
 						score = mdao.insertName(nickname);
+						mco.new_people();
 
 //						sel = 97;
 
