@@ -81,7 +81,7 @@ public class MainView {
 							System.out.print("매수량 : ");
 							int buyCount = sc.nextInt();
 							score = mdao.stockBuy(stockNum, buyCount, score);
-							System.out.println("여기 는 매수구간");
+						
 						} else if (choice3 == 2) {// 매도하기
 
 							System.out.print("매도량 : ");

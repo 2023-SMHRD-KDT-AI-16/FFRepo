@@ -344,14 +344,14 @@ public class DBcontroller {
 
 				System.out.println(all_stocks.get(buy_stock_index).getStockName() + " " + count + "주 추가 매수완료");
 
-				System.out.println("anp" + all_now_price);
-				System.out.println("cnt" + count);
-				System.out.println("산돈" + my_money);
+//				System.out.println("anp" + all_now_price);
+//				System.out.println("cnt" + count);
+//				System.out.println("산돈" + my_money);
 
 				score = score - (int) my_money;
 
-				System.out.println((int) my_money);
-				System.out.println(score);
+//				System.out.println((int) my_money);
+//				System.out.println(score);
 				return score;
 			}
 		} else {
