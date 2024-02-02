@@ -33,11 +33,7 @@ public class DBcontroller {
 			e.printStackTrace();
 		}
 
-		if (conn != null) {
-			System.out.println("연결 성공");
-		} else {
-			System.out.println("연결 실패");
-		}
+		
 
 	}
 
