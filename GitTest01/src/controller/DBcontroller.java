@@ -276,31 +276,34 @@ public class DBcontroller {
 		String my_stock_name = all_stocks.get(buy_stock_index).getStockName(); // 인덱스로 뽑은 회사 이름
 		int all_now_price = all_stocks.get(buy_stock_index).getNowPrice(); // 사길 원하는 회사 현재 금액
 
-//		int my_stock_count = my_stocks.get(index).getStock_count(); // 보유하고 있는 주식 수량
-//		float my_stock_yield = my_stocks.get(index).getStock_yield(); // 뽑은 회사 중 이미 보유하고 있던 회사의 수익률
-//		int my_purchased_amount = my_stocks.get(index).getPurchased_stock_amount();
-		my_money = (all_now_price * count);
 
 		getConn(); // DB 연결 메소드
+		int index = 0;
+		int my_stock_count = 0; // 현재 내가 보유하고 있는 수량
+		float my_stock_yield = 0.0f;
+		int my_purchased_amount = 0;
+		
+		if(my_stocks.size() != 0) {
+			for(int i = 0; i <my_stocks.size(); i++) {
+				if(my_stock_name.equals(my_stocks.get(i).getStock_name())){
+					my_stock_count = my_stocks.get(i).getStock_count();
+					my_stock_yield = my_stocks.get(i).getStock_yield();
+					my_purchased_amount = my_stocks.get(i).getPurchased_stock_amount();
+				}
+			}
+		}else {
+			my_stock_count = 0;
+		}
+		
+		my_money = (all_now_price * count);
 
-//		for (int i = 0; i < my_stocks.size(); i++) {
-//			if (my_stock_name.equals(my_stocks.get(0).getStock_name())) {
-//				// update 수량, 그ㅓㅁ액}
-//			} else if(){
-//				
-//			}
-//		}
-
-	
-
-	
 
 	try
 	{
 
 		if (score > my_money) { // score가 사려는 주식보다 높을 때만 구매 가능
-
-//			if (my_stock_count == 0) {// 원하는 주식 처음 구매 시
+			
+			if (my_stock_count == 0) {// 원하는 주식 처음 구매 시
 
 				// sql 통과 통로
 				String sql = "insert into my_stock values(?,?,?,?,?)";
@@ -315,39 +318,39 @@ public class DBcontroller {
 
 				// sql통과
 				int row = psmt.executeUpdate();
-				System.out.println("1번 my_money" + my_money);
-				System.out.println(all_stocks.get(buy_stock_index).getStockName() + " " + count + "주 매수완료");
+//				System.out.println("1번 my_money" + my_money);
+//				System.out.println(all_stocks.get(buy_stock_index).getStockName() + " " + count + "주 매수완료");
 
 				score = score - (int) my_money;
-				System.out.println("if score" + score);
+//				System.out.println("if score" + score);
 				return score;
 
-//			} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
-//				String sql = "update my_stock set stock_count = ?, purchased_stock_amount = ?,current_stock_amount = ?, stock_yield = ? where stock_name = ?";
-//				psmt = conn.prepareStatement(sql);
-//
-//				// ? 채우기
-//				psmt.setInt(1, (my_stock_count + count));
-//				psmt.setInt(2, my_purchased_amount + (int) my_money); // 전체 구매한 금액
-//				psmt.setInt(3, all_now_price);
-//				psmt.setFloat(4, my_stock_yield); // 수익룰
-//				psmt.setString(5, my_stock_name);
-//
-//				// sql통과
-//				int row = psmt.executeUpdate();
-//
-//				System.out.println(all_stocks.get(buy_stock_index).getStockName() + " " + count + "주 추가 매수완료");
-//
-//				System.out.println("anp" + all_now_price);
-//				System.out.println("cnt" + count);
-//				System.out.println("산돈" + my_money);
-//
-//				score = score - (int) my_money;
-//
-//				System.out.println((int) my_money);
-//				System.out.println(score);
-//				return score;
-//			}
+			} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
+				String sql = "update my_stock set stock_count = ?, purchased_stock_amount = ?,current_stock_amount = ?, stock_yield = ? where stock_name = ?";
+				psmt = conn.prepareStatement(sql);
+
+				// ? 채우기
+				psmt.setInt(1, (my_stock_count + count));
+				psmt.setInt(2, my_purchased_amount + (int) my_money); // 전체 구매한 금액
+				psmt.setInt(3, all_now_price);
+				psmt.setFloat(4, my_stock_yield); // 수익룰
+				psmt.setString(5, my_stock_name);
+
+				// sql통과
+				int row = psmt.executeUpdate();
+
+				System.out.println(all_stocks.get(buy_stock_index).getStockName() + " " + count + "주 추가 매수완료");
+
+				System.out.println("anp" + all_now_price);
+				System.out.println("cnt" + count);
+				System.out.println("산돈" + my_money);
+
+				score = score - (int) my_money;
+
+				System.out.println((int) my_money);
+				System.out.println(score);
+				return score;
+			}
 		} else {
 			System.out.println("돈이 없습니다.");
 		}
