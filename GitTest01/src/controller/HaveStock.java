@@ -93,7 +93,7 @@ public class HaveStock extends DBcontroller {
 						int row = psmt.executeUpdate();
 						score = score + (all_stocks.get(sale_stock_index).getNowPrice() * count);
 
-						return score;
+			
 					} else {
 						String sql_3 = "update my_stock set stock_count = ?, purchased_stock_amount = ? where stock_name = ?";
 						psmt = conn.prepareStatement(sql_3);
@@ -108,18 +108,18 @@ public class HaveStock extends DBcontroller {
 
 						int row = psmt.executeUpdate();
 						score = score + (all_stocks.get(sale_stock_index).getNowPrice() * count);
-						return score;
+						
 
 					}
 				}
-			}
+			}return score;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			allClose();
 		}
-		return 0;
+		return score;
 	}
 
 	// 선택창에서 주식 매수 기능 메소드
