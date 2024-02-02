@@ -132,7 +132,7 @@ public class HaveStock extends DBcontroller {
 		try {
 			String sql = "select * from all_stock";
 			
-			psmt.setString(1, sql);
+			psmt = conn.prepareStatement(sql);
 			
 			// sql통과
 			rs = psmt.executeQuery();
@@ -173,6 +173,7 @@ public class HaveStock extends DBcontroller {
 						}
 
 					} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
+						getConn();
 						String sql_2 = "update my_stock set stock_count = ?, purchased_stock_amount = ?,current_stock_amount = ?, stock_yield = ? where stock_name = ?";
 						psmt = conn.prepareStatement(sql_2);
 
@@ -185,12 +186,14 @@ public class HaveStock extends DBcontroller {
 						psmt.setInt(3, pur_price.get(buy_stock_index));
 						psmt.setFloat(4, myvos.get(i).getStock_yield()); // 수익룰
 						psmt.setString(5, myvos.get(i).getStock_name());
+						
+						int row = psmt.executeUpdate();
 						// sql통과
 						if (score >= pur_price.get(buy_stock_index) * count) {
-							int row = psmt.executeUpdate();
+							 row = psmt.executeUpdate();
 							score = score - (pur_price.get(buy_stock_index) * count * count);
 							return score;
-						}
+						}//if
 
 					}
 				}

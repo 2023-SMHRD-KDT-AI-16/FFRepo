@@ -168,7 +168,7 @@ public class MainView {
 
 					System.out.println("하루마감");
 					int count = mco.stock_Rate_Update();
-//					mco.next_day();
+					mco.next_day();
 
 					System.out.println(count + "턴 종료");
 

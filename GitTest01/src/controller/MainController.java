@@ -11,7 +11,7 @@ import model.StockVO;
 public class MainController extends DBcontroller {
 	ArrayList<MusicVO> musicList = new ArrayList<MusicVO>(1);
 	MP3Player mp3 = new MP3Player();
-	int cnt = 1;
+	int cnt = 0;
 	
 
 	public MainController() {
@@ -34,7 +34,7 @@ public class MainController extends DBcontroller {
 	// all_stock 등락률 이용해 다음날로 넘어갈 수 있도록 하는 메소드(하루 마감)
 	public int stock_Rate_Update() {
 	
-
+		if(cnt<20) {
 			float[] stock_rate = new float[20];
 			String[] Db_stock_name = new String[20];
 			int[] Db_yesterday_price = new int[20];
@@ -84,7 +84,7 @@ public class MainController extends DBcontroller {
 					psmt.setString(4, name);
 
 					row = psmt.executeUpdate();
-					cnt++;
+					
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -92,6 +92,8 @@ public class MainController extends DBcontroller {
 				allClose();
 			
 		}
+			cnt++;
+		}//if cnt
 		return cnt;
 	} // all_stock update 끝
 
