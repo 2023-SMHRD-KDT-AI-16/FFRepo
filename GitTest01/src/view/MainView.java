@@ -25,8 +25,8 @@ public class MainView {
 
 		int sel = 0;
 
-//		mco.art();
-//		mco.play();
+		mco.art();
+		mco.play();
 		while (true) {/// 메인 while
 			// 페이지 메뉴 표시,선택
 			switch (sel) {
