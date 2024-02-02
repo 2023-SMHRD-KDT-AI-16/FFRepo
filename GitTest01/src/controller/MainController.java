@@ -11,7 +11,7 @@ import model.StockVO;
 public class MainController extends DBcontroller {
 	ArrayList<MusicVO> musicList = new ArrayList<MusicVO>(1);
 	MP3Player mp3 = new MP3Player();
-	int cnt = 0;
+	int cnt = 1;
 	
 
 	public MainController() {
@@ -33,7 +33,7 @@ public class MainController extends DBcontroller {
 
 	// all_stock 등락률 이용해 다음날로 넘어갈 수 있도록 하는 메소드(하루 마감)
 	public int stock_Rate_Update() {
-		if (cnt < 21) {
+	
 
 			float[] stock_rate = new float[20];
 			String[] Db_stock_name = new String[20];
@@ -58,7 +58,6 @@ public class MainController extends DBcontroller {
 			for (int i = 0; i < my_stocks.size(); i++) { // DB에 있는 1~20위 종목 이름
 				Db_stock_name[i] = my_stocks.get(i).getStock_name();
 				Db_yesterday_price[i] = my_stocks.get(i).getCurrent_stock_amount();
-				System.out.println(Db_stock_name[i]+" : " + Db_yesterday_price[i]);
 			}
 
 			int yesterday_price = 0;
@@ -86,14 +85,12 @@ public class MainController extends DBcontroller {
 
 					row = psmt.executeUpdate();
 					cnt++;
-					return cnt;
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-				return cnt;
 			} finally {
 				allClose();
-			}
+			
 		}
 		return cnt;
 	} // all_stock update 끝
@@ -101,10 +98,9 @@ public class MainController extends DBcontroller {
 	// =============================================================================================
 
 	// my_stock 수정 시작
-	public int next_day() {
+	public void next_day() {
 		ArrayList<MyStockVO> my_stocks = select_my_stock();
 		ArrayList<StockVO> all_stocks = select_all_stock();
-
 		for (int i = 0; i < my_stocks.size(); i++) {
 			getConn();
 			int my_purchased_amount = my_stocks.get(i).getPurchased_stock_amount();
@@ -119,7 +115,7 @@ public class MainController extends DBcontroller {
 			try {
 				psmt = conn.prepareStatement(sql);
 				psmt.setInt(1, yield);
-				psmt.setInt(2, my_purchased_amount);
+				psmt.setInt(2, all_stocks.get(i).getNowPrice() );
 				psmt.setString(3, my_stock_name);
 				int row = psmt.executeUpdate();
 			} catch (SQLException e) {
@@ -131,10 +127,11 @@ public class MainController extends DBcontroller {
 
 			}
 			
-		}return cnt;
+		}
 
 	}
 
+	
 	public void art() {
 
 		System.out.println("		▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄");
