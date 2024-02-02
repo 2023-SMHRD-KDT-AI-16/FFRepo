@@ -59,37 +59,31 @@ public class HaveStock extends DBcontroller{
 	// 선택창에서 주식 매도 기능 메소드
 	public int stockSale(int sale_stock_index, int count) {
 
-		ArrayList<String> stock_names = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
-		ArrayList<Integer> sell_prices = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
-		ArrayList<String> my_stock_names = new ArrayList<String>(); // 내 소유 현재 가격 담을 어레이리스트
-		ArrayList<Integer> my_stock_prices = new ArrayList<Integer>(); // 내 소유 현재 가격 담을 어레이리스트
-		ArrayList<Integer> my_rates = new ArrayList<Integer>(); // 내 소유 현재 가격 담을 어레이리스트
-
+		ArrayList<StockVO> all_stocks = select_all_stock();
+		ArrayList<MyStockVO> my_stocks = new ArrayList<MyStockVO>(); // 내 소유 주식 담을 어레이리스트
+		
 		getConn();
 
 		try {
-			ArrayList<StockVO> all_stocks = select_all_stock();
-			String sale_stock_string = all_stocks.get(sale_stock_index).getStockName(); // 회사 이름 담을 변수
-			int sale_stock_price = sell_prices.get(sale_stock_index).ge;
-			String sql_2 = "select stock_count, purchased_stock_amount, current_stock_amount, stock_name from my_stock where stock_name = ?";
-			psmt = conn.prepareStatement(sql_2);
-			psmt.setString(1, sell_stockName);
+			String sale_stock_name = all_stocks.get(sale_stock_index).getStockName(); // 회사 이름 담을 변수
+			int sale_stock_price = all_stocks.get(sale_stock_index).getNowPrice(); // 현재 판매가격
+			String sql = "select * from my_stock where stock_name = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, sale_stock_name);
 			rs = psmt.executeQuery();
 
-			int stockCount = 0; // 보유하고 있는 주식 수량 담을 변수
-			int my_price = 0; // 내가 가지고 있는 금액
-			String giup_name = null;
 			while (rs.next()) {
-				stockCount = rs.getInt("stock_count");
-				my_price = rs.getInt("purchased_stock_amount");
-				giup_name = rs.getString("stock_name");
-				my_stock_names.add(giup_name);
-				my_stock_prices.add(my_price);
-				my_rates.add(stockCount);
-
+				String giup_name = rs.getString("stock_name");
+				int my_price = rs.getInt("purchased_stock_amount");
+				int stockCount = rs.getInt("stock_count");
+				int current_amount = rs.getInt("current_stock_amount");
+				float stock_yieled = rs.getFloat("stock_yield");
+				my_stocks.add(new MyStockVO(giup_name, my_price, stockCount, current_amount, stock_yieled));
 			}
-			for (int i = 0; i < my_rates.size(); i++) {
-				if (my_stock_names.get(sell_stock_index).equals(stock_names.get(i))) {
+			// 보유하고 있는 주식 수량 담을 변수
+			// 내가 가지고 있는 금액
+			for (int i = 0; i < my_stocks.size(); i++) {// 내 주식 수
+				if (my_stocks.get(sale_stock_index).equals(stock_names.get(i))) {
 
 					if (stockCount == count) {
 						// sql 통과 통로
