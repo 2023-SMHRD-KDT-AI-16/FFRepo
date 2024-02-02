@@ -348,7 +348,7 @@ public class DBcontroller {
 		ArrayList<UserVO> uvos = new ArrayList<UserVO>();
 		getConn();
 		try {
-			String sql = "select * from my_user order by my_money";
+			String sql = "select * from my_user order by my_money desc";
 			psmt = conn.prepareStatement(sql);
 
 			rs = psmt.executeQuery();
@@ -359,14 +359,12 @@ public class DBcontroller {
 				int money = rs.getInt("my_money");
 				int yiyi = rs.getInt("my_yield");
 
+				
 				UserVO uvo = new UserVO(name, money, yiyi);
 				uvos.add(uvo);
 			}
-			System.out.println(uvos);
-				
-				
 			return uvos;
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
