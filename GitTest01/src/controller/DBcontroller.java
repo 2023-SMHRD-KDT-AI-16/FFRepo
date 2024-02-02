@@ -359,14 +359,12 @@ public class DBcontroller {
 				int money = rs.getInt("my_money");
 				int yiyi = rs.getInt("my_yield");
 
+				
 				UserVO uvo = new UserVO(name, money, yiyi);
 				uvos.add(uvo);
 			}
-			System.out.println(uvos);
-				
-				
 			return uvos;
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
