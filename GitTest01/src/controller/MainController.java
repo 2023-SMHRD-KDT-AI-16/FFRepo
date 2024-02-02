@@ -1,5 +1,8 @@
 package controller;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,6 +15,9 @@ public class MainController extends DBcontroller {
 	ArrayList<MusicVO> musicList = new ArrayList<MusicVO>(1);
 	MP3Player mp3 = new MP3Player();
 	int cnt = 0;
+	public Connection conn;
+	public PreparedStatement psmt;
+	public ResultSet rs;
 
 	public MainController() {
 		// TODO Auto-generated constructor stub
@@ -31,39 +37,41 @@ public class MainController extends DBcontroller {
 	}
 
 	// all_stock 등락률 이용해 다음날로 넘어갈 수 있도록 하는 메소드(하루 마감)
-		public int stock_Rate_Update() throws SQLException, ClassNotFoundException {
-			if (cnt < 21) {
+	public int stock_Rate_Update() {
+		if (cnt < 21) {
 
-				float[] stock_rate = new float[20];
-				String[] Db_stock_name = new String[20];
-				int[] Db_yesterday_price = new int[20];
-				Random random = new Random();
-				int row;
-				float randomFloatInRange = 0;
+			float[] stock_rate = new float[20];
+			String[] Db_stock_name = new String[20];
+			int[] Db_yesterday_price = new int[20];
+			Random random = new Random();
+			int row;
+			float randomFloatInRange = 0;
 
-				for (int i = 0; i < stock_rate.length; i++) {
-					do {// do-while문 사용해 두 조건 아니면 다시 random값 받기
-						randomFloatInRange = random.nextFloat(); // 등락률 퍼센트로 -30 ~ 30를 나타냄
-						if (randomFloatInRange >= 0.7) {
-							stock_rate[i] = randomFloatInRange;
-						} else if (randomFloatInRange <= 0.3) {
-							stock_rate[i] = 1 + randomFloatInRange;
-						}
-					} while (!(randomFloatInRange >= 0.7 || randomFloatInRange <= 0.3));
+			for (int i = 0; i < stock_rate.length; i++) {
+				do {// do-while문 사용해 두 조건 아니면 다시 random값 받기
+					randomFloatInRange = random.nextFloat(); // 등락률 퍼센트로 -30 ~ 30를 나타냄
+					if (randomFloatInRange >= 0.7) {
+						stock_rate[i] = randomFloatInRange;
+					} else if (randomFloatInRange <= 0.3) {
+						stock_rate[i] = 1 + randomFloatInRange;
+					}
+				} while (!(randomFloatInRange >= 0.7 || randomFloatInRange <= 0.3));
 
-				}
+			}
 
-				ArrayList<MyStockVO> my_stocks = select_my_stock();
-				for (int i = 0; i < my_stocks.size(); i++) { // DB에 있는 1~20위 종목 이름
-					Db_stock_name[i] = my_stocks.get(i).getStock_name();
-					Db_yesterday_price[i] = my_stocks.get(i).getCurrent_stock_amount();
-				}
+			ArrayList<MyStockVO> my_stocks = select_my_stock();
+			for (int i = 0; i < my_stocks.size(); i++) { // DB에 있는 1~20위 종목 이름
+				Db_stock_name[i] = my_stocks.get(i).getStock_name();
+				Db_yesterday_price[i] = my_stocks.get(i).getCurrent_stock_amount();
+			}
 
-				int yesterday_price = 0;
-				float rate = 0;
-				int now_price = 0;
+			int yesterday_price = 0;
+			float rate = 0;
+			int now_price = 0;
 
-				// 다음날 주식으로 DB update
+			// 다음날 주식으로 DB update
+			try {
+				getConn();
 				for (int i = 0; i < 20; i++) {
 					String name = Db_stock_name[i]; // 0 대신 주식 이름 넣어야 함.
 					yesterday_price = Db_yesterday_price[i];
@@ -80,60 +88,53 @@ public class MainController extends DBcontroller {
 					psmt.setString(4, name);
 
 					row = psmt.executeUpdate();
-				cnt++;
+					cnt++;
 				}
-			}finally {
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
 				allClose();
-			}return cnt;
-		} // all_stock update 끝
+			}
+		}
+		return cnt;
+	} // all_stock update 끝
 
-	//=============================================================================================
+	// =============================================================================================
 
-		// my_stock 수정 시작
-		public int next_day() {
-			ArrayList<MyStockVO> my_stocks = select_my_stock();
-			ArrayList<StockVO> all_stocks = select_all_stock();
+	// my_stock 수정 시작
+	public int next_day() {
+		ArrayList<MyStockVO> my_stocks = select_my_stock();
+		ArrayList<StockVO> all_stocks = select_all_stock();
 
-		for(int i = 0; i < my_stocks.size(); i++){
+		for (int i = 0; i < my_stocks.size(); i++) {
 			getConn();
 			int my_purchased_amount = my_stocks.get(i).getPurchased_stock_amount();
 			int my_count = my_stocks.get(i).getStock_count();
 			String my_stock_name = my_stocks.get(i).getStock_name();
 
-			int my_current_price =  all_stocks.get(i).getNowPrice()* my_count; // 수익률 계산 시 필요(전체 금액/보유주)
-			
+			int my_current_price = all_stocks.get(i).getNowPrice() * my_count; // 수익률 계산 시 필요(전체 금액/보유주)
+
 			int yield = my_current_price / my_purchased_amount;
 			String sql = "update my_stock set stock_yield = ?, current_stock_amount = ? where stock_name = ?";
 
-			psmt = conn.prepareStatement(sql);
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setInt(1, yield);
+				psmt.setInt(2, my_purchased_amount);
+				psmt.setString(3, my_stock_name);
+				int row = psmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 
-			psmt.setInt(1, yield);
-			psmt.setInt(2, my_purchased_amount);
-			psmt.setString(3, my_stock_name);
-			int row = psmt.executeUpdate();
+			} finally {
+				allClose();
 
-		}try
-		{
-			if (psmt != null) {
-				psmt.close();
 			}
-			if (conn != null) {
-				conn.close();
-			}
-		}catch(
-		SQLException e)
-		{
-			// TODO: handle exception
-			e.printStackTrace();
-		}finally
-		{
-			allClose();
+			
+		}return cnt;
 
-		}
-
-		cnt++;return cnt;
-
-		}
+	}
 
 	public void art() {
 
