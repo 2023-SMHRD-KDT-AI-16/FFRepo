@@ -63,24 +63,25 @@ public class HaveStock extends DBcontroller {
 		try {
 			String sale_stock_name = all_stocks.get(sale_stock_index).getStockName(); // 회사 이름 담을 변수
 			int sale_stock_price = all_stocks.get(sale_stock_index).getNowPrice(); // 현재 판매가격
-			String sql = "select * from my_stock where stock_name = ?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, sale_stock_name);
-			rs = psmt.executeQuery();
-
-			while (rs.next()) {// 내 주식 담는 코드
-				String giup_name = rs.getString("stock_name");
-				int my_price = rs.getInt("purchased_stock_amount");
-				int stockCount = rs.getInt("stock_count");
-				int current_amount = rs.getInt("current_stock_amount");
-				float stock_yieled = rs.getFloat("stock_yield");
-				my_stocks.add(new MyStockVO(giup_name, my_price, stockCount, current_amount, stock_yieled));
-			}
+//			String sql = "select * from my_stock where stock_name = ?";
+//			psmt = conn.prepareStatement(sql);
+//			psmt.setString(1, sale_stock_name);
+//			rs = psmt.executeQuery();
+//
+//			while (rs.next()) {// 내 주식 담는 코드
+//				String giup_name = rs.getString("stock_name");
+//				int my_price = rs.getInt("purchased_stock_amount");
+//				int stockCount = rs.getInt("stock_count");
+//				int current_amount = rs.getInt("current_stock_amount");
+//				float stock_yieled = rs.getFloat("stock_yield");
+//				my_stocks.add(new MyStockVO(giup_name, my_price, stockCount, current_amount, stock_yieled));
+//			}
+			
 			// 보유하고 있는 주식 수량 담을 변수
 			// 내가 가지고 있는 금액
-//			if(my)
+			if(my_stocks.size() != 0) {
 			for (int i = 0; i < my_stocks.size(); i++) {// 내 주식 수
-				if (my_stocks.get(i).getStock_name().equals(sale_stock_name)) {
+				if (my_stocks.get(i).getStock_name().equals(all_stocks.get(sale_stock_index))) {
 					int my_count = my_stocks.get(i).getStock_count();
 
 					if (my_count == count) {
@@ -89,11 +90,11 @@ public class HaveStock extends DBcontroller {
 						psmt = conn.prepareStatement(sql_2);
 
 						// ? 채우기
-						psmt.setString(1, my_stocks.get(i).getStock_name());
+						psmt.setString(1, all_stocks.get(sale_stock_index).getStockName());
 
 						// sql통과
 						int row = psmt.executeUpdate();
-						my_count = 0;
+						
 						score = score + (all_stocks.get(sale_stock_index).getNowPrice() * count);
 
 			
@@ -113,6 +114,7 @@ public class HaveStock extends DBcontroller {
 						score = score + (all_stocks.get(sale_stock_index).getNowPrice() * count);
 						my_count -= count;
 
+					}
 					}
 				}
 			}return score;
