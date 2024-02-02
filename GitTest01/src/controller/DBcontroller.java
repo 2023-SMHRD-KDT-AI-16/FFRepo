@@ -267,7 +267,7 @@ public class DBcontroller {
 		
 		ArrayList<StockVO> all_stocks = select_all_stock();
 		ArrayList<MyStockVO> my_stocks = select_my_stock();
-		String my_stock_name = my_stocks.get(buy_stock_index).getStock_name(); // 인덱스로 뽑은 회사 이름
+		String my_stock_name = all_stocks.get(buy_stock_index).getStockName(); // 인덱스로 뽑은 회사 이름
 		int all_now_price = all_stocks.get(buy_stock_index).getNowPrice(); // 사길 원하는 회사 현재 금액
 		int my_stock_count = my_stocks.get(buy_stock_index).getStock_count(); // 보유하고 있는 주식 수량
 		float my_stock_yield = my_stocks.get(buy_stock_index).getStock_yield(); // 뽑은 회사 중 이미 보유하고 있던 회사의 수익률
