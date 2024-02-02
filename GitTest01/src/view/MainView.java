@@ -201,7 +201,7 @@ public class MainView {
 
 			case 2: // 랭킹보기
 				uvoList = mdao.userRank();
-				for (int i = 1; i <= 5; i++) {
+				for (int i = 1; i <uvoList.size(); i++) {
 					System.out.print(i+"등 \t"+"이름 : "+uvoList.get(i).getUser_id()+ "\t");
 					System.out.println("총 점수 : "+uvoList.get(i).getMy_money());
 					
