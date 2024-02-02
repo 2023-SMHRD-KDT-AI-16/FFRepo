@@ -2,7 +2,6 @@ package view;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import controller.DBcontroller;
@@ -223,13 +222,10 @@ public class MainView {
 			case 4: // 종료
 				System.exit(0);
 
-//			case 97 ://닉네임 등록 시크릿 창
-//				
-//				System.out.print("닉네임을 입력해주세요 : ");
-//				String nickname = sc.next();
 
 			default:
 				System.out.println("잘못된 입력입니다.");
+				sel = 0;
 				break;
 
 			}// switch 게임화면
