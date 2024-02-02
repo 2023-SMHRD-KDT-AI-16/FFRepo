@@ -243,6 +243,7 @@ public class DBcontroller {
 				// sql 통과
 				int row = psmt.executeUpdate();
 				my_money = my_purchased_amount * (int) my_stock_yield;
+				my_stock_count =0;
 
 				score = score + ((int) my_money);
 
@@ -260,6 +261,7 @@ public class DBcontroller {
 				// sql 통과
 				int row = psmt.executeUpdate();
 				score = score + (int) my_money;
+				my_stock_count -= count; 
 				return score;
 			}
 

@@ -78,10 +78,12 @@ public class HaveStock extends DBcontroller {
 			}
 			// 보유하고 있는 주식 수량 담을 변수
 			// 내가 가지고 있는 금액
+//			if(my)
 			for (int i = 0; i < my_stocks.size(); i++) {// 내 주식 수
 				if (my_stocks.get(i).getStock_name().equals(sale_stock_name)) {
+					int my_count = my_stocks.get(i).getStock_count();
 
-					if (my_stocks.get(i).getStock_count() == count) {
+					if (my_count == count) {
 						// sql 통과 통로
 						String sql_2 = "delete from my_stock where stock_name = ?";
 						psmt = conn.prepareStatement(sql_2);
@@ -91,6 +93,7 @@ public class HaveStock extends DBcontroller {
 
 						// sql통과
 						int row = psmt.executeUpdate();
+						my_count = 0;
 						score = score + (all_stocks.get(sale_stock_index).getNowPrice() * count);
 
 			
@@ -108,7 +111,7 @@ public class HaveStock extends DBcontroller {
 
 						int row = psmt.executeUpdate();
 						score = score + (all_stocks.get(sale_stock_index).getNowPrice() * count);
-						
+						my_count -= count;
 
 					}
 				}
@@ -170,9 +173,7 @@ public class HaveStock extends DBcontroller {
 					if (score >= pur_price.get(buy_stock_index) * count) {
 						int row = psmt.executeUpdate();
 						score = score - (pur_price.get(buy_stock_index) * count);
-						return score;
 					} else {
-						return score;
 					}
 
 				} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
@@ -194,9 +195,7 @@ public class HaveStock extends DBcontroller {
 					if (score >= pur_price.get(buy_stock_index) * count) {
 						row = psmt.executeUpdate();
 						score = score - (pur_price.get(buy_stock_index) * count * count);
-						return score;
 					} else {
-						return score;
 					}// else-if
 
 				}
