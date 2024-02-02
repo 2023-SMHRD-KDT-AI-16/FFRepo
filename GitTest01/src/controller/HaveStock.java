@@ -92,7 +92,6 @@ public class HaveStock extends DBcontroller {
 						// sql통과
 						int row = psmt.executeUpdate();
 						score = score + (all_stocks.get(sale_stock_index).getNowPrice() * count);
-						System.out.println(score + "보유주식에서 넘어간 경우");
 
 						return score;
 					} else {
@@ -109,7 +108,6 @@ public class HaveStock extends DBcontroller {
 
 						int row = psmt.executeUpdate();
 						score = score + (all_stocks.get(sale_stock_index).getNowPrice() * count);
-						System.out.println(score + "보유주식에서 넘어간 경우");
 						return score;
 
 					}
@@ -132,8 +130,10 @@ public class HaveStock extends DBcontroller {
 		getConn(); // DB 연결 메소드
 
 		try {
-			String sql = "select * from all_stock where stock_name = ?";
-			psmt = conn.prepareStatement(sql);
+			String sql = "select * from all_stock";
+			
+			psmt.setString(1, sql);
+			
 			// sql통과
 			rs = psmt.executeQuery();
 
