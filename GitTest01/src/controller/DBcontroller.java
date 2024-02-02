@@ -220,6 +220,7 @@ public class DBcontroller {
 		float my_stock_yield = my_stocks.get(sale_stock_index).getStock_yield(); // 뽑은 회사의 수익률
 		int my_current_price = my_stocks.get(sale_stock_index).getCurrent_stock_amount(); // 뽑은 회사 현재 금액
 		
+		my_money = my_purchased_amount* my_stock_yield;
 
 		getConn();
 
@@ -227,7 +228,6 @@ public class DBcontroller {
 			
 			if (my_stock_count == count) {
 				
-				my_money = my_purchased_amount* my_stock_yield;
 				
 				// sql 통과 통로
 				String sql = "delete from my_stock where stock_name = ?";
@@ -270,6 +270,8 @@ public class DBcontroller {
 	// 5. 주식 매수 기능 메소드
 	public int stockBuy(int buy_stock_index, int count, int score) {
 		
+		System.out.println("1번 "+score);
+		
 		ArrayList<StockVO> all_stocks = select_all_stock();
 		ArrayList<MyStockVO> my_stocks = select_my_stock();
 		String my_stock_name = my_stocks.get(buy_stock_index).getStock_name(); // 인덱스로 뽑은 회사 이름
@@ -277,17 +279,18 @@ public class DBcontroller {
 		int my_stock_count = my_stocks.get(buy_stock_index).getStock_count(); // 보유하고 있는 주식 수량
 		float my_stock_yield = my_stocks.get(buy_stock_index).getStock_yield(); // 뽑은 회사 중 이미 보유하고 있던 회사의 수익률
 		int my_purchased_amount = my_stocks.get(buy_stock_index).getPurchased_stock_amount();
+		my_money = (all_now_price*count);
 
 
 		getConn(); // DB 연결 메소드
 
 		try {
 
-			if (score > all_now_price * count) { // score가 사려는 주식보다 높을 때만 구매 가능
+			if (score > my_money) { // score가 사려는 주식보다 높을 때만 구매 가능
 
 				if (my_stock_count == 0) {// 원하는 주식 처음 구매 시
 					
-					my_money = all_now_price * count;
+					
 					
 					// sql 통과 통로
 					String sql = "insert into my_stock values(?,?,?,?,?)";
@@ -302,10 +305,11 @@ public class DBcontroller {
 					
 					// sql통과
 					int row = psmt.executeUpdate();
+					System.out.println("1번 my_money"+my_money);
 					System.out.println(all_stocks.get(buy_stock_index).getStockName() + " " + count + "주 매수완료");
 
 					score = score - (int)my_money;
-					
+					System.out.println("if score"+score);
 					return score;
 					
 					} else {// 원하는 종목에 대한 주식을 이미 소유하고 있을 때
@@ -324,8 +328,15 @@ public class DBcontroller {
 				
 					System.out.println(all_stocks.get(buy_stock_index).getStockName() + " " + count + "주 추가 매수완료");
 
+					System.out.println("anp"+all_now_price);
+					System.out.println("cnt"+count);
+					System.out.println("산돈"+my_money);
+					
 					score = score - (int)my_money;
-						
+					
+					
+					System.out.println((int)my_money);
+						System.out.println(score);
 					return score;
 					}
 			} else {
