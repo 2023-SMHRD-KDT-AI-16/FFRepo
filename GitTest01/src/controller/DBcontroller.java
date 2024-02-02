@@ -344,7 +344,7 @@ public class DBcontroller {
 
 	// 순위 출력 메소드
 	
-	public ArrayList<UserVO> userRank() {
+	public ArrayList<UserVO> userRank() {  //등록 보기
 		ArrayList<UserVO> uvos = new ArrayList<UserVO>();
 		getConn();
 		try {
@@ -373,5 +373,10 @@ public class DBcontroller {
 		return null;
 
 	}
+	
+	
+	//콘솔 클리어 하는 코드 
+	 
+
 
 }

@@ -2,7 +2,6 @@ package view;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import controller.DBcontroller;
@@ -26,20 +25,18 @@ public class MainView {
 
 		int sel = 0;
 
-//		mco.art();
+		mco.art();
 //		mco.play();
 		while (true) {/// 메인 while
 			// 페이지 메뉴 표시,선택
 			switch (sel) {
 
 			case 0:
-				System.out.println("개미는 뚠뚠");// 초기 메인화면
 				System.out.println("[1]게임시작 [2]랭킹보기 [3]룰 설명 [4]종료 ");// [97]닉네임 등록(시크릿창)
 				sel = sc.nextInt();
 				break;
 
 			case 1: // 게임 화면
-
 				System.out.println("[1]전체종목보기 [2]보유주식 [3]하루마감  [0]메인화면");
 				int choice = sc.nextInt();
 
