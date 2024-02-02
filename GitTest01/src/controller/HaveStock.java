@@ -1,23 +1,13 @@
 package controller;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.MyStockVO;
+import model.StockVO;
 
 public class HaveStock extends DBcontroller{
-	protected Connection conn;
-	protected PreparedStatement psmt;
-	protected ResultSet rs;
 
-	// DB 연결 메소드
-	
-
-	// 통로 close 하는 메소드
-	
 
 	public ArrayList<MyStockVO> MyStock() {// 내 주식 확인
 		return select_my_stock();
@@ -65,10 +55,9 @@ public class HaveStock extends DBcontroller{
 //
 //	}
 
-	int score = 0;
 
 	// 선택창에서 주식 매도 기능 메소드
-	public int stockSale(int sell_stock_index, int count) {
+	public int stockSale(int sale_stock_index, int count) {
 
 		ArrayList<String> stock_names = new ArrayList<String>(); // 회사 이름 담을 어레이리스트
 		ArrayList<Integer> sell_prices = new ArrayList<Integer>(); // 회사의 현재 가격 담을 어레이리스트
@@ -79,9 +68,9 @@ public class HaveStock extends DBcontroller{
 		getConn();
 
 		try {
-			select_all_stock
-			String sell_stockName = stock_names.get(sell_stock_index);
-			int sell_stockPrice = sell_prices.get(sell_stock_index);
+			ArrayList<StockVO> all_stocks = select_all_stock();
+			String sale_stock_string = all_stocks.get(sale_stock_index).getStockName(); // 회사 이름 담을 변수
+			int sale_stock_price = sell_prices.get(sale_stock_index).ge;
 			String sql_2 = "select stock_count, purchased_stock_amount, current_stock_amount, stock_name from my_stock where stock_name = ?";
 			psmt = conn.prepareStatement(sql_2);
 			psmt.setString(1, sell_stockName);
