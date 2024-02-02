@@ -72,7 +72,7 @@ public class DBcontroller {
 				stock_name = rs.getString("stock_name");
 				int stock_now_price = rs.getInt("stock_now_price");
 				int stock_yesterday_price = rs.getInt("stock_yesterday_Price");
-				int stock_rate = rs.getInt("stock_rate");
+				float stock_rate = rs.getFloat("stock_rate");
 				StockVO svo = new StockVO(stock_name, stock_yesterday_price, stock_now_price, stock_rate);
 				all_stocks.add(svo);
 			}

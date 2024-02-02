@@ -29,7 +29,7 @@ public class DbStockSearch_controller extends DBcontroller {
 				String stockName = rs.getString("STOCK_NAME");
 				int stockCount = rs.getInt("STOCK_YESTERDAY_PRICE");
 				int nowPrice = rs.getInt("STOCK_NOW_PRICE");
-				int anything = rs.getInt("STOCK_RATE");
+				float anything = rs.getFloat("STOCK_RATE");
 
 
 				StockVO sdvo = new StockVO(stockName, stockCount, nowPrice, anything);

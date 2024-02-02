@@ -5,9 +5,9 @@ public class StockVO {
 	private String stockName;
 	private int yesterdayPrice;
 	private int nowPrice;
-	private int rate;
+	private float rate;
 
-	public StockVO(String stockName, int yesterdayPrice , int nowPrice, int rate) {
+	public StockVO(String stockName, int yesterdayPrice , int nowPrice, float rate) {
 //		super();
 		this.stockName = stockName;
 		this.yesterdayPrice = yesterdayPrice;
@@ -39,7 +39,7 @@ public class StockVO {
 		this.nowPrice = nowPrice;
 	}
 
-	public int getRate() {
+	public float getRate() {
 		return rate;
 	}
 
