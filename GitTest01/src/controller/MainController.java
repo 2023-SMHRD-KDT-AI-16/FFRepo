@@ -279,4 +279,13 @@ public class MainController extends DBcontroller {
 		} catch (Exception e) {
 		}
 	}
+	
+	
+	public void new_people() {
+		for(int i = 0; i < 20; i++) {
+			String sql = "uqdate my_stock set stock_name = ?, stock_now_price = ? stock = ? ";
+			
+			
+		}
+	}
 }

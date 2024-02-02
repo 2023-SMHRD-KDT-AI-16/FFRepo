@@ -207,11 +207,21 @@ public class DBcontroller {
 		// all_stock 전체 뽑는 select문 메소드
 		ArrayList<StockVO> all_stocks = select_all_stock();
 		ArrayList<MyStockVO> my_stocks = select_my_stock();
-		int my_stock_count = my_stocks.get(sale_stock_index).getStock_count(); // 보유하고 있는 주식 수량 담을 변수
-		int my_purchased_amount = my_stocks.get(sale_stock_index).getPurchased_stock_amount(); // 내가 가지고 있는 한 종목 당 총 금액
-		String my_stock_name = my_stocks.get(sale_stock_index).getStock_name(); // 인덱스로 뽑은 회사 이름
-		float my_stock_yield = my_stocks.get(sale_stock_index).getStock_yield(); // 뽑은 회사의 수익률
-		int my_current_price = my_stocks.get(sale_stock_index).getCurrent_stock_amount(); // 뽑은 회사 현재 금액
+		
+		int index = 0;
+		String my_stock_name = all_stocks.get(index).getStockName(); // 인덱스로 뽑은 회사 이름
+		for(int i = 0; i<my_stocks.size(); i++) {
+			if(my_stocks.get(i).getStock_name().equals(my_stock_name))
+			{i = index;}
+		}
+		
+		int my_stock_count = my_stocks.get(index).getStock_count(); // 보유하고 있는 주식 수량 담을 변수
+		int my_purchased_amount = my_stocks.get(index).getPurchased_stock_amount(); // 내가 가지고 있는 한 종목 당 총 금액
+		float my_stock_yield = my_stocks.get(index).getStock_yield(); // 뽑은 회사의 수익률
+		int my_current_price = my_stocks.get(index).getCurrent_stock_amount(); // 뽑은 회사 현재 금액
+		
+		
+		
 		
 		my_money = my_purchased_amount* my_stock_yield;
 
@@ -269,9 +279,15 @@ public class DBcontroller {
 		ArrayList<MyStockVO> my_stocks = select_my_stock();
 		String my_stock_name = all_stocks.get(buy_stock_index).getStockName(); // 인덱스로 뽑은 회사 이름
 		int all_now_price = all_stocks.get(buy_stock_index).getNowPrice(); // 사길 원하는 회사 현재 금액
-		int my_stock_count = my_stocks.get(buy_stock_index).getStock_count(); // 보유하고 있는 주식 수량
-		float my_stock_yield = my_stocks.get(buy_stock_index).getStock_yield(); // 뽑은 회사 중 이미 보유하고 있던 회사의 수익률
-		int my_purchased_amount = my_stocks.get(buy_stock_index).getPurchased_stock_amount();
+		
+		int index = 0;
+		for(int i = 0; i<my_stocks.size(); i++) {
+			if(my_stocks.get(i).getStock_name().equals(my_stock_name))
+			{i = index;}
+		}
+		int my_stock_count = my_stocks.get(index).getStock_count(); // 보유하고 있는 주식 수량
+		float my_stock_yield = my_stocks.get(index).getStock_yield(); // 뽑은 회사 중 이미 보유하고 있던 회사의 수익률
+		int my_purchased_amount = my_stocks.get(index).getPurchased_stock_amount();
 		my_money = (all_now_price*count);
 
 
