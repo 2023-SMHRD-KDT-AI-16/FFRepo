@@ -32,13 +32,6 @@ public class DBcontroller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		if (conn != null) {
-			System.out.println("연결 성공");
-		} else {
-			System.out.println("연결 실패");
-		}
-
 	}
 
 	// ii. 통로 close 하는 메소드
