@@ -180,6 +180,7 @@ public class MainView {
 						mco.new_people();
 						System.out.println("랭킹에 등록되었습니다.");
 						score = 50000000;
+						sel = 0;
 
 //						sel = 97;
 
