@@ -79,23 +79,7 @@ public class HaveStock extends DBcontroller{
 		getConn();
 
 		try {
-			String sql = "select * from all_stock";
-			psmt = conn.prepareStatement(sql);
-
-			// sql통과
-			rs = psmt.executeQuery();
-
-			// select 한줄의 데이터 확인 rs.next()
-			while (rs.next()) {
-				String stockName = rs.getString("stock_name");
-				int nowPrice = rs.getInt("stock_now_price");
-				int yesterdayPrice = rs.getInt("stock_yesterday_price");
-				int stockrate = rs.getInt("stock_rate");
-				stock_names.add(stockName);
-				sell_prices.add(nowPrice);
-				my_rates.add(stockrate);
-			}
-
+			select_all_stock
 			String sell_stockName = stock_names.get(sell_stock_index);
 			int sell_stockPrice = sell_prices.get(sell_stock_index);
 			String sql_2 = "select stock_count, purchased_stock_amount, current_stock_amount, stock_name from my_stock where stock_name = ?";

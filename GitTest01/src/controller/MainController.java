@@ -1,8 +1,5 @@
 package controller;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,9 +12,7 @@ public class MainController extends DBcontroller {
 	ArrayList<MusicVO> musicList = new ArrayList<MusicVO>(1);
 	MP3Player mp3 = new MP3Player();
 	int cnt = 0;
-	public Connection conn;
-	public PreparedStatement psmt;
-	public ResultSet rs;
+	
 
 	public MainController() {
 		// TODO Auto-generated constructor stub
@@ -63,35 +58,39 @@ public class MainController extends DBcontroller {
 			for (int i = 0; i < my_stocks.size(); i++) { // DB에 있는 1~20위 종목 이름
 				Db_stock_name[i] = my_stocks.get(i).getStock_name();
 				Db_yesterday_price[i] = my_stocks.get(i).getCurrent_stock_amount();
+				System.out.println(Db_stock_name[i]+" : " + Db_yesterday_price[i]);
 			}
 
 			int yesterday_price = 0;
 			float rate = 0;
 			int now_price = 0;
+			float price = 0;
 
 			// 다음날 주식으로 DB update
+			getConn();
 			try {
-				getConn();
 				for (int i = 0; i < 20; i++) {
 					String name = Db_stock_name[i]; // 0 대신 주식 이름 넣어야 함.
 					yesterday_price = Db_yesterday_price[i];
-					String sql = "UPDATE all_stock SET STOCK_now_price = ?, stock_yesterday_price = ?, STOCK_RATE = ? WHERE STOCK_NAME = ?";
 					rate = Math.round(-(1 - stock_rate[i]) * 10000.0) / 100.0f; // 등락률 집어 넣기(소수점 3번째 자리에서 반올림)
-					float price = yesterday_price * stock_rate[i];
+					price = yesterday_price * stock_rate[i];
 					now_price = (int) price;
 
+					String sql = "UPDATE all_stock SET STOCK_now_price = ?, stock_yesterday_price = ?, STOCK_RATE = ? WHERE STOCK_NAME = ?";
 					psmt = conn.prepareStatement(sql);
 
 					psmt.setInt(1, now_price);
-					psmt.setFloat(2, yesterday_price);
+					psmt.setInt(2, yesterday_price);
 					psmt.setFloat(3, rate);
 					psmt.setString(4, name);
 
 					row = psmt.executeUpdate();
 					cnt++;
+					return cnt;
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				return cnt;
 			} finally {
 				allClose();
 			}
